@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Personality Assessment</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+      
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      
+<!--
+    <script>
+      $(document).ready(function(){
+        var user_name,password;
+        $("#submit").click(function(){
+          user_name=$("#user_name").val();
+          password=$("#password").val();
+          $.post("http://localhost:3000/login",{user: user_name,password: password}, function(data){
+            if(data==='done')
+              {
+                alert("login success");
+              }
+          });
+        });
+      });
+    </script>
+-->
+      
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Personality, Psychopathology, and Assessment Lab</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="BISBAS.html">BIS/BAS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="RSSM.html">RSSM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/View.jpg')">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>PICA System</h1>
+                <span class="subheading"><b>The Person-in-Context Assessment System <sup>©</sup></b> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+            <!--<a href="post.html">-->
+<!--
+              <input type="TEXT" id="user_name" size="40"><br>
+                <input type="password" id="password" size="40"><br>
+                <input type="button" id="submit" value="Submit">
+-->
+              <h2 class="post-title">
+                Measure your unique personality using tests based on current personality science! 
+              </h2>
+              <h3 class="post-subtitle">
+                
+              </h3>
+            </a>
+            <p class="post-meta">Although humans have much in common, each person is also an individual, with a unique way of characteristically perceiving, feeling, and acting in the world—that is, we have personalities.  Over the last 50 years, the science of personality has grown tremendously.  However, many of the most popular personality measures are based on outdated theories and evidence.</p>
+          </div>
+          <hr>
+          <div class="post-preview">
+            <!--<a href="post.html">-->
+              <h2 class="post-title">
+                Free On-Line Immediate Feedback! 
+              </h2>
+            </a>
+              <p class="post-meta">This website provides free on-line assessment of your personality using measures that are based on Contemporary Personality Science<sup>1</sup>.  Presently, we have just one measure.  But in the next couple of months, we’ll be adding additional measures. </p>
+              
+              <p class="post-meta"> For each test, you will receive immediate individualized feedback based on how you responded to each of the questions.  Your participation for each of these tests is anonymous.</p>
+              
+              <p class="post-meta">These measures will assess such important personality structures as your temperament, your current self-beliefs, and your goals.</p>
+          </div>
+          <hr>
+          <div class="post-preview">
+            <!--<a href="post.html">-->
+              <h2 class="post-title">
+                Increase Self-Understanding! 
+              </h2>
+              <h3 class="post-subtitle">
+              </h3>
+            </a>
+            <p class="post-meta"> Each of these tests will provide you information that can help you to better understand your individual personality and what drives you to think, feel, and act the way you do.</p>
+          </div>
+          <hr>
+          <div class="post-preview">
+            <!--<a href="post.html">-->
+              <h2 class="post-title">
+                Current Personality Assessment Measures:
+              </h2>
+              <a href="BISBAS.html">
+              <h3 class="post-subtitle">
+                Emotional Temperament
+                  </h3></a>
+              <a href="RSSM.html">
+              <h3 class="post-subtitle">
+                Current Self-Beliefs
+              </h3></a>
+              <a href="post.html">
+              <h3 class="post-subtitle">
+                Goal Measure
+              </h3>
+
+
+            </a>
+              <p></p>
+            <p class="post-meta"><sub>1</sub> More specifically, these measures are based on social cognitive theory, which represents an integrative model of personality science, drawing upon recent advances in human cognition, social psychology, and neuroscience.  Drs. Albert Bandura and Walter Mischel, two of the most famous psychologists living today, are the two figures most commonly associated with the social cognitive approach.   A recent integration of social cognitive theory that informs the development of this website’s personality measures was published by Daniel Cervone (2004).</p>
+          </div>
+          <hr>
+          <!-- Pager -->
+          <div class="clearfix">
+            <!--<a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="https://labs.wsu.edu/personality-assessment/personality-assessment/">
+                  <span class="fa-stack fa-lg">
+                    <!--<i class="fa fa-circle fa-stack-2x"></i>-->
+                    <img src="img/WSU-Cougars-Small.jpg" alt="" style="z-index: -10; width:40px;height:40px;">
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/alzulas">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; 2017</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
