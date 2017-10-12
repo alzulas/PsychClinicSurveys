@@ -24,38 +24,8 @@ if (myid != ""){
 }
 
 
-
-d3.select("body").append("p").text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
-d3.select("body").append("p").text("The first temperament assessed was the Behavioral Inhibition System (BIS). This behavioral inhibition system involves a set of brain structures that leads to inhibition in response to anticipated or actual punishers and is associated with the experience of anxiety and fear.");
-d3.select("body").append("p").text("You can think of BIS as a psychic brake pedal, or a stop-and-throw-into-reverse pedal! BIS is activated for situations you perceive as novel, threatening, or challenging. People who score high on BIS experience anxiety/fear more readily and persistently in such situations.");
-d3.select("body").append("p").text("On the plus side, they are likely to very careful and to consider consequences before acting and may be more systematic in thinking things through. On the down side, they may be more vulnerable to problems with anxiety.");
-d3.select("body").append("p").text("On this measure of behavioral inhibition, you scored a " + outPutCSV[0]);
-
-if (outPutCSV[0] > BISPopulationMean-BISPopulationStd && outPutCSV < BISPopulationMean+BISPopulationStd){
-    d3.select("body").append("p").text(averageBIS);
-}
-else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*2) && outPutCSV < BISPopulationMean-BISPopulationStd){
-    d3.select("body").append("p").text(lowAverageBIS);
-}
-else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*3) && outPutCSV < BISPopulationMean-(BISPopulationStd*2)){
-    d3.select("body").append("p").text(lowBIS);
-}
-else if (outPutCSV[0] > 6 && outPutCSV < BISPopulationMean-(BISPopulationStd*3)){
-    d3.select("body").append("p").text(veryLowBIS);
-}
-else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd) && outPutCSV < BISPopulationMean+(BISPopulationStd*2)){
-    d3.select("body").append("p").text(highAverageBIS);
-}
-else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*2) && outPutCSV < BISPopulationMean+(BISPopulationStd*3)){
-    d3.select("body").append("p").text(highBIS);
-}
-else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*3) && outPutCSV < 29){
-    d3.select("body").append("p").text(veryHighBIS);
-}
-else{
-    d3.select("body").append("p").text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
-}
-
+showBISResults(outPutCSV);
+showBASResults(outPutCSV);
 console.log(outPutCSV);//empty set
 createBargraph(outPutCSV);
 
@@ -134,34 +104,64 @@ function calculateScores(dataPassed){
 }
 
 
+function showBISResults(outPutCSV){
+    d3.select("body").append("H1").text("BIS Results")
+    d3.select("body").append("p").text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
+    d3.select("body").append("p").text("The first temperament assessed was the Behavioral Inhibition System (BIS). This behavioral inhibition system involves a set of brain structures that leads to inhibition in response to anticipated or actual punishers and is associated with the experience of anxiety and fear.");
+    d3.select("body").append("p").text("You can think of BIS as a psychic brake pedal, or a stop-and-throw-into-reverse pedal! BIS is activated for situations you perceive as novel, threatening, or challenging. People who score high on BIS experience anxiety/fear more readily and persistently in such situations.");
+    d3.select("body").append("p").text("On the plus side, they are likely to very careful and to consider consequences before acting and may be more systematic in thinking things through. On the down side, they may be more vulnerable to problems with anxiety.");
+    d3.select("body").append("p").text("On this measure of behavioral inhibition, you scored a " + outPutCSV[0]);
 
-//Please print this page by clicking the right mouse button and selecting print.
-
-var veryHighBIS = "Your score for behavioral inhibition was in the Very High range. This means that compared to the average person, you are in the top 2% of people who experience anxiety more readily in response to novel, challenging, or threatening events."
-var highBIS = "Your score for behavioral inhibition was in the High range. This means that compared to the average person, you are in the top 10% of people who experience anxiety more readily in response to novel, challenging, or threatening events."
-var highAverageBIS = "Your score for behavioral inhibition was in the High Average range. This means that compared to the average person, you are in the top 25% of people who experience anxiety more readily in response to novel, challenging, or threatening events."
-var averageBIS = "Your score for behavioral inhibition was in the Average range. This means that you experience anxiety in response to novel, challenging, or threatening events at a fairly typical level."
-var lowAverageBIS = "Your score for behavioral inhibition was in the Low Average range. This means that compared to the average person, you are in the lower 25% of people who experience anxiety in response to novel, challenging, or threatening events."
-var lowBIS = "Your score for behavioral inhibition was in the Low range. This means that compared to the average person, you are in the lower 10% of people who experience anxiety in response to novel, challenging, or threatening events."
-var veryLowBIS = "Your score for behavioral inhibition was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience anxiety in response to novel, challenging, or threatening events."
+    var veryHighBIS = "Your score for behavioral inhibition was in the Very High range. This means that compared to the average person, you are in the top 2% of people who experience anxiety more readily in response to novel, challenging, or threatening events.";
+    var highBIS = "Your score for behavioral inhibition was in the High range. This means that compared to the average person, you are in the top 10% of people who experience anxiety more readily in response to novel, challenging, or threatening events.";
+    var highAverageBIS = "Your score for behavioral inhibition was in the High Average range. This means that compared to the average person, you are in the top 25% of people who experience anxiety more readily in response to novel, challenging, or threatening events.";
+    var averageBIS = "Your score for behavioral inhibition was in the Average range. This means that you experience anxiety in response to novel, challenging, or threatening events at a fairly typical level.";
+    var lowAverageBIS = "Your score for behavioral inhibition was in the Low Average range. This means that compared to the average person, you are in the lower 25% of people who experience anxiety in response to novel, challenging, or threatening events.";
+    var lowBIS = "Your score for behavioral inhibition was in the Low range. This means that compared to the average person, you are in the lower 10% of people who experience anxiety in response to novel, challenging, or threatening events.";
+    var veryLowBIS = "Your score for behavioral inhibition was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience anxiety in response to novel, challenging, or threatening events.";
 
 
+    if (outPutCSV[0] > BISPopulationMean-BISPopulationStd && outPutCSV[0] < BISPopulationMean+BISPopulationStd){
+        d3.select("body").append("p").text(averageBIS);
+    }
+    else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*2) && outPutCSV[0] < BISPopulationMean-BISPopulationStd){
+        d3.select("body").append("p").text(lowAverageBIS);
+    }
+    else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*3) && outPutCSV[0] < BISPopulationMean-(BISPopulationStd*2)){
+        d3.select("body").append("p").text(lowBIS);
+    }
+    else if (outPutCSV[0] > 6 && outPutCSV[0] < BISPopulationMean-(BISPopulationStd*3)){
+        d3.select("body").append("p").text(veryLowBIS);
+    }
+    else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd) && outPutCSV[0] < BISPopulationMean+(BISPopulationStd*2)){
+        d3.select("body").append("p").text(highAverageBIS);
+    }
+    else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*2) && outPutCSV[0] < BISPopulationMean+(BISPopulationStd*3)){
+        d3.select("body").append("p").text(highBIS);
+    }
+    else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*3) && outPutCSV[0] < 29){
+        d3.select("body").append("p").text(veryHighBIS);
+    }
+    else{
+        d3.select("body").append("p").text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
+    }
+}
 
-//Please print this page by clicking the right mouse button and selecting print.
-//This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the life course.
-//The second temperament assessed was the Behavioral Activation System (BAS). The behavioral activation system involves a set of brain structures that promote movement toward incentives, things we want. You can think of BAS as a psychic gas pedal, a go system. BAS is activated for situations you want, situations that are enticing, attractive, positive. People who score high on BAS experience positive emotions more readily and persistently in such situations. On the plus side, they are likely to be motivated to approach positive situations with gusto. On the down side, they may have problems with being too impulsive.
-//On this measure of behavioral activation, you scored 
+function showBASResults(outPutCSV){
+    d3.select("body").append("H1").text("BAS Results");
+    d3.select("body").append("p").text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the life course.");
+    d3.select("body").append("p").text("The second temperament assessed was the Behavioral Activation System (BAS). The behavioral activation system involves a set of brain structures that promote movement toward incentives, things we want. You can think of BAS as a psychic gas pedal, a go system. BAS is activated for situations you want, situations that are enticing, attractive, positive. People who score high on BAS experience positive emotions more readily and persistently in such situations. On the plus side, they are likely to be motivated to approach positive situations with gusto. On the down side, they may have problems with being too impulsive.");
+    d3.select("body").append("p").text("On this measure of behavioral activation, you scored " + (outPutCSV[1]+outPutCSV[2]+outPutCSV[3]));
+    d3.select("body").append("li").text("Your BAS Drive score is " + outPutCSV[1]);
+    d3.select("body").append("li").text("Your BAS Reward score is " + outPutCSV[2]);
+    d3.select("body").append("li").text("Your BAS Fun score is " + outPutCSV[3]);
 
-//Your score for behavioral activation was in the Very High range. This means that compared to the average person, you are in the top 2% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.
-//
-//Your score for behavioral activation was in the High range. This means that compared to the average person, you are in the top 10% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.
-//
-//Your score for behavioral activation was in the High Average range. This means that compared to the average person, you are in the top 25% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.
-//
-//Your score for behavioral activation was in the Average range. This means that you experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives, as much as the typical person.
-//
-//Your score for behavioral activation was in the Low Average range. This means that compared to the average person, you are in the lower 25% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.
-//
-//Your score for behavioral activation was in the Low range. This means that compared to the average person, you are in the lower 10% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.
-//
-//Your score for behavioral activation was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.
+    var VeryHighBAS = "Your score for behavioral activation was in the Very High range. This means that compared to the average person, you are in the top 2% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
+    var highBAS = "Your score for behavioral activation was in the High range. This means that compared to the average person, you are in the top 10% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
+    var highAverageBAS = "Your score for behavioral activation was in the High Average range. This means that compared to the average person, you are in the top 25% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
+    var averageBAS = "Your score for behavioral activation was in the Average range. This means that you experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives, as much as the typical person.";
+    var lowAverageBAS = "Your score for behavioral activation was in the Low Average range. This means that compared to the average person, you are in the lower 25% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives."
+    var lowBAS = "Your score for behavioral activation was in the Low range. This means that compared to the average person, you are in the lower 10% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
+    var verLowBAS = "Your score for behavioral activation was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
+
+}
