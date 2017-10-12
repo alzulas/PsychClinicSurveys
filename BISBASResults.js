@@ -23,7 +23,39 @@ if (myid != ""){
     });
 }
 
-d3.select("body").append("p").text("!");
+
+
+d3.select("body").append("p").text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
+d3.select("body").append("p").text("The first temperament assessed was the Behavioral Inhibition System (BIS). This behavioral inhibition system involves a set of brain structures that leads to inhibition in response to anticipated or actual punishers and is associated with the experience of anxiety and fear.");
+d3.select("body").append("p").text("You can think of BIS as a psychic brake pedal, or a stop-and-throw-into-reverse pedal! BIS is activated for situations you perceive as novel, threatening, or challenging. People who score high on BIS experience anxiety/fear more readily and persistently in such situations.");
+d3.select("body").append("p").text("On the plus side, they are likely to very careful and to consider consequences before acting and may be more systematic in thinking things through. On the down side, they may be more vulnerable to problems with anxiety.");
+d3.select("body").append("p").text("On this measure of behavioral inhibition, you scored a " + outPutCSV[0]);
+
+if (outPutCSV[0] > BISPopulationMean-BISPopulationStd && outPutCSV < BISPopulationMean+BISPopulationStd){
+    d3.select("body").append("p").text(averageBIS);
+}
+else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*2) && outPutCSV < BISPopulationMean-BISPopulationStd){
+    d3.select("body").append("p").text(lowAverageBIS);
+}
+else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*3) && outPutCSV < BISPopulationMean-(BISPopulationStd*2)){
+    d3.select("body").append("p").text(lowBIS);
+}
+else if (outPutCSV[0] > 6 && outPutCSV < BISPopulationMean-(BISPopulationStd*3)){
+    d3.select("body").append("p").text(veryLowBIS);
+}
+else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd) && outPutCSV < BISPopulationMean+(BISPopulationStd*2)){
+    d3.select("body").append("p").text(highAverageBIS);
+}
+else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*2) && outPutCSV < BISPopulationMean+(BISPopulationStd*3)){
+    d3.select("body").append("p").text(highBIS);
+}
+else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*3) && outPutCSV < 29){
+    d3.select("body").append("p").text(veryHighBIS);
+}
+else{
+    d3.select("body").append("p").text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
+}
+
 console.log(outPutCSV);//empty set
 createBargraph(outPutCSV);
 
@@ -104,25 +136,14 @@ function calculateScores(dataPassed){
 
 
 //Please print this page by clicking the right mouse button and selecting print.
-//This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the life course.
-//The first temperament assessed was the Behavioral Inhibition System (BIS). This behavioral inhibition system involves a set of brain structures that leads to inhibition in response to anticipated or actual punishers and is associated with the experience of anxiety and fear.
-//You can think of BIS as a psychic brake pedal, or a stop- and-throw-into-reverse pedal! BIS is activated for situations you perceive as novel, threatening, or challenging. People who score high on BIS experience anxiety/fear more readily and persistently in such situations.
-//On the plus side, they are likely to very careful and to consider consequences before acting and may be more systematic in thinking things through. On the down side, they may be more vulnerable to problems with anxiety.
-//On this measure of behavioral inhibition, you scored a..
 
-//Your score for behavioral inhibition was in the Very High range. This means that compared to the average person, you are in the top 2% of people who experience anxiety more readily in response to novel, challenging, or threatening events.
-//
-//Your score for behavioral inhibition was in the High range. This means that compared to the average person, you are in the top 10% of people who experience anxiety more readily in response to novel, challenging, or threatening events.
-//
-//Your score for behavioral inhibition was in the High Average range. This means that compared to the average person, you are in the top 25% of people who experience anxiety more readily in response to novel, challenging, or threatening events.
-//
-//Your score for behavioral inhibition was in the Average range. This means that you experience anxiety in response to novel, challenging, or threatening events at a fairly typical level.
-//
-//Your score for behavioral inhibition was in the Low Average range. This means that compared to the average person, you are in the lower 25% of people who experience anxiety in response to novel, challenging, or threatening events.
-//
-//Your score for behavioral inhibition was in the Low range. This means that compared to the average person, you are in the lower 10% of people who experience anxiety in response to novel, challenging, or threatening events.
-//
-//Your score for behavioral inhibition was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience anxiety in response to novel, challenging, or threatening events.
+var veryHighBIS = "Your score for behavioral inhibition was in the Very High range. This means that compared to the average person, you are in the top 2% of people who experience anxiety more readily in response to novel, challenging, or threatening events."
+var highBIS = "Your score for behavioral inhibition was in the High range. This means that compared to the average person, you are in the top 10% of people who experience anxiety more readily in response to novel, challenging, or threatening events."
+var highAverageBIS = "Your score for behavioral inhibition was in the High Average range. This means that compared to the average person, you are in the top 25% of people who experience anxiety more readily in response to novel, challenging, or threatening events."
+var averageBIS = "Your score for behavioral inhibition was in the Average range. This means that you experience anxiety in response to novel, challenging, or threatening events at a fairly typical level."
+var lowAverageBIS = "Your score for behavioral inhibition was in the Low Average range. This means that compared to the average person, you are in the lower 25% of people who experience anxiety in response to novel, challenging, or threatening events."
+var lowBIS = "Your score for behavioral inhibition was in the Low range. This means that compared to the average person, you are in the lower 10% of people who experience anxiety in response to novel, challenging, or threatening events."
+var veryLowBIS = "Your score for behavioral inhibition was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience anxiety in response to novel, challenging, or threatening events."
 
 
 
