@@ -6,6 +6,8 @@ var BASDrviePopulationMean = 12.05;
 var BASDrviePopulationStd = 2.36;
 var BASFunPopulationMean = 12.43;
 var BASFunPopulationStd = 2.26;
+var BASOverallPopulationMean = 38.6;
+var BASOverallPopulationStd = 6.5;
 
 var outPutCSV = [];
 var myid = getCookie("userName");
@@ -148,10 +150,11 @@ function showBISResults(outPutCSV){
 }
 
 function showBASResults(outPutCSV){
+    var overallBAS = (outPutCSV[1]+outPutCSV[2]+outPutCSV[3]);
     d3.select("body").append("H1").text("BAS Results");
     d3.select("body").append("p").text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the life course.");
     d3.select("body").append("p").text("The second temperament assessed was the Behavioral Activation System (BAS). The behavioral activation system involves a set of brain structures that promote movement toward incentives, things we want. You can think of BAS as a psychic gas pedal, a go system. BAS is activated for situations you want, situations that are enticing, attractive, positive. People who score high on BAS experience positive emotions more readily and persistently in such situations. On the plus side, they are likely to be motivated to approach positive situations with gusto. On the down side, they may have problems with being too impulsive.");
-    d3.select("body").append("p").text("On this measure of behavioral activation, you scored " + (outPutCSV[1]+outPutCSV[2]+outPutCSV[3]));
+    d3.select("body").append("p").text("On this measure of behavioral activation, you scored " + overallBAS);
     d3.select("body").append("li").text("Your BAS Drive score is " + outPutCSV[1]);
     d3.select("body").append("li").text("Your BAS Reward score is " + outPutCSV[2]);
     d3.select("body").append("li").text("Your BAS Fun score is " + outPutCSV[3]);
@@ -162,6 +165,31 @@ function showBASResults(outPutCSV){
     var averageBAS = "Your score for behavioral activation was in the Average range. This means that you experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives, as much as the typical person.";
     var lowAverageBAS = "Your score for behavioral activation was in the Low Average range. This means that compared to the average person, you are in the lower 25% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives."
     var lowBAS = "Your score for behavioral activation was in the Low range. This means that compared to the average person, you are in the lower 10% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
-    var verLowBAS = "Your score for behavioral activation was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
+    var veryLowBAS = "Your score for behavioral activation was in the Very Low range. This means that compared to the average person, you are in the lower 2% of people who experience positive emotion (e.g., excitement, enthusiasm) and motivation in response to positive events, such as rewards or incentives.";
+    
+    if (overallBAS > BASOverallPopulationMean-BASOverallPopulationStd && overallBAS < BASOverallPopulationMean+BASOverallPopulationStd){
+        d3.select("body").append("p").text(averageBAS);
+    }
+    else if (overallBAS > BASOverallPopulationMean-(BASOverallPopulationStd*2) && overallBAS < BASOverallPopulationMean-BASOverallPopulationStd){
+        d3.select("body").append("p").text(lowAverageBAS);
+    }
+    else if (overallBAS > BASOverallPopulationMean-(BASOverallPopulationStd*3) && overallBAS < BASOverallPopulationMean-(BASOverallPopulationStd*2)){
+        d3.select("body").append("p").text(lowBAS);
+    }
+    else if (overallBAS > 12 && overallBAS < BASOverallPopulationMean-(BASOverallPopulationStd*3)){
+        d3.select("body").append("p").text(veryLowBAS);
+    }
+    else if (overallBAS > BASOverallPopulationMean+(BASOverallPopulationStd) && overallBAS < BASOverallPopulationMean+(BASOverallPopulationStd*2)){
+        d3.select("body").append("p").text(highAverageBAS);
+    }
+    else if (overallBAS > BASOverallPopulationMean+(BASOverallPopulationStd*2) && overallBAS < BASOverallPopulationMean+(BASOverallPopulationStd*3)){
+        d3.select("body").append("p").text(highBAS);
+    }
+    else if (overallBAS > BASOverallPopulationMean+(BASOverallPopulationStd*3) && overallBAS < 53){
+        d3.select("body").append("p").text(VeryHighBAS);
+    }
+    else{
+        d3.select("body").append("p").text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
+    }
 
 }

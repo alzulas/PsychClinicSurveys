@@ -247,7 +247,7 @@ function init(relationship) {
         surveyResult=result.data;
         $.ajax({
             type: "POST",
-            url: "/",
+            url: "/result",
             data: JSON.stringify({survey: surveyResult}),
             success: function(data){
                 if(data==='done')
@@ -257,6 +257,25 @@ function init(relationship) {
             },
             contentType: "application/json"
         });
+        var surveyString = JSON.stringify(surveyResult);
+        if (surveyString.includes("ID")){
+            var pos = surveyString.indexOf("ID");
+            var pos = pos + "ID".length+3;
+            var tempString = surveyString[pos];
+            pos++;
+            while (surveyString[pos] != "\""){
+                tempString += surveyString[pos];
+                pos++;
+            }
+            var d = new Date();
+            d.setTime(d.getTime() + (1*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = "userName=" + tempString + ";" + expires;
+            console.log(expires);
+            console.log(tempString);
+            console.log(document.cookie);
+        }
+        window.location.href = "RSSMResults.html";
     });
 
     $("#surveyElement").Survey({model: model});

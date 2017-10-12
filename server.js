@@ -27,6 +27,12 @@ app.get('/BISBASResults.html',function(req,res){
 app.get('/BISBASResults.js',function(req,res){
   res.sendfile("BISBASResults.js");
 });
+app.get('/RSSMResults.html',function(req,res){
+  res.sendfile("RSSMResults.html");
+});
+app.get('/RSSMResults.js',function(req,res){
+  res.sendfile("RSSMResults.js");
+});
 app.get('/BISresult/:myid', function (req, res) {
   console.log(req.params.myid);
   var myid = req.params.myid;
@@ -45,9 +51,27 @@ app.get('/BISresult/:myid', function (req, res) {
     }
   } 
 })
+app.get('/RSSMresult/:myid', function (req, res) {
+  console.log(req.params.myid);
+  var myid = req.params.myid;
+  var fs = require('fs');
+  var IDfound = false;
+  var currentLine = 0;
+  var linesOfFile = fs.readFileSync('RSSM.csv').toString().split("\n");
+  while (!IDfound){
+    var tempLine = linesOfFile[currentLine];
+    if (tempLine.includes(myid)){
+        res.send(tempLine);
+        IDfound = true;
+    }
+    else{
+        currentLine++;
+    }
+  } 
+})
 
 
-app.post('/',function(req,res){
+app.post('/result',function(req,res){
   var surveyResult=req.body.survey;
   console.log("Results = "+JSON.stringify(surveyResult));
   res.end("yes");
@@ -70,7 +94,7 @@ function turnToCSV(dataString){
     if (allDataAsString.includes("BIS")){
         dataHeadings = BISBASHeadings;
     }
-    else if (allDataAsString.includes("relativeType")){
+    else if (allDataAsString.includes("thoughts")){
         dataHeadings = RSSMHeadings;
     }
     else{
@@ -142,7 +166,7 @@ function turnToCSV(dataString){
         console.log("The file was saved!");
         });
     }
-    else if (allDataAsString.includes("relativeType")){
+    else if (allDataAsString.includes("thoughts")){
         var fs = require('fs');
         fs.appendFile("RSSM.csv", csv, function(err) {
             if(err) {
