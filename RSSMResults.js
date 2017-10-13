@@ -14,6 +14,7 @@ if (myid != ""){
     });
 }
 
+
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -30,30 +31,39 @@ function getCookie(cname) {
 }
 
 function calculateScores(dataPassed){
-    var BISScore = 0;
-    var BASDriveScore = 0;
-    var BASRewardScore = 0;
-    var BASFunScore = 0;
-    var scoresCSV = [];
+    var results = []; 
+    //Will be in the order of mother comp-auto-related then 
+    //father comp-auto-related then
+    //romantic partner comp-auto-related then
+    //ex comp-auto-related then
+    //sibling comp-auto-related then
+    //close friend
+    var currentComp = 0;
+    var currentAuto = 0;
+    var currentRelated = 0;
     var dataArray = dataPassed.split(",");
-    console.log(dataArray);
-    for (var i = 5; i < 12; i++){
-        BISScore = Number(dataArray[i])+BISScore;
+    //console.log(dataArray);
+    var round = 0;
+    for (var i = 8; i < 95; i++){
+        currentComp = currentComp + Number(dataArray[i]);
+        i++;
+        currentAuto = currentAuto + Number(dataArray[i]);
+        i++;
+        currentRelated = currentRelated + Number(dataArray[i]);
+        round++;
+        if (round > 3){
+            //console.log(currentAuto + " " + currentComp + " " + currentRelated);
+            results.push(currentComp);
+            results.push(currentAuto);
+            results.push(currentRelated);
+            currentAuto = 0;
+            currentComp = 0;
+            currentRelated = 0;
+            round = 0;
+            i = i+3;
+        }
     }
-    for (var i = 12; i < 16; i++){
-        BASDriveScore = Number(dataArray[i])+BASDriveScore;
-    }
-    for (var i = 16; i < 21; i++){
-        BASRewardScore = Number(dataArray[i])+BASRewardScore;
-    }
-    for (var i = 21; i < 25; i++){
-        BASFunScore = Number(dataArray[i])+BASFunScore;
-    }
-    console.log(BISScore + " " + BASDriveScore + " " + BASRewardScore + " " + BASFunScore);
-    scoresCSV.push(BISScore);
-    scoresCSV.push(BASDriveScore);
-    scoresCSV.push(BASRewardScore);
-    scoresCSV.push(BASFunScore);
-    console.log(scoresCSV);
-    return scoresCSV;
+    
+    //console.log(results);
+    return results;
 }
