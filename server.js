@@ -6,34 +6,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('.'));
 
-app.get('/',function(req,res){
-  res.sendfile("index.html");
-});
-app.get('/RSSM.html',function(req,res){
-  res.sendfile("RSSM.html");
-});
-app.get('/RSSM.js',function(req,res){
-  res.sendfile("RSSM.js");
-});
-app.get('/BISBAS.html',function(req,res){
-  res.sendfile("BISBAS.html");
-});
-app.get('/BISBAS.js',function(req,res){
-  res.sendfile("BISBAS.js");
-});
-app.get('/BISBASResults.html',function(req,res){
-  res.sendfile("BISBASResults.html");
-});
-app.get('/BISBASResults.js',function(req,res){
-  res.sendfile("BISBASResults.js");
-});
-app.get('/RSSMResults.html',function(req,res){
-  res.sendfile("RSSMResults.html");
-});
-app.get('/RSSMResults.js',function(req,res){
-  res.sendfile("RSSMResults.js");
-});
-app.get('/BISresult/:myid', function (req, res) {
+
+//app.get('/RSSM.html',function(req,res){//sends data
+//  res.sendfile("RSSM.html");
+//});
+//app.get('/RSSM.js',function(req,res){
+//  res.sendfile("RSSM.js");
+//});
+//app.get('/BISBAS.html',function(req,res){//sends data
+//  res.sendfile("BISBAS.html");
+//});
+//app.get('/BISBAS.js',function(req,res){
+//  res.sendfile("BISBAS.js");
+//});
+//app.get('/BISBASResults.html',function(req,res){//takes data
+//  res.sendfile("BISBASResults.html");
+//});
+//app.get('/BISBASResults.js',function(req,res){
+//  res.sendfile("BISBASResults.js");
+//});
+//app.get('/RSSMResults.html',function(req,res){ //takes data
+//  res.sendfile("RSSMResults.html");
+//});
+//app.get('/RSSMResults.js',function(req,res){
+//  res.sendfile("RSSMResults.js");
+//});
+app.get('/BISresult/:myid', function (req, res) { //BISBASResults requests data like this
   console.log(req.params.myid);
   var myid = req.params.myid;
   var fs = require('fs');
