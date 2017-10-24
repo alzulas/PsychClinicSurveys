@@ -40,9 +40,7 @@ function init() {
                         { value: "BASDrive1", text: "I go out of my way to get things I want." },
                         { value: "BASReward1", text: "When I'm doing well at something I love to keep at it." },
                         { value: "BASFun1", text: "I'm always willing to try something new if I think it will be fun." },
-                        { value: "filler2", text: "How I dress is important to me." },
-                        { value: "BASReward2", text: "When I get something I want, I feel excited and energized." },
-                        { value: "BIS2", text: "Criticism or scolding hurts me quite a bit." }]}
+                        { value: "filler2", text: "How I dress is important to me." }]}
             ]},
             
         {
@@ -53,14 +51,12 @@ function init() {
                         { value: 3, text: "Somewhat false for me" },
                         { value: 4, text: "Very false for me" }],
                     rows: [
+                        { value: "BASReward2", text: "When I get something I want, I feel excited and energized." },
+                        { value: "BIS2", text: "Criticism or scolding hurts me quite a bit." },
                         { value: "BASDrive2", text: "When I want something I usually go all-out to get it." },
                         { value: "BASFun2", text: "I will often do things for no other reason than that they might be fun." },
                         { value: "filler3", text: "It's hard for me to find the time to do things such as get a haircut." },
-                        { value: "BASDrive3", text: "If I see a chance to get something I want I move on it right away." },
-                        { value: "BIS3", text: "I feel pretty worried or upset when I think or know somebody is angry at me." },
-                        { value: "BASReward3", text: "When I see an opportunity for something I like I get excited right away." },
-                        { value: "BASFun3", text: "I often act on the spur of the moment." },
-                        { value: "BIS4", text: "If I think something unpleasant is going to happen I usually get pretty \"worked up.\"" }]}
+                        { value: "BASDrive3", text: "If I see a chance to get something I want I move on it right away." }]}
             ]},
             
         {
@@ -71,8 +67,22 @@ function init() {
                         { value: 3, text: "Somewhat false for me" },
                         { value: 4, text: "Very false for me" }],
                     rows: [            
+                        { value: "BIS3", text: "I feel pretty worried or upset when I think or know somebody is angry at me." },
+                        { value: "BASReward3", text: "When I see an opportunity for something I like I get excited right away." },
+                        { value: "BASFun3", text: "I often act on the spur of the moment." },
+                        { value: "BIS4", text: "If I think something unpleasant is going to happen I usually get pretty \"worked up.\"" },
                         { value: "filler4", text: "I often wonder why people act the way they do." },
-                        { value: "BASReward4", text: "When good things happen to me, it affects me strongly." },
+                        { value: "BASReward4", text: "When good things happen to me, it affects me strongly." }]}
+            ]},
+            
+        {
+            questions: [
+                { type: "matrix", name: "Quality", title: "Please respond to the following.", 
+                    columns: [{ value: 1, text: "Very true for me" },
+                        { value: 2, text: "Somewhat true for me" },
+                        { value: 3, text: "Somewhat false for me" },
+                        { value: 4, text: "Very false for me" }],
+                    rows: [            
                         { value: "BIS5", text: "I feel worried when I think I have done poorly at something important." },
                         { value: "BASFun4", text: "I crave excitement and new sensations." },
                         { value: "BASDrive4", text: "When I go after something I use a \"no holds barred\" approach." },
@@ -82,8 +92,9 @@ function init() {
             ]},
             
         { questions: [
-            { type: "text", name: "email",
-                title: "Thank you for taking our survey. Your survey is almost complete, please enter your email address in the box below if you wish to participate in our drawing, then press the 'Submit' button."}
+            //This html just explains what the participant just did.
+            { type: "html", name: "feedbackIntro",
+                html: "<p>This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.</p>  "}
         ]}
     ]};
     

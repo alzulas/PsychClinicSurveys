@@ -108,10 +108,9 @@ function calculateScores(dataPassed){
 
 function showBISResults(outPutCSV){
     d3.select("body").append("H1").text("BIS Results")
-    d3.select("body").append("p").text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
     d3.select("body").append("p").text("The first temperament assessed was the Behavioral Inhibition System (BIS). This behavioral inhibition system involves a set of brain structures that leads to inhibition in response to anticipated or actual punishers and is associated with the experience of anxiety and fear.");
     d3.select("body").append("p").text("You can think of BIS as a psychic brake pedal, or a stop-and-throw-into-reverse pedal! BIS is activated for situations you perceive as novel, threatening, or challenging. People who score high on BIS experience anxiety/fear more readily and persistently in such situations.");
-    d3.select("body").append("p").text("On the plus side, they are likely to very careful and to consider consequences before acting and may be more systematic in thinking things through. On the down side, they may be more vulnerable to problems with anxiety.");
+    d3.select("body").append("p").text("On the plus side, they are likely to be very careful and to consider consequences before acting and may be more systematic in thinking things through. On the down side, they may be more vulnerable to problems with anxiety.");
     d3.select("body").append("p").text("On this measure of behavioral inhibition, you scored a " + outPutCSV[0]);
 
     var veryHighBIS = "Your score for behavioral inhibition was in the Very High range. This means that compared to the average person, you are in the top 2% of people who experience anxiety more readily in response to novel, challenging, or threatening events.";
@@ -152,7 +151,6 @@ function showBISResults(outPutCSV){
 function showBASResults(outPutCSV){
     var overallBAS = (outPutCSV[1]+outPutCSV[2]+outPutCSV[3]);
     d3.select("body").append("H1").text("BAS Results");
-    d3.select("body").append("p").text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the life course.");
     d3.select("body").append("p").text("The second temperament assessed was the Behavioral Activation System (BAS). The behavioral activation system involves a set of brain structures that promote movement toward incentives, things we want. You can think of BAS as a psychic gas pedal, a go system. BAS is activated for situations you want, situations that are enticing, attractive, positive. People who score high on BAS experience positive emotions more readily and persistently in such situations. On the plus side, they are likely to be motivated to approach positive situations with gusto. On the down side, they may have problems with being too impulsive.");
     d3.select("body").append("p").text("On this measure of behavioral activation, you scored " + overallBAS);
     d3.select("body").append("li").text("Your BAS Drive score is " + outPutCSV[1]);
