@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////
+//  This file was authored by A. Leah Zulas             ////
+//  It heavily utilizes surveyjs.io                     ////
+//  It displays a survey and collevcts data             ////
+//  If sends data using Ajax, to an express server      ////
+//  Any questions about the below code should be sent to:///
+//  alzulas@alzulas.com                                 ////
+////////////////////////////////////////////////////////////
 
 
 function init(relationship) {
@@ -43,8 +51,6 @@ function init(relationship) {
             { type: "html", name: "info", html: "<p> Most people think differently about themselves depending on who they are with and what they are doing.  This questionnaire is trying to get at how you think about yourself when you are with different people and when you are in different roles in your life.</p>"}
           ]},
             
-        //This section is what is called a dynamic panel. A dynamic panel allows you to use the same sets of questions while changing just one element.
-        //Here we change by relationship that the person is answering for. They will respond for mother, father etc on the same set of questions.
         {
             questions:[
                 //This html describes how to think about the next set of questions.
@@ -236,7 +242,7 @@ function init(relationship) {
     Survey.Survey.cssType = "bootstrap";
 
     //Load the above JSON information into the survey model
-    var model = new Survey.Model(jsonBegin);//, 'data.txt');
+    var model = new Survey.Model(jsonBegin);
     window.survey = model;
     
     //When you get results, turn them into a string and submit
@@ -258,7 +264,8 @@ function init(relationship) {
             contentType: "application/json"
         });
         var surveyString = JSON.stringify(surveyResult);
-        if (surveyString.includes("ID")){
+        if (surveyString.includes("ID")){ 
+            //Set a cookie with the user ID
             var pos = surveyString.indexOf("ID");
             var pos = pos + "ID".length+3;
             var tempString = surveyString[pos];
@@ -268,12 +275,12 @@ function init(relationship) {
                 pos++;
             }
             var d = new Date();
-            d.setTime(d.getTime() + (1*24*60*60*1000));
+            d.setTime(d.getTime() + (1*24*60*60*1000)); //Cookie set to self destruct in a day
             var expires = "expires="+ d.toUTCString();
             document.cookie = "userName=" + tempString + ";" + expires;
-            console.log(expires);
-            console.log(tempString);
-            console.log(document.cookie);
+            //console.log(expires);
+            //console.log(tempString);
+            //console.log(document.cookie);
         }
         window.location.href = "RSSMResults.html";
     });
@@ -284,6 +291,6 @@ function init(relationship) {
 
 //This is just the way js works. There is a thing asking if the page came up properly, and if so then run the init above. 
 if(!window["%hammerhead%"]) {
-    //console.log("begin"); debugging code.
+    //console.log("begin"); //debugging code.
     init(["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend"]);
 }

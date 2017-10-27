@@ -1,35 +1,54 @@
+////////////////////////////////////////////////////////////
+//  This file was authored by A. Leah Zulas             ////
+//  It heavily utilizes surveyjs.io                     ////
+//  It displays a survey and collevcts data             ////
+//  If sends data using Ajax, to an express server      ////
+//  Any questions about the below code should be sent to:///
+//  alzulas@alzulas.com                                 ////
+////////////////////////////////////////////////////////////
+
+
 function init() {
     
-    //var i = 0;
+    //This is the JSON with all the questions and format in it
     var jsonBegin = { 
+        //Sets a title bar for the whole survey and a progress bar.
         title: " The BIS-BAS.", showProgressBar: "top", pages: [
         {
         questions:[
+            //html questions are just information. This is a good way to introduce topics. You can use HTML mark up in these sections.
             { type: "html", name: "introAndDemographics", html: "<h2 class=\"post-title\">Welcome to the behavioural inhibition system (BIS) and the behavioural activation system (BAS) survey.</h2> <p>General Demographic Questions.</p>"},
+            //Text questions take text responses. Here, we want to know the participants ID number.
             { type: "text", name: "ID", title: "Please enter your identifying code here. If one was not provided, just leave blank."},
+            //Radio groups are radio button questions. They accept a single answer. this is the gender question.
             { type: "radiogroup", name: "gender", title: "My biological sex is...", colCount: 0, choices: ["Male", "Female", "Intersex"]}
             
         ]},
-        
+        //By calling "question" again, we make the model inside the website page go to the next section of the questionnaire. The above questions will disappear and be replaced by these next questions.
         { questions: [
+            //Another radio group. This time for age. 
             {type: "radiogroup", name: "age", title: "What is your age?", choices: ["16 years and below", "17-19 years old", "20-22 years old", "23-30 years old", "31-45 years old", "46-64 years old", "65-74 years old", "75 years and older"]}
         ]},
         
         { questions: [
+            //Check box questions allow for multiple answers. This one is about race.
             {type: "checkbox", name: "race", title: "Choose one or more races that you consider yourself to be:", colCount: 2, hasOther: true, choices: ["White", "Black or African American", "American Indian or Alaska Native", "Asian", "Native Hawaiian or Pacific Islander", "Spanish, Hispanic, or Latino"]}
         ]},
         
         { questions: [
+            //Check box about employment status.
             {type: "checkbox", name: "employment", title: "Are you currently... ?", colCount: 2, hasOther: true, choices: ["A college student", "Employed for wages", "Self-employed", "Out of work and looking for work", "Out of work but not currently looking for work", "A homemaker", "Military", "Retired", "Unable to work"]}
         ]},
         
         {      
           questions: [
+              //This HTML introduces the next section. 
             { type: "html", name: "info", html: "<p>Each of the items on this page is a statement that a person may either agree with or disagree with. For each item, indicate how much you agree with or disagree with what the item says. Please respond to all the items; do not leave any blank. Choose only one response to each statement. Please be as accurate and honest as you can be. Respond to each item as if it were the only item. That is, don't worry about being \"consistent\" in your responses."}
           ]},
             
         {
             questions: [
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.  
                 { type: "matrix", name: "Quality", title: "Please respond to the following.", 
                     columns: [{ value: 1, text: "Very true for me" },
                         { value: 2, text: "Somewhat true for me" },
@@ -98,15 +117,19 @@ function init() {
         ]}
     ]};
     
+    //Used for debugging
     console.log(jsonBegin);
     
+    //Some Bootstrappy stuff that makes it look better, style choices
     Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
     Survey.Survey.cssType = "bootstrapmaterial";
     Survey.Survey.cssType = "bootstrap";
 
+    //Load the above JSON information into the survey model
     var model = new Survey.Model(jsonBegin);
     window.survey = model;
     
+    //When you get results, turn them into a string and submit
     survey.onComplete.add(function(result) {
         document.querySelector('#surveyResult').innerHTML = "result: " + JSON.stringify(result.data);
         var surveyResult;
@@ -126,6 +149,7 @@ function init() {
         });
         var surveyString = JSON.stringify(surveyResult);
         if (surveyString.includes("ID")){
+            //Set a cookie with the user ID
             var pos = surveyString.indexOf("ID");
             var pos = pos + "ID".length+3;
             var tempString = surveyString[pos];
@@ -135,12 +159,12 @@ function init() {
                 pos++;
             }
             var d = new Date();
-            d.setTime(d.getTime() + (1*24*60*60*1000));
+            d.setTime(d.getTime() + (1*24*60*60*1000)); //Cookie set to self destruct in a day
             var expires = "expires="+ d.toUTCString();
             document.cookie = "userName=" + tempString + ";" + expires;
-            console.log(expires);
-            console.log(tempString);
-            console.log(document.cookie);
+            //console.log(expires);
+            //console.log(tempString);
+            //console.log(document.cookie);
         }
         window.location.href = "BISBASResults.html";
     });
@@ -148,9 +172,9 @@ function init() {
     $("#surveyElement").Survey({model: model});
 }
 
-
+//This is just the way js works. There is a thing asking if the page came up properly, and if so then run the init above. 
 if(!window["%hammerhead%"]) {
-    console.log("begin");
+    //console.log("begin"); //debugging code
     init();
 }
 
