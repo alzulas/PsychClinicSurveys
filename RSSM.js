@@ -254,6 +254,7 @@ function init(relationship) {
         $.ajax({
             type: "POST",
             url: "/result",
+            async: false,
             data: JSON.stringify({survey: surveyResult}),
             success: function(data){
                 if(data==='done')
