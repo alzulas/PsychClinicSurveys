@@ -25,6 +25,15 @@ if (myid != ""){
     });
 }
 
+    //d3.getElementById("myDiv").style.margin = "50px 10px 20px 30px";
+    //This html just explains what the participant just did.
+    d3.select("body").append("p").text("The measure you completed was designed to assess how you experience yourself when you are interacting with different significant others in your life or engaged in different roles.  More specifically, this questionnaire measures to what extent you experience satisfaction of 3 psychological needs in these different interactions.");
+    d3.select("body").append("p").text("According to self-determination theory (Ryan & Deci, 2000), humans have three essential needs that if satisfied promote psychological well-being. These 3 needs are:");
+    d3.select("body").append("li").text("Relatedness-which is the experience of intimacy and genuine connection with others.");
+    d3.select("body").append("li").text("Competence-which is the experience of feeling effective and capable of achieving desired outcomes.");
+    d3.select("body").append("li").text("Autonomy-which is the experience of self-determination, full willingness, and volition when carrying out an activity.");
+    d3.select("body").append("p").text("");
+
 //begins the process of printing scores. 
 //Common was to write JS, because any variables not wrapped in a function is available in the entire namespace of the website.
 printScores();

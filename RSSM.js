@@ -16,50 +16,86 @@ function init(relationship) {
         title: "RSSM- Psychological Needs Assessment.", showProgressBar: "top", pages: [
         {
         questions:[
+            //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             //html questions are just information. This is a good way to introduce topics. You can use HTML mark up in these sections.
-            { type: "html", name: "introAndDemographics", html: "<h2 class=\"post-title\">Welcome to the Relational Self Schema Measure.</h2> <p>General Demographic Questions.</p>"},
+            { type: "html", name: "introAndDemographics", html: "<h2 class=\"post-title\">Welcome to the Relational Self Schema Measure.</h2> <p>General Demographic Questions.</p> <p> Remember: If at any time you feel that the text or options are too small you can hit Ctrl and the + sign in Windows or command and + in Mac on your keyboard to increase the fonts on the screen. This is an accessability feature available on all major browsers and most websites! (Note that ctrl - or command - will reduce the font sizes.) </p>"},
             //Text questions take text responses. Here, we want to know the participants ID number.
-            { type: "text", name: "ID", title: "Please enter your identifying code here. If one was not provided, just leave blank."},
+            { type: "text", name: "ID", title: "Please enter your identifying code here.", size:15, width: "4"},
+            //Inserting space between questions.
+            { type: "html", name: "InsertSpaceHere", html:""},
             //Radio groups are radio button questions. They accept a single answer. this is the gender question.
-            { type: "radiogroup", name: "gender", title: "My biological sex is...", colCount: 0, choices: ["Male", "Female", "Intersex"]}
+            { type: "radiogroup", name: "gender", title: "My biological sex is...", colCount: 0, width: "4", choices: ["Male", "Female", "Intersex"]},
+            //Inserting space between questions.
+            { type: "html", name: "InsertSpaceHere", html:""}
             
         ]},
         //By calling "question" again, we make the model inside the website page go to the next section of the questionnaire. The above questions will disappear and be replaced by these next questions.
         { questions: [
+            //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             //Another radio group. This time for age. 
-            {type: "radiogroup", name: "age", title: "What is your age?", colCount: 2, choices: ["16-|16 years and below", "17-19|17-19 years old", "20-22|20-22 years old", "23-30|23-30 years old", "31-45|31-45 years old", "46-64|46-64 years old", "65-74|65-74 years old", "75+|75 years and older"]}
+            {type: "radiogroup", name: "age", title: "What is your age?", colCount: 2, width: "4", choices: ["16-|16 years and below", "17-19|17-19 years old", "20-22|20-22 years old", "23-30|23-30 years old", "31-45|31-45 years old", "46-64|46-64 years old", "65-74|65-74 years old", "75+|75 years and older"]},
+            //Inserting space between questions.
+            { type: "html", name: "InsertSpaceHere", html:""},
+
         ]},
         
         { questions: [
+            //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             //Check box questions allow for multiple answers. This one is about race.
-            {type: "checkbox", name: "race", title: "Choose one or more races that you consider yourself to be:", colCount: 3, hasOther: true, choices: ["White", "Black or African American", "American Indian or Alaska Native", "Asian", "Native Hawaiian or Pacific Islander", "Spanish, Hispanic, or Latino"]}
+            {type: "checkbox", name: "race", title: "Choose one or more races that you consider yourself to be:", colCount: 3, hasOther: true, choices: ["White", "Black or African American", "American Indian or Alaska Native", "Asian", "Native Hawaiian or Pacific Islander", "Spanish, Hispanic, or Latino"]},
+            //Inserting space between questions.
+            { type: "html", name: "InsertSpaceHere", html:""},
+
         ]},
         
         { questions: [
+            //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             //Check box about employment status.
-            {type: "checkbox", name: "employment", title: "Are you currently... ?", colCount: 3, hasOther: true, choices: ["A college student", "Employed for wages", "Self-employed", "Out of work and looking for work", "Out of work but not currently looking for work", "A homemaker", "Military", "Retired", "Unable to work"]}
+            {type: "checkbox", name: "employment", title: "Are you currently... ?", colCount: 3, hasOther: true, choices: ["A college student", "Employed for wages", "Self-employed", "Out of work and looking for work", "Out of work but not currently looking for work", "A homemaker", "Military", "Retired", "Unable to work"]},
+            //Inserting space between questions.
+            { type: "html", name: "InsertSpaceHere", html:""},
+
         ]},
         
         { questions: [
+            //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             //Radio button question about marrital status
-            {type: "radiogroup", name: "marritalStatus", title: "Are you now married, widowed, divorced, separated or never married?", colCount: 0, choices: ["Never married", "Married", "Divorced", "Seperated", "Widowed"]}
+            {type: "radiogroup", name: "marritalStatus", title: "Are you now married, widowed, divorced, separated or never married?", colCount: 0, choices: ["Never married", "Married", "Divorced", "Seperated", "Widowed"]},
+            //Inserting space between questions.
+            { type: "html", name: "InsertSpaceHere", html:""},
+
         ]},
 
         {      
           questions: [
+              //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
               //This HTML introduces the next section. 
-            { type: "html", name: "info", html: "<p> Most people think differently about themselves depending on who they are with and what they are doing.  This questionnaire is trying to get at how you think about yourself when you are with different people and when you are in different roles in your life.</p>"}
+            { type: "html", name: "info", html: "<p> Most people think differently about themselves depending on who they are with and what they are doing.  This questionnaire is trying to get at how you think about yourself when you are with different people and when you are in different roles in your life.</p>"},
+            //Inserting space between questions.
+            { type: "html", name: "InsertSpaceHere", html:""},
+
           ]},
             
         {
             questions:[
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 //This html describes how to think about the next set of questions.
                 { type: "html", name: "inforel0", html: "</p> <p> Think about a typical experience with your " + relationship[0] + ". Picture your " + relationship[0] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[0] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[0] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[0] + " (now, at this point in your life)."},
-                {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
-                    type: "radiogroup", name: "thoughtsrel0", title: "How often are thoughts of your " + relationship[0] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[0], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                   { type: "matrix", name: "Qualityrel0", title: "When I interact with my " + relationship[0] + ", I feel  ... ", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, isRequired: true,
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                type: "radiogroup", name: "thoughtsrel0", title: "How often are thoughts of your " + relationship[0] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[0], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel0", title: "When I interact with my " + relationship[0] + ", I feel  ... ", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: "❃ ❃ ❃ ❃" },
                             { value: 3, text: "❃ ❃ ❃ ❃" },
@@ -78,17 +114,26 @@ function init(relationship) {
                             { value: "autonomy4rel0", text: "I feel I have been doing what really interests me." },
                             { value: "relatedness4rel0", text: "I feel connected with this person." },
                             { value: "valencerel0", text: "I feel good about myself." }
-                    ]}
+                    ]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+
             ]},   
         {
             questions:[
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 //This html describes how to think about the next set of questions.
                 { type: "html", name: "inforel1", html: "</p> <p> Think about a typical experience with your " + relationship[1] + ". Picture your " + relationship[1] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[1] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[1] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[1] + " (now, at this point in your life)."},
-                {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel1", title: "How often are thoughts of your " + relationship[1] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[1], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                   { type: "matrix", name: "Qualityrel1", title: "When I interact with my " + relationship[1] + ", I feel  ... ", visibleIf: "{thoughtsrel1} contains 'Always' or {thoughtsrel1}='Often' or {thoughtsrel1}='time' or {thoughtsrel1}='sometimes' or {thoughtsrel1}='Rarely'", visible: false, isRequired: true,
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                 { type: "matrix", name: "Qualityrel1", title: "When I interact with my " + relationship[1] + ", I feel  ... ", visibleIf: "{thoughtsrel1} contains 'Always' or {thoughtsrel1}='Often' or {thoughtsrel1}='time' or {thoughtsrel1}='sometimes' or {thoughtsrel1}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: "❃ ❃ ❃ ❃" },
                             { value: 3, text: "❃ ❃ ❃ ❃" },
@@ -107,15 +152,25 @@ function init(relationship) {
                             { value: "autonomy4rel1", text: "I feel I have been doing what really interests me." },
                             { value: "relatedness4rel1", text: "I feel connected with this person." },
                             { value: "valencerel1", text: "I feel good about myself." }
-                    ]}
+                    ]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             ]},
             {
             questions:[
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 //This html describes how to think about the next set of questions.
                 { type: "html", name: "inforel2", html: "</p> <p> Think about a typical experience with your " + relationship[2] + ". Picture your " + relationship[2] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[2] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[2] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[2] + " (now, at this point in your life)."},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel2", title: "How often are thoughts of your " + relationship[2] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[2], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
                    { type: "matrix", name: "Qualityrel2", title: "When I interact with my " + relationship[2] + ", I feel  ... ", visibleIf: "{thoughtsrel2} contains 'Always' or {thoughtsrel2}='Often' or {thoughtsrel2}='time' or {thoughtsrel2}='sometimes' or {thoughtsrel2}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
@@ -136,15 +191,24 @@ function init(relationship) {
                             { value: "autonomy4rel2", text: "I feel I have been doing what really interests me." },
                             { value: "relatedness4rel2", text: "I feel connected with this person." },
                             { value: "valencerel2", text: "I feel good about myself." }
-                    ]}
+                    ]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+
             ]},
             {
             questions:[
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 //This html describes how to think about the next set of questions.
                 { type: "html", name: "inforel3", html: "</p> <p> Think about a typical experience with your " + relationship[3] + ". Picture your " + relationship[3] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[3] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[3] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[3] + " (now, at this point in your life)."},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel3", title: "How often are thoughts of your " + relationship[3] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[3], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
                    { type: "matrix", name: "Qualityrel3", title: "When I interact with my " + relationship[3] + ", I feel  ... ", visibleIf: "{thoughtsrel3} contains 'Always' or {thoughtsrel3}='Often' or {thoughtsrel3}='time' or {thoughtsrel3}='sometimes' or {thoughtsrel3}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
@@ -165,15 +229,23 @@ function init(relationship) {
                             { value: "autonomy4rel3", text: "I feel I have been doing what really interests me." },
                             { value: "relatedness4rel3", text: "I feel connected with this person." },
                             { value: "valencerel3", text: "I feel good about myself." }
-                    ]}
+                    ]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             ]}, 
             {
             questions:[
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 //This html describes how to think about the next set of questions.
                 { type: "html", name: "inforel4", html: "</p> <p> Think about a typical experience with your " + relationship[4] + ". Picture your " + relationship[4] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[4] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[4] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[4] + " (now, at this point in your life)."},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel4", title: "How often are thoughts of your " + relationship[4] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[4], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
                    { type: "matrix", name: "Qualityrel4", title: "When I interact with my " + relationship[4] + ", I feel  ... ", visibleIf: "{thoughtsrel4} contains 'Always' or {thoughtsrel4}='Often' or {thoughtsrel4}='time' or {thoughtsrel4}='sometimes' or {thoughtsrel4}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
@@ -194,15 +266,23 @@ function init(relationship) {
                             { value: "autonomy4rel4", text: "I feel I have been doing what really interests me." },
                             { value: "relatedness4rel4", text: "I feel connected with this person." },
                             { value: "valencerel4", text: "I feel good about myself." }
-                    ]}
+                    ]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
             ]},
             {
             questions:[
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 //This html describes how to think about the next set of questions.
                 { type: "html", name: "inforel5", html: "</p> <p> Think about a typical experience with your " + relationship[5] + ". Picture your " + relationship[5] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[5] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[5] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[5] + " (now, at this point in your life)."},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel5", title: "How often are thoughts of your " + relationship[5] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[5], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
                    { type: "matrix", name: "Qualityrel5", title: "When I interact with my " + relationship[5] + ", I feel  ... ", visibleIf: "{thoughtsrel5} contains 'Always' or {thoughtsrel5}='Often' or {thoughtsrel5}='MostOfTheTime' or {thoughtsrel5}='sometimes' or {thoughtsrel5}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
@@ -223,14 +303,11 @@ function init(relationship) {
                             { value: "autonomy4rel5", text: "I feel I have been doing what really interests me." },
                             { value: "relatedness4rel5", text: "I feel connected with this person." },
                             { value: "valencerel5", text: "I feel good about myself." }
-                    ]}
-            ]}, 
-             
-        { questions: [
-            //This html just explains what the participant just did.
-            { type: "html", name: "feedbackIntro",
-                html: "<p>The measure you completed was designed to assess how you experience yourself when you are interacting with different significant others in your life or engaged in different roles.  More specifically, this questionnaire measures to what extent you experience satisfaction of 3 psychological needs in these different interactions. </p><p> According to self-determination theory (Ryan & Deci, 2000), humans have three essential needs that if satisfied promote psychological well-being. These 3 needs are: </p><p>Relatedness-which is the experience of intimacy and genuine connection with others.</p><p>Competence-which is the experience of feeling effective and capable of achieving desired outcomes.</p><p>Autonomy-which is the experience of self-determination, full willingness, and volition when carrying out an activity.  "}
-        ]}
+                    ]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+            ]}
+       
     ]};
     
     //Used for debugging
