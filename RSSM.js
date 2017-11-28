@@ -65,7 +65,7 @@ function init(relationship) {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
             //Radio button question about marrital status
-            {type: "radiogroup", name: "marritalStatus", title: "Are you now married, widowed, divorced, separated or never married?", colCount: 0, choices: ["Never married", "Married", "Divorced", "Seperated", "Widowed"]},
+            {type: "radiogroup", name: "marritalStatus", title: "Are you now married, widowed, divorced, separated or never married?", colCount: 0, choices: ["Never married", "Married", "Divorced", "Separated", "Widowed"]},
             //Inserting space between questions.
             { type: "html", name: "InsertSpaceHere", html:""},
 
@@ -86,12 +86,12 @@ function init(relationship) {
             questions:[
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel0", html: "</p> <p> Think about a typical experience with your " + relationship[0] + ". Picture your " + relationship[0] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[0] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[0] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[0] + " (now, at this point in your life)."},
-                //Inserting space between questions.
-                { type: "html", name: "InsertSpaceHere", html:""},
                 {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                 type: "radiogroup", name: "thoughtsrel0", title: "How often are thoughts of your " + relationship[0] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[0], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel0", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[0] + ". Picture your " + relationship[0] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[0] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[0] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[0] + " (now, at this point in your life)."},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
@@ -123,13 +123,13 @@ function init(relationship) {
             questions:[
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel1", html: "</p> <p> Think about a typical experience with your " + relationship[1] + ". Picture your " + relationship[1] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[1] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[1] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[1] + " (now, at this point in your life)."},
-                //Inserting space between questions.
-                { type: "html", name: "InsertSpaceHere", html:""},
 
                 {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel1", title: "How often are thoughts of your " + relationship[1] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[1], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel1", visibleIf: "{thoughtsrel1} contains 'Always' or {thoughtsrel1}='Often' or {thoughtsrel1}='time' or {thoughtsrel1}='sometimes' or {thoughtsrel1}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[1] + ". Picture your " + relationship[1] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[1] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[1] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[1] + " (now, at this point in your life)."},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
@@ -160,14 +160,14 @@ function init(relationship) {
             questions:[
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel2", html: "</p> <p> Think about a typical experience with your " + relationship[2] + ". Picture your " + relationship[2] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[2] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[2] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[2] + " (now, at this point in your life)."},
-                //Inserting space between questions.
-                { type: "html", name: "InsertSpaceHere", html:""},
 
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel2", title: "How often are thoughts of your " + relationship[2] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[2], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                 //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel2", visibleIf: "{thoughtsrel2} contains 'Always' or {thoughtsrel2}='Often' or {thoughtsrel2}='time' or {thoughtsrel2}='sometimes' or {thoughtsrel2}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[2] + ". Picture your " + relationship[2] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[2] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[2] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[2] + " (now, at this point in your life)."},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
 
@@ -200,13 +200,13 @@ function init(relationship) {
             questions:[
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel3", html: "</p> <p> Think about a typical experience with your " + relationship[3] + ". Picture your " + relationship[3] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[3] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[3] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[3] + " (now, at this point in your life)."},
-                //Inserting space between questions.
-                { type: "html", name: "InsertSpaceHere", html:""},
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel3", title: "How often are thoughts of your " + relationship[3] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[3], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel3", visibleIf: "{thoughtsrel3} contains 'Always' or {thoughtsrel3}='Often' or {thoughtsrel3}='time' or {thoughtsrel3}='sometimes' or {thoughtsrel3}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[3] + ". Picture your " + relationship[3] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[3] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[3] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[3] + " (now, at this point in your life)."},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
@@ -237,13 +237,13 @@ function init(relationship) {
             questions:[
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel4", html: "</p> <p> Think about a typical experience with your " + relationship[4] + ". Picture your " + relationship[4] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[4] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[4] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[4] + " (now, at this point in your life)."},
-                //Inserting space between questions.
-                { type: "html", name: "InsertSpaceHere", html:""},
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel4", title: "How often are thoughts of your " + relationship[4] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[4], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel4", visibleIf: "{thoughtsrel4} contains 'Always' or {thoughtsrel4}='Often' or {thoughtsrel4}='time' or {thoughtsrel4}='sometimes' or {thoughtsrel4}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[4] + ". Picture your " + relationship[4] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[4] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[4] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[4] + " (now, at this point in your life)."},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
@@ -274,13 +274,13 @@ function init(relationship) {
             questions:[
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel5", html: "</p> <p> Think about a typical experience with your " + relationship[5] + ". Picture your " + relationship[5] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[5] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[5] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[5] + " (now, at this point in your life)."},
-                //Inserting space between questions.
-                { type: "html", name: "InsertSpaceHere", html:""},
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup", name: "thoughtsrel5", title: "How often are thoughts of your " + relationship[5] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[5], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]},
+                //Inserting space between questions.
+                { type: "html", name: "InsertSpaceHere", html:""},
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel5", visibleIf: "{thoughtsrel5} contains 'Always' or {thoughtsrel5}='Often' or {thoughtsrel5}='MostOfTheTime' or {thoughtsrel5}='sometimes' or {thoughtsrel5}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[5] + ". Picture your " + relationship[5] + "’s face, and try to form a good image of her, getting an experience of You-with-your-" + relationship[5] + ".  It might help to imagine what typically happens between the two of you: what he/she does and says, how he/she does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[5] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[5] + " (now, at this point in your life)."},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
