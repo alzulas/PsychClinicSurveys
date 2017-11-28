@@ -37,7 +37,7 @@ function init(relationship) {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
             //Another radio group. This time for age. 
-            {type: "radiogroup", name: "age", title: "What is your age?", colCount: 2, width: "4", choices: ["16-|16 years and below", "17-19|17-19 years old", "20-22|20-22 years old", "23-30|23-30 years old", "31-45|31-45 years old", "46-64|46-64 years old", "65-74|65-74 years old", "75+|75 years and older"]},
+            {type: "radiogroup", name: "age", title: "What is your age?", colCount: 2, choices: ["16-|16 years and below", "17-19|17-19 years old", "20-22|20-22 years old", "23-30|23-30 years old", "31-45|31-45 years old", "46-64|46-64 years old", "65-74|65-74 years old", "75+|75 years and older"]},
             //Inserting space between questions.
             { type: "html", name: "InsertSpaceHere", html:""},
 
@@ -67,7 +67,7 @@ function init(relationship) {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
             //Radio button question about marrital status
-            {type: "radiogroup", name: "marritalStatus", title: "Are you now married, widowed, divorced, separated or never married?", colCount: 0, choices: ["Never married", "Married", "Divorced", "Separated", "Widowed"]},
+            {type: "radiogroup", name: "marritalStatus", title: "Are you now married, widowed, divorced, separated or never married?", colCount: 2, choices: ["Never married", "Married", "Divorced", "Separated", "Widowed"]},
             //Inserting space between questions.
             { type: "html", name: "InsertSpaceHere", html:""},
 
@@ -99,9 +99,9 @@ function init(relationship) {
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
                 { type: "matrix", name: "Qualityrel0", title: "When I interact with my " + relationship[0] + ", I feel  ... ", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
-                            { value: 2, text: "..." },
-                            { value: 3, text: "..." },
-                            { value: 4, text: "..." },
+                            { value: 2, text: ".........." },
+                            { value: 3, text: ".........." },
+                            { value: 4, text: ".........." },
                             { value: 5, text: "Completely True" }],
                         rows: [{ value: "competence1rel0", text: "confident I can do things well." },
                             { value: "autonomy1rel0", text: "a sense of choice and freedom in the things I undertake." },

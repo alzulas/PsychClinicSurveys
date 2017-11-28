@@ -37,7 +37,7 @@ function init() {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
             //Another radio group. This time for age. 
-            {type: "radiogroup", name: "age", title: "What is your age?", choices: ["16 years and below", "17-19 years old", "20-22 years old", "23-30 years old", "31-45 years old", "46-64 years old", "65-74 years old", "75 years and older"]},
+            {type: "radiogroup", name: "age", colCount: 2, title: "What is your age?", choices: ["16 years and below", "17-19 years old", "20-22 years old", "23-30 years old", "31-45 years old", "46-64 years old", "65-74 years old", "75 years and older"]},
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
         ]},
@@ -46,7 +46,7 @@ function init() {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
             //Check box questions allow for multiple answers. This one is about race.
-            {type: "checkbox", name: "race", title: "Choose one or more races that you consider yourself to be:", colCount: 2, hasOther: true, choices: ["White", "Black or African American", "American Indian or Alaska Native", "Asian", "Native Hawaiian or Pacific Islander", "Spanish, Hispanic, or Latino"]},
+            {type: "checkbox", name: "race", title: "Choose one or more races that you consider yourself to be:", colCount: 3, hasOther: true, choices: ["White", "Black or African American", "American Indian or Alaska Native", "Asian", "Native Hawaiian or Pacific Islander", "Spanish, Hispanic, or Latino"]},
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
         ]},
@@ -55,7 +55,7 @@ function init() {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
             //Check box about employment status.
-            {type: "checkbox", name: "employment", title: "Are you currently... ?", colCount: 2, hasOther: true, choices: ["A college student", "Employed for wages", "Self-employed", "Out of work and looking for work", "Out of work but not currently looking for work", "A homemaker", "Military", "Retired", "Unable to work"]},
+            {type: "checkbox", name: "employment", title: "Are you currently... ?", colCount: 3, hasOther: true, choices: ["A college student", "Employed for wages", "Self-employed", "Out of work and looking for work", "Out of work but not currently looking for work", "A homemaker", "Military", "Retired", "Unable to work"]},
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:""},
         ]},
