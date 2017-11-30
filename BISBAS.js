@@ -37,7 +37,7 @@ function init() {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
             //Another radio group. This time for age. 
-            {type: "radiogroup", name: "age", colCount: 2, title: "What is your age?", choices: ["16 years and below", "17-19 years old", "20-22 years old", "23-30 years old", "31-45 years old", "46-64 years old", "65-74 years old", "75 years and older"]},
+            {type: "radiogroup", name: "age", colCount: 3, title: "What is your age?", choices: ["16-|16 years and below", "23-30|23-30 years old", "65-74|65-74 years old", "17-19|17-19 years old", "31-45|31-45 years old", "75+|75 years and older", "20-22|20-22 years old", "46-64|46-64 years old"]},
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
         ]},
