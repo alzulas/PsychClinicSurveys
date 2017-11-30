@@ -176,6 +176,7 @@ function standardResults(compScore, autoScore, relateScore, relation){
             .style("margin", "30px 50px 0px 50px")
             .text("Your relatedness score is " + relateScore);
         standardDeviationPrint(compScore, 4.22, .69, "relatedness");
+        createBargraph(outPutCSV);
     }
     else if(compScore != 0 && autoScore != 0 && relateScore != 0){//Print each relationship, so long as it exists
         d3.select("body").append("H1")
@@ -237,4 +238,38 @@ function standardDeviationPrint(Score, Mean, SD, type){ //participants score, po
             .text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
     }
     
+}
+
+function createBargraph(dataset){ //This was a test of D3
+    //It creates a little BISBAS graph
+    //It's not super useful
+    //But I kept the code just in case.
+    //If you'd like to see it, uncomment out the call to this function above.
+    var w = 400;
+    var h = 100;
+    var barPadding = 1;
+
+    //Create SVG element
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+    svg.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("x", function(d, i) {
+            return i * (w / dataset.length);
+        })
+        .attr("y", function(d) {
+            return h - (d * 4);
+        })
+        .attr("width", w / dataset.length - barPadding)
+        .attr("height", function(d) {
+            return d * 4;
+        })
+        .attr("fill", function(d) {
+            return "rgb(0, 0, " + Math.round(d * 10) + ")";
+        });
 }
