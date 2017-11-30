@@ -21,7 +21,7 @@ function init(relationship) {
             //html questions are just information. This is a good way to introduce topics. You can use HTML mark up in these sections.
             { type: "html", name: "introAndDemographics", html: "<h2 class=\"post-title\">Welcome to the Relational Self Schema Measure.</h2> <p>General Demographic Questions.</p> <p> Remember: If at any time you feel that the text or options are too small you can hit Ctrl and the + sign in Windows or command and + in Mac on your keyboard to increase the fonts on the screen. This is an accessability feature available on all major browsers and most websites! (Note that ctrl - or command - will reduce the font sizes.) </p>"},
             //Inserting space between questions.
-                { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
+            { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
             //Text questions take text responses. Here, we want to know the participants ID number.
             { type: "text", name: "ID", title: "Please enter your identifying code here.", size:15, width: "4"},
             //Inserting space between questions.
