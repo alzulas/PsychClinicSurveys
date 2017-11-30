@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('.'));
 
+console.log("Contact made");
+
 
 //Requesting data to visualize BISBAS results
 app.get('/BISresult/:myid', function (req, res) { 
