@@ -264,7 +264,7 @@ function createBargraph(dataset){ //This was a test of D3
             return i * (w / dataset.length);
         })
         .attr("y", function(d) {
-            return h - (d * 10);
+            return h - (d * 4);
         })
         .attr("width", w / dataset.length - barPadding)
         .attr("height", function(d) {
