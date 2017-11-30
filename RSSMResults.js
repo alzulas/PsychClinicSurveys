@@ -246,7 +246,7 @@ function createBargraph(dataset){ //This was a test of D3
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
     var w = 1000;
-    var h = 1000;
+    var h = 400;
     var barPadding = 1;
 
     //Create SVG element
@@ -264,7 +264,7 @@ function createBargraph(dataset){ //This was a test of D3
             return i * (w / dataset.length);
         })
         .attr("y", function(d) {
-            return h - (d * 4);
+            return h - (d * 2);
         })
         .attr("width", w / dataset.length - barPadding)
         .attr("height", function(d) {
