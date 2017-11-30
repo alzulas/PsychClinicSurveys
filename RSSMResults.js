@@ -27,12 +27,24 @@ if (myid != ""){
 
     //d3.getElementById("myDiv").style.margin = "50px 10px 20px 30px";
     //This html just explains what the participant just did.
-    d3.select("body").append("p").text("The measure you completed was designed to assess how you experience yourself when you are interacting with different significant others in your life or engaged in different roles.  More specifically, this questionnaire measures to what extent you experience satisfaction of 3 psychological needs in these different interactions.");
-    d3.select("body").append("p").text("According to self-determination theory (Ryan & Deci, 2000), humans have three essential needs that if satisfied promote psychological well-being. These 3 needs are:");
-    d3.select("body").append("li").text("Relatedness-which is the experience of intimacy and genuine connection with others.");
-    d3.select("body").append("li").text("Competence-which is the experience of feeling effective and capable of achieving desired outcomes.");
-    d3.select("body").append("li").text("Autonomy-which is the experience of self-determination, full willingness, and volition when carrying out an activity.");
-    d3.select("body").append("p").text("");
+    d3.select("body").append("p")
+        .style("margin", "30px 50px 0px 50px")
+        .text("The measure you completed was designed to assess how you experience yourself when you are interacting with different significant others in your life or engaged in different roles.  More specifically, this questionnaire measures to what extent you experience satisfaction of 3 psychological needs in these different interactions.");
+    d3.select("body").append("p")
+        .style("margin", "30px 50px 0px 50px")
+        .text("According to self-determination theory (Ryan & Deci, 2000), humans have three essential needs that if satisfied promote psychological well-being. These 3 needs are:");
+    d3.select("body").append("li")
+        .style("margin", "30px 50px 0px 50px")
+        .text("Relatedness-which is the experience of intimacy and genuine connection with others.");
+    d3.select("body").append("li")
+        .style("margin", "10px 50px 0px 50px")
+        .text("Competence-which is the experience of feeling effective and capable of achieving desired outcomes.");
+    d3.select("body").append("li")
+        .style("margin", "10px 50px 0px 50px")
+        .text("Autonomy-which is the experience of self-determination, full willingness, and volition when carrying out an activity.");
+    d3.select("body").append("p")
+        .style("margin", "30px 50px 0px 50px")
+        .text("");
 
 //begins the process of printing scores. 
 //Common was to write JS, because any variables not wrapped in a function is available in the entire namespace of the website.
@@ -147,50 +159,82 @@ function calculateScores(dataPassed){
 function standardResults(compScore, autoScore, relateScore, relation){
     //Printing scores to the screen.
     if(relation == "Overall"){//Print overall scores last
-        d3.select("body").append("H1").text("Your Overall RSSM Scores are: ");
-        d3.select("body").append("li").text("Your competence score is " + compScore);
+        d3.select("body").append("H1")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your Overall RSSM Scores are: ");
+        d3.select("body").append("li")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your competence score is " + compScore);
         //These include the actal mean and SD for the population, 
         //they go to a function to calculate where the participants score lies
         standardDeviationPrint(compScore, 3.97, .74, "competancy");
-        d3.select("body").append("li").text("Your autonomy score is " + autoScore);
+        d3.select("body").append("li")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your autonomy score is " + autoScore);
         standardDeviationPrint(autoScore, 3.85, .73, "autonomy");
-        d3.select("body").append("li").text("Your relatedness score is " + relateScore);
+        d3.select("body").append("li")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your relatedness score is " + relateScore);
         standardDeviationPrint(compScore, 4.22, .69, "relatedness");
     }
     else if(compScore != 0 && autoScore != 0 && relateScore != 0){//Print each relationship, so long as it exists
-        d3.select("body").append("H1").text("RSSM Score for you with your " + relation);
-        d3.select("body").append("li").text("Your competence score is " + compScore);
-        d3.select("body").append("li").text("Your autonomy score is " + autoScore);
-        d3.select("body").append("li").text("Your relatedness score is " + relateScore);
+        d3.select("body").append("H1")
+            .style("margin", "30px 50px 0px 50px")
+            .text("RSSM Score for you with your " + relation);
+        d3.select("body").append("li")
+            .style("margin", "15px 50px 0px 50px")
+            .text("Your competence score is " + compScore);
+        d3.select("body").append("li")
+            .style("margin", "10px 50px 0px 50px")
+            .text("Your autonomy score is " + autoScore);
+        d3.select("body").append("li")
+            .style("margin", "10px 50px 0px 50px")
+            .text("Your relatedness score is " + relateScore);
     }
 }
 
 function standardDeviationPrint(Score, Mean, SD, type){ //participants score, popMean, popSD, score type
     //Find how many deviations from the mean they are, and print the accompanying text with it.
     if (Score > Mean-SD && Score < Mean+SD){
-        d3.select("body").append("ul").text("Your " + type + " score is average");
+        d3.select("body").append("ul")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your " + type + " score is average");
     }
     else if (Score > Mean-(SD*2) && Score < Mean-SD){
-        d3.select("body").append("ul").text("Your " + type + " score is on the low side of average");
+        d3.select("body").append("ul")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your " + type + " score is on the low side of average");
     }
     else if (Score > Mean-(SD*3) && Score < Mean-(SD*2)){
-        d3.select("body").append("ul").text("Your " + type + " score is low");
+        d3.select("body").append("ul")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your " + type + " score is low");
     }
     else if (Score > 0 && Score < Mean-(SD*3)){
-        d3.select("body").append("ul").text("Your " + type + " score is very low");
+        d3.select("body").append("ul")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your " + type + " score is very low");
     }
     else if (Score > Mean+(SD) && Score < Mean+(SD*2)){
-        d3.select("body").append("ul").text("Your " + type + " score is on the high side of average");
+        d3.select("body").append("ul")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your " + type + " score is on the high side of average");
     }
     else if (Score > Mean+(SD*2) && Score < Mean+(SD*3)){
-        d3.select("body").append("ul").text("Your " + type + " score is high");
+        d3.select("body").append("ul")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your " + type + " score is high");
     }
     else if (Score > Mean+(SD*3) && Score < 5){
-        d3.select("body").append("ul").text("Your " + type + " score is very high");
+        d3.select("body").append("ul")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Your " + type + " score is very high");
     }
     else{
         //Something in the code failed most likely. But also, they could have not answered for any relationship.
-        d3.select("body").append("p").text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
     }
     
 }
