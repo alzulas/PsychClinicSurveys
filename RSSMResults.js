@@ -245,12 +245,13 @@ function createBargraph(dataset){ //This was a test of D3
     //It's not super useful
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
-    var w = 400;
-    var h = 100;
+    var w = 1000;
+    var h = 400;
     var barPadding = 1;
 
     //Create SVG element
     var svg = d3.select("body")
+                .style("margin", "30px 50px 0px 50px")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
