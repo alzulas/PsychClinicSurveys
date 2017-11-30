@@ -56,6 +56,7 @@ app.get('/RSSMresult/:myid', function (req, res) {
     if (tempLine.includes(myid)){
         res.send(tempLine);
         IDfound = true;
+        console.log("ID found");
     }
     else if (tempLine == ""){
         IDfound = true;

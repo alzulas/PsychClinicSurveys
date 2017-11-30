@@ -152,25 +152,39 @@ function showBISResults(outPutCSV){
 
     //Calculating which one to print by using the person's BIS score and finding which standard deviation they belong in. Then it prints out that text to the screen.
     if (outPutCSV[0] > BISPopulationMean-BISPopulationStd && outPutCSV[0] < BISPopulationMean+BISPopulationStd){
-        d3.select("body").append("p").text(averageBIS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(averageBIS);
     }
     else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*2) && outPutCSV[0] < BISPopulationMean-BISPopulationStd){
-        d3.select("body").append("p").text(lowAverageBIS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(lowAverageBIS);
     }
     else if (outPutCSV[0] > BISPopulationMean-(BISPopulationStd*3) && outPutCSV[0] < BISPopulationMean-(BISPopulationStd*2)){
-        d3.select("body").append("p").text(lowBIS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(lowBIS);
     }
     else if (outPutCSV[0] > 6 && outPutCSV[0] < BISPopulationMean-(BISPopulationStd*3)){
-        d3.select("body").append("p").text(veryLowBIS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(veryLowBIS);
     }
     else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd) && outPutCSV[0] < BISPopulationMean+(BISPopulationStd*2)){
-        d3.select("body").append("p").text(highAverageBIS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(highAverageBIS);
     }
     else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*2) && outPutCSV[0] < BISPopulationMean+(BISPopulationStd*3)){
-        d3.select("body").append("p").text(highBIS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(highBIS);
     }
     else if (outPutCSV[0] > BISPopulationMean+(BISPopulationStd*3) && outPutCSV[0] < 29){
-        d3.select("body").append("p").text(veryHighBIS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(veryHighBIS);
     }
     else{
         //Something in the code failed most likely. But also, they could have not answered some of the questions.
@@ -224,25 +238,39 @@ function showBASResults(outPutCSV){
     
     //Calculating which one to print by using the person's BIS score and finding which standard deviation they belong in. Then it prints out that text to the screen.
     if (overallBAS > BASOverallPopulationMean-BASOverallPopulationStd && overallBAS < BASOverallPopulationMean+BASOverallPopulationStd){
-        d3.select("body").append("p").text(averageBAS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(averageBAS);
     }
     else if (overallBAS > BASOverallPopulationMean-(BASOverallPopulationStd*2) && overallBAS < BASOverallPopulationMean-BASOverallPopulationStd){
-        d3.select("body").append("p").text(lowAverageBAS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(lowAverageBAS);
     }
     else if (overallBAS > BASOverallPopulationMean-(BASOverallPopulationStd*3) && overallBAS < BASOverallPopulationMean-(BASOverallPopulationStd*2)){
-        d3.select("body").append("p").text(lowBAS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(lowBAS);
     }
     else if (overallBAS > 12 && overallBAS < BASOverallPopulationMean-(BASOverallPopulationStd*3)){
-        d3.select("body").append("p").text(veryLowBAS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(veryLowBAS);
     }
     else if (overallBAS > BASOverallPopulationMean+(BASOverallPopulationStd) && overallBAS < BASOverallPopulationMean+(BASOverallPopulationStd*2)){
-        d3.select("body").append("p").text(highAverageBAS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(highAverageBAS);
     }
     else if (overallBAS > BASOverallPopulationMean+(BASOverallPopulationStd*2) && overallBAS < BASOverallPopulationMean+(BASOverallPopulationStd*3)){
-        d3.select("body").append("p").text(highBAS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(highBAS);
     }
     else if (overallBAS > BASOverallPopulationMean+(BASOverallPopulationStd*3) && overallBAS < 53){
-        d3.select("body").append("p").text(VeryHighBAS);
+        d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text(VeryHighBAS);
     }
     else{
         //Something in the code failed most likely. But also, they could have not answered some of the questions.
