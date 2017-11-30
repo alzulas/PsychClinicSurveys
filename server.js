@@ -45,7 +45,7 @@ app.get('/BISresult/:myid', function (req, res) {
 
 //Same as above
 app.get('/RSSMresult/:myid', function (req, res) {
-  console.log(req.params.myid);
+  //console.log(req.params.myid);
   var myid = req.params.myid;
   var fs = require('fs');
   var IDfound = false;

@@ -197,43 +197,43 @@ function standardDeviationPrint(Score, Mean, SD, type){ //participants score, po
     //Find how many deviations from the mean they are, and print the accompanying text with it.
     if (Score > Mean-SD && Score < Mean+SD){
         d3.select("body").append("ul")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is average");
     }
     else if (Score > Mean-(SD*2) && Score < Mean-SD){
         d3.select("body").append("ul")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is on the low side of average");
     }
     else if (Score > Mean-(SD*3) && Score < Mean-(SD*2)){
         d3.select("body").append("ul")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is low");
     }
     else if (Score > 0 && Score < Mean-(SD*3)){
         d3.select("body").append("ul")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is very low");
     }
     else if (Score > Mean+(SD) && Score < Mean+(SD*2)){
         d3.select("body").append("ul")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is on the high side of average");
     }
     else if (Score > Mean+(SD*2) && Score < Mean+(SD*3)){
         d3.select("body").append("ul")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is high");
     }
     else if (Score > Mean+(SD*3) && Score < 5){
         d3.select("body").append("ul")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is very high");
     }
     else{
         //Something in the code failed most likely. But also, they could have not answered for any relationship.
         d3.select("body").append("p")
-            .style("margin", "30px 50px 0px 50px")
+            .style("margin", "15px 50px 0px 50px")
             .text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
     }
     
