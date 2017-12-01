@@ -245,7 +245,7 @@ function createBargraph(dataset){ //This was a test of D3
     //It's not super useful
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
-     console.log("graphing19");
+     console.log("graphing20");
 			
 //			d3.select("body")//.selectAll("div")
 //				.data(dataset)
@@ -285,7 +285,7 @@ function createBargraph(dataset){ //This was a test of D3
         })
         .attr("width", w / dataset.length - barPadding)
         .attr("height", function(d) {
-            return d * 4;
+            return d * 10;
         })
         .attr("fill", function(d) {
             return "rgb(0, 0, " + Math.round(d * 10) + ")";
