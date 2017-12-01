@@ -48,7 +48,11 @@ function createBargraph(dataset){ //This was a test of D3
     var svg = d3.select("body")
                 .append("svg")
                 .attr("width", w)
-                .attr("height", h);
+                .attr("height", h)
+                .style("height", function(d) {
+					var barHeight = d * 5;
+					return barHeight + "px";
+				});
 
     svg.selectAll("rect")
         .data(dataset)
@@ -62,7 +66,7 @@ function createBargraph(dataset){ //This was a test of D3
         })
         .attr("width", w / dataset.length - barPadding)
         .attr("height", function(d) {
-            return d * 30;
+            return d * 4;
         })
         .attr("fill", function(d) {
             return "rgb(0, 0, " + Math.round(d * 10) + ")";
