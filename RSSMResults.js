@@ -246,7 +246,7 @@ function createBargraph(dataset){ //This was a test of D3
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
      console.log("graphing");
-//			
+			
 //			d3.select("body").selectAll("div")
 //				.data(dataset)
 //				.enter()
@@ -256,8 +256,8 @@ function createBargraph(dataset){ //This was a test of D3
 //					var barHeight = d * 5;
 //					return barHeight + "px";
 //				});
-//			
-//		
+			
+		
     var w = 400;
     var h = 100;
     var barPadding = 1;
