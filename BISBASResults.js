@@ -62,7 +62,7 @@ function createBargraph(dataset){ //This was a test of D3
         })
         .attr("width", w / dataset.length - barPadding)
         .attr("height", function(d) {
-            return d * 10;
+            return d * 30;
         })
         .attr("fill", function(d) {
             return "rgb(0, 0, " + Math.round(d * 10) + ")";
