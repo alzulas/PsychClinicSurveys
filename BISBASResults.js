@@ -48,11 +48,7 @@ function createBargraph(dataset){ //This was a test of D3
     var svg = d3.select("body")
                 .append("svg")
                 .attr("width", w)
-                .attr("height", h)
-                .style("height", function(d) {
-					var barHeight = d * 5;
-					return barHeight + "px";
-				});
+                .attr("height", h);
 
     svg.selectAll("rect")
         .data(dataset)
@@ -70,7 +66,11 @@ function createBargraph(dataset){ //This was a test of D3
         })
         .attr("fill", function(d) {
             return "rgb(0, 0, " + Math.round(d * 10) + ")";
-        });
+        })
+        .style("height", function(d) {
+					var barHeight = d * 5;
+					return barHeight + "px";
+				});
 }
 
 function getCookie(cname) {//This function retreives the participant ID, stored as a cookie
