@@ -245,7 +245,7 @@ function createBargraph(dataset){ //This was a test of D3
     //It's not super useful
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
-     console.log("graphing");
+     console.log("graphing14");
 			
 //			d3.select("body").selectAll("div")
 //				.data(dataset)
@@ -266,7 +266,11 @@ function createBargraph(dataset){ //This was a test of D3
     var svg = d3.select("body")
                 .append("svg")
                 .attr("width", w)
-                .attr("height", h);
+                .attr("height", h)
+                .style("height", function(d) {
+					var barHeight = d * 5;
+					return barHeight + "px";
+				});
 
     svg.selectAll("rect")
         .data(dataset)
@@ -284,9 +288,5 @@ function createBargraph(dataset){ //This was a test of D3
         })
         .attr("fill", function(d) {
             return "rgb(0, 0, " + Math.round(d * 10) + ")";
-        })
-        .style("height", function(d) {
-					var barHeight = d * 5;
-					return barHeight + "px";
-				});
+        });
 }
