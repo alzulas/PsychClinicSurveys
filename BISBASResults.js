@@ -40,6 +40,8 @@ function createBargraph(dataset){ //This was a test of D3
     //It's not super useful
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
+    
+    console.log("graphing");
 			
 			d3.select("body").selectAll("div")
 				.data(dataset)
