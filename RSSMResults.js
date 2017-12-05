@@ -246,6 +246,52 @@ function createBargraph(dataset){ //This was a test of D3
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
      console.log("graphing20");
+    
+    var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+        y = d3.scaleLinear().rangeRound([height, 0]);
+
+    var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv("dataset", function(d) {
+      d.frequency = +d.frequency;
+      return d;
+    }, function(error, data) {
+      if (error) throw error;
+
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+  g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(10, "%"))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Frequency");
+
+  g.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.frequency); });
+});
+
 			
 //			d3.select("body")//.selectAll("div")
 //				.data(dataset)
@@ -258,36 +304,36 @@ function createBargraph(dataset){ //This was a test of D3
 //				});
 			
 		
-    var w = 1000;
-    var h = 500;
-    var barPadding = 1;
-
-    //Create SVG element
-    var svg = d3.select("body")
-                .style("margin", "30px 50px 0px 50px")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
-
-    svg.selectAll("rect")
-        .data(dataset)
-        .style("height", function(d) {
-					var barHeight = d * 5;
-					return barHeight + "px";
-				})
-        .enter()
-        .append("rect")
-        .attr("x", function(d, i) {
-            return i * (w / dataset.length);
-        })
-        .attr("y", function(d) {
-            return h - (d * 4);
-        })
-        .attr("width", w / dataset.length - barPadding)
-        .attr("height", function(d) {
-            return d * 4;
-        })
-        .attr("fill", function(d) {
-            return "rgb(0, 0, " + Math.round(d * 10) + ")";
-        });
+//    var w = 1000;
+//    var h = 500;
+//    var barPadding = 1;
+//
+//    //Create SVG element
+//    var svg = d3.select("body")
+//                .style("margin", "30px 50px 0px 50px")
+//                .append("svg")
+//                .attr("width", w)
+//                .attr("height", h);
+//
+//    svg.selectAll("rect")
+//        .data(dataset)
+//        .style("height", function(d) {
+//					var barHeight = d * 5;
+//					return barHeight + "px";
+//				})
+//        .enter()
+//        .append("rect")
+//        .attr("x", function(d, i) {
+//            return i * (w / dataset.length);
+//        })
+//        .attr("y", function(d) {
+//            return h - (d * 4);
+//        })
+//        .attr("width", w / dataset.length - barPadding)
+//        .attr("height", function(d) {
+//            return d * 4;
+//        })
+//        .attr("fill", function(d) {
+//            return "rgb(0, 0, " + Math.round(d * 10) + ")";
+//        });
 }
