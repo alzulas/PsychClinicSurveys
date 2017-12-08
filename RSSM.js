@@ -67,7 +67,7 @@ function init(relationship) {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
             //Radio button question about marrital status
-            {type: "radiogroup", name: "marritalStatus", title: "Are you now married, widowed, divorced, separated or never married?", colCount: 0, choices: ["Married", "Widowed", "Divorced", "Separated", "Never married"]},
+            {type: "radiogroup", name: "marritalStatus", title: "Are you never married, now married, widowed, divorced, or separated?", colCount: 0, choices: ["Never married", "Married", "Widowed", "Divorced", "Separated"]},
             //Inserting space between questions.
             { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
 
@@ -93,7 +93,7 @@ function init(relationship) {
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel0", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[0] + ". Picture your " + relationship[0] + "’s face, and try to form a good image of your" + relationship[0] + ", getting an experience of You-with-your-" + relationship[0] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[0] + " does and says, how your " + relationship[0] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[0] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[0] + " (now, at this point in your life)."},
+                { type: "html", name: "inforel0", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[0] + ". Picture your " + relationship[0] + "’s face, and try to form a good image of your " + relationship[0] + ", getting an experience of You-with-your-" + relationship[0] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[0] + " does and says, how your " + relationship[0] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[0] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[0] + " (now, at this point in your life)."},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
