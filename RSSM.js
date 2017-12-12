@@ -15,6 +15,7 @@ function init(relationship) {
         //Sets a title bar for the whole survey and a progress bar.
         title: "RSSM- Psychological Needs Assessment.", showProgressBar: "top", pages: [
         {
+        //how to create a unique identifier 
         questions:[
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},

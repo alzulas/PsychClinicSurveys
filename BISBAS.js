@@ -2,7 +2,7 @@
 //  This file was authored by A. Leah Zulas             ////
 //  It heavily utilizes surveyjs.io                     ////
 //  It displays a survey and collevcts data             ////
-//  If sends data using Ajax, to an express server      ////
+//  It sends data using Ajax, to an express server      ////
 //  Any questions about the below code should be sent to:///
 //  alzulas@alzulas.com                                 ////
 ////////////////////////////////////////////////////////////
