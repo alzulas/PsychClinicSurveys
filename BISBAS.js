@@ -19,7 +19,7 @@ function init() {
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
             //html questions are just information. This is a good way to introduce topics. You can use HTML mark up in these sections.
-            { type: "html", name: "introAndDemographics", html: "<h2 class=\"post-title\"> version 1.0.1 test Welcome to the behavioural inhibition system (BIS) and the behavioural activation system (BAS) survey.</h2> <p>General Demographic Questions.</p> <p> Remember: If at any time you feel that the text or options are too small you can hit Ctrl and the + sign in Windows or command and + in Mac on your keyboard to increase the fonts on the screen. This is an accessability feature available on all major browsers and most websites! (Note that ctrl - or command - will reduce the font sizes.) </p>"},
+            { type: "html", name: "introAndDemographics", html: "<h2 class=\"post-title\"> test 2 Welcome to the behavioural inhibition system (BIS) and the behavioural activation system (BAS) survey.</h2> <p>General Demographic Questions.</p> <p> Remember: If at any time you feel that the text or options are too small you can hit Ctrl and the + sign in Windows or command and + in Mac on your keyboard to increase the fonts on the screen. This is an accessability feature available on all major browsers and most websites! (Note that ctrl - or command - will reduce the font sizes.) </p>"},
             //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
             //Text questions take text responses. Here, we want to know the participants ID number.
