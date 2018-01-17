@@ -204,8 +204,9 @@ function init(relationship) {
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
-                    type: "radiogroup", name: "thoughtsrel3", title: "How often are thoughts of your " + relationship[3] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[3], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about. 
+                    //BE CAREFUL HERE. THIS ONE IS DIFFERENT THAN THE ONES ABOVE, BUT THE SAME AS THE NEXT TWO
+                    type: "radiogroup", name: "thoughtsrel3", title: "How often are thoughts of your " + relationship[3] + " on your mind? (If you have more than one " relationship[3] + ", answer this question for the one who you think about most frequently)", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[3], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 //This html describes how to think about the next set of questions.
@@ -241,8 +242,8 @@ function init(relationship) {
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
-                    type: "radiogroup", name: "thoughtsrel4", title: "How often are thoughts of your " + relationship[4] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[4], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
+                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about. 
+                    type: "radiogroup", name: "thoughtsrel4", title: "How often are thoughts of your " + relationship[4] + " on your mind? (If you have more than one " + relationship[4] + ", answer this question for the one who you think about most frequently", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[4], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 //This html describes how to think about the next set of questions.
@@ -279,7 +280,7 @@ function init(relationship) {
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
-                    type: "radiogroup", name: "thoughtsrel5", title: "How often are thoughts of your " + relationship[5] + " on your mind?", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[5], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]},
+                    type: "radiogroup", name: "thoughtsrel5", title: "How often are thoughts of your " + relationship[5] + " on your mind? (If you have more than one " + relationship[5] + ", answer this question for the one who you think about most frequently", colCount: 0, isRequired: true, choices: ["I don't have a " + relationship[5], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]},
                 //Inserting space between questions.
                 { type: "html", name: "InsertSpaceHere", html:"<p></p>"},
                 //This html describes how to think about the next set of questions.
