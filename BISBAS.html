@@ -95,9 +95,22 @@ d3
                     text-align: center;
                     width: 15%;
                   }
+                  span: 
+                  @media only screen and (min-width:960px){
+                    margin-right: 150px;
+                      margin-left: 80px;
+                  }
+                  @media only screen and (min-width:2000px){
+                    margin-right: 300px;
+                      margin-left: 300px;
+                  }
+                  @media only screen and (max-device-width:600px){
+                      margin-right: 10px;
+                      margin-left: 10px;
+                  }
                   
               </style>
-              <span id="surveyElement" style="margin-right: 150px;margin-left: 80px"></span>
+              <span id="surveyElement"></span>
               <div id="surveyResult"></div>
               <script src="./BISBAS.js"></script>
 
