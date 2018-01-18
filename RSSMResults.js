@@ -10,7 +10,7 @@
 //Create CSV array and retreive cookie
 var outPutCSV = [];
 var myid = getCookie("userName");
-var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Negative", "Activity", "Overall"];
+var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Critical Relationship", "Important Activity", "Overall"];
 
 //Use cookie to request data from the server, so long as cookie exists.
 if (myid != ""){
