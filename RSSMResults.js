@@ -177,12 +177,13 @@ function calculateScores(dataPassed){
                 { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
                     i++;
                     relationship[6] = dataArray[i];
-                    i = i+2
+                    print("Relationship6 = " + relationship[6]);
+                    i = i+2;
                 }
                 else if(dataArray[i]=="name2"){
                     i++;
                     relationship[7] = dataArray[i];
-                    i = i+2
+                    i = i+2;
                 }
                 else{
                     //Move forward past questions like "relationship type", "closeness" and a filler question
