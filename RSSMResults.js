@@ -80,7 +80,7 @@ printScores();
 function printScores(){
     //creat array of possible relationships
     //THIS IS ONE OF THE VARIABLES TO CHANGE IF YOU WANT TO ADD NEW RELATIONSHIPS.
-    var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "Overall"];
+    var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Negative", "Activity", "Overall"];
     i = 0;//counter
     for (relation in relationship){ //Go through each relationship above and...
         standardResults(outPutCSV[i], outPutCSV[i+1], outPutCSV[i+2], relationship[relation]); //calculate info about it.
