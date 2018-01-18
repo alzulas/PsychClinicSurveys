@@ -174,7 +174,7 @@ function calculateScores(dataPassed){
                 i = i+2;
             }else{
                 i++;
-                console.log(dataArray[i]);
+                console.log("what's in the array = " + dataArray[i]);
                 if(dataArray[i]=="name1")
                 { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
                     i++;
