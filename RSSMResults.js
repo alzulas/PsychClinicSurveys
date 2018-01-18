@@ -199,17 +199,17 @@ function standardResults(compScore, autoScore, relateScore, relation){
             .text("Your Overall RSSM Scores are: ");
         d3.select("body").append("li")
             .style("margin", "30px 50px 0px 50px")
-            .text("Your competence score is " + compScore);
+            .text("Your competence score is " + compScore.toFixed(2));
         //These include the actal mean and SD for the population, 
         //they go to a function to calculate where the participants score lies
         standardDeviationPrint(compScore, 3.97, .74, "competancy");
         d3.select("body").append("li")
             .style("margin", "30px 50px 0px 50px")
-            .text("Your autonomy score is " + autoScore);
+            .text("Your autonomy score is " + autoScore.toFixed(2));
         standardDeviationPrint(autoScore, 3.85, .73, "autonomy");
         d3.select("body").append("li")
             .style("margin", "30px 50px 0px 50px")
-            .text("Your relatedness score is " + relateScore);
+            .text("Your relatedness score is " + relateScore.toFixed(2));
         standardDeviationPrint(compScore, 4.22, .69, "relatedness");
         createBargraph(outPutCSV);
     }
