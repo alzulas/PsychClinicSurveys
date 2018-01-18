@@ -226,7 +226,7 @@ function standardResults(compScore, autoScore, relateScore, relation){
             .style("margin", "30px 50px 0px 50px")
             .text("Your relatedness score is " + relateScore.toFixed(2));
         standardDeviationPrint(compScore, 4.22, .69, "relatedness");
-        createBargraph(outPutCSV);
+        //createBargraph(outPutCSV);
     }
     else if(compScore != 0 && autoScore != 0 && relateScore != 0){//Print each relationship, so long as it exists
         d3.select("body").append("H1")
