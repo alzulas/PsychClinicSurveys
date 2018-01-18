@@ -190,7 +190,7 @@ function calculateScores(dataPassed){
                 }
                 else{
                     //Move forward past questions like "relationship type", "closeness" and a filler question
-                    i = i+3;     
+                    i = i+2;     
                 }
             }
             calculationPassThrough++;
