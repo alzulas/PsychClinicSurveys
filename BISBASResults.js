@@ -90,7 +90,7 @@ function createBargraph(dataset) { //This was a test of D3
 function getCookie(cname) {//This function retreives the participant ID, stored as a cookie
     var name = cname + "=";
     var ca = document.cookie.split(';');//Ask for cookie, split by ;
-    for(var i = 0; i < ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
