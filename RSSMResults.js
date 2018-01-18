@@ -82,8 +82,8 @@ printScores(relationship);
 function printScores(relationship){
     //creat array of possible relationships
     //THIS IS ONE OF THE VARIABLES TO CHANGE IF YOU WANT TO ADD NEW RELATIONSHIPS.
-    i = 0;//counter
-    for (relation in relationship){ //Go through each relationship above and...
+    var i = 0;//counter
+    for (var relation in relationship){ //Go through each relationship above and...
         standardResults(outPutCSV[i], outPutCSV[i+1], outPutCSV[i+2], relationship[relation]); //calculate info about it.
         //The above hands the next part of this the comp score, auto score, relation score, and the relationship name
         i = i+3;
@@ -106,7 +106,7 @@ function getCookie(cname) { //This function retreives the participant ID, stored
     return ""; //No ID found, return empty string
 }
 
-function calculateScores(dataPassed){ 
+function calculateScores(dataPassed, relationship){ 
     //Takes data from CSV off the server, calculates relavant scores, returns array
     var results = []; 
     //Will be in the order of mother comp-auto-related then 
