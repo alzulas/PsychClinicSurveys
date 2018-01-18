@@ -122,9 +122,9 @@ function calculateScores(dataPassed){
     var overallComp = 0;
     var overallAuto = 0;
     var overallRelated = 0;
-    var compDenominator = 4*6;
-    var autoDenominator = 4*6;
-    var relatedDenominator = 4*6;
+    var compDenominator = 4*10;
+    var autoDenominator = 4*10;
+    var relatedDenominator = 4*10;
     var dataArray = dataPassed.split(","); //Takes CSV from the server, creates array
     //round counter. Because every 4th time through the data, scores are calculated
     var round = 0;
