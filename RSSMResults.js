@@ -29,19 +29,46 @@ if (myid != ""){
     //This html just explains what the participant just did.
     d3.select("body").append("p")
         .style("margin", "30px 50px 0px 50px")
-        .text("The measure you completed was designed to assess how you experience yourself when you are interacting with different significant others in your life or engaged in different roles.  More specifically, this questionnaire measures to what extent you experience satisfaction of 3 psychological needs in these different interactions.");
+        .text("The measure you completed was designed to assess your self concepts. Research has shown that rather than a single self-concept we actually possess a “family of selves”, and that we experience somewhat different “selves” when with different others or when engaged in different roles or activities. Individuals vary in how similar or different these multiple self-representations are from one another.");
     d3.select("body").append("p")
         .style("margin", "30px 50px 0px 50px")
-        .text("According to self-determination theory (Ryan & Deci, 2000), humans have three essential needs that if satisfied promote psychological well-being. These 3 needs are:");
+        .text("For each self-representation, this measure assessed the extent to which basic psychological needs are being met. According to self-determination theory (Ryan & Deci, 2000), humans have three needs:");
     d3.select("body").append("li")
         .style("margin", "30px 50px 0px 50px")
-        .text("Relatedness-which is the experience of intimacy and genuine connection with others.");
+        .text("Competence-refers to the experience of feeling effective and capable of achieving desired outcomes.");
     d3.select("body").append("li")
         .style("margin", "10px 50px 0px 50px")
-        .text("Competence-which is the experience of feeling effective and capable of achieving desired outcomes.");
+        .text("Relatedness-refers to the experience of intimacy and genuine connection with others.");
     d3.select("body").append("li")
         .style("margin", "10px 50px 0px 50px")
-        .text("Autonomy-which is the experience of self-determination, full willingness, and volition when carrying out an activity.");
+        .text("Autonomy-refers to the experience of self-determination, full willingness, and volition when carrying out an activity.");
+    d3.select("body").append("p")
+        .style("margin", "30px 50px 0px 50px")
+        .text("Research has shown that individuals who experience higher levels of their needs being satisfied are more likely to experience higher levels of psychological functioning and well-being.  In contrast, individuals who experience frustration of these needs are more likely to experience distress.");
+    d3.select("body").append("p")
+        .style("margin", "30px 50px 0px 50px")
+        .text("To the extent that each of you experience high need satisfaction when these different selves are active, you are likely to experience greater psychological well-being. In this sense, your self-concept is adaptive, strong.");
+    d3.select("body").append("p")
+        .style("margin", "30px 50px 0px 50px")
+        .text("For each need, use the following scale to interpret your scores:");
+    d3.select("body").append("li")
+        .style("margin", "10px 50px 0px 50px")
+        .text("4.5 and above = a very high level of need satisfaction");
+    d3.select("body").append("li") //BOLD???
+        .style("margin", "10px 50px 0px 50px")
+        .text("4.0 – 4.4  = high level of need satisfaction");
+    d3.select("body").append("li")
+        .style("margin", "10px 50px 0px 50px")
+        .text("3.5 - 3.9  = average need satisfaction");
+    d3.select("body").append("li")
+        .style("margin", "10px 50px 0px 50px")
+        .text("2.5 – 3.4 = moderate need frustration");
+    d3.select("body").append("li")
+        .style("margin", "10px 50px 0px 50px")
+        .text("2.0 – 2.4 = high need frustration");
+    d3.select("body").append("li")
+        .style("margin", "10px 50px 0px 50px")
+        .text("1.0 – 1.9 = very high need frustration");
     d3.select("body").append("p")
         .style("margin", "30px 50px 0px 50px")
         .text("");
