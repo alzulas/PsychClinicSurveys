@@ -10,17 +10,17 @@
 //Create CSV array and retreive cookie
 var outPutCSV = [];
 var myid = getCookie("userName");
+var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Negative", "Activity", "Overall"];
 
 //Use cookie to request data from the server, so long as cookie exists.
 if (myid != ""){
     var dataPassed;
-    var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Negative", "Activity", "Overall"];
     $.ajax({
         type: "GET",
         url: "/RSSMresult/" + myid,
         async: false,
         success: function(dataPassed){
-            outPutCSV = calculateScores(dataPassed, relationship); //collect data and put them into the CSV
+            outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
             console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
             console.log("Get request complete");//verification that the data was retreieved.
         },
@@ -77,9 +77,9 @@ if (myid != ""){
 
 //begins the process of printing scores. 
 //Common was to write JS, because any variables not wrapped in a function is available in the entire namespace of the website.
-printScores(relationship);
+printScores();
 
-function printScores(relationship){
+function printScores(){
     //creat array of possible relationships
     //THIS IS ONE OF THE VARIABLES TO CHANGE IF YOU WANT TO ADD NEW RELATIONSHIPS.
     var i = 0;//counter
@@ -106,7 +106,7 @@ function getCookie(cname) { //This function retreives the participant ID, stored
     return ""; //No ID found, return empty string
 }
 
-function calculateScores(dataPassed, relationship){ 
+function calculateScores(dataPassed){ 
     //Takes data from CSV off the server, calculates relavant scores, returns array
     var results = []; 
     //Will be in the order of mother comp-auto-related then 
