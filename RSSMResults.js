@@ -128,6 +128,7 @@ function calculateScores(dataPassed){
     var relatedDenominator = 4*10;
     var dataArray = dataPassed.split(","); //Takes CSV from the server, creates array
     //round counter. Because every 4th time through the data, scores are calculated
+    console.log("data array = " + dataArray);
     var round = 0;
     //Relevant data beings at position 8 in the array from the server
     for (var i = 8; i < dataArray.length; i++){
@@ -173,7 +174,7 @@ function calculateScores(dataPassed){
                 //Move forward past questions like "relationship type" and a filler question
                 i = i+2;
             }else{
-                //i++;
+                i++;
                 console.log("what's in the array = " + dataArray[i]);
                 if(dataArray[i]=="name1")
                 { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
