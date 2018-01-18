@@ -173,17 +173,19 @@ function calculateScores(dataPassed){
                 //Move forward past questions like "relationship type" and a filler question
                 i = i+2;
             }else{
+                i++;
+                console.log(dataArray[i]);
                 if(dataArray[i]=="name1")
                 { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
                     i++;
                     relationship[6] = dataArray[i];
                     console.log("Relationship6 = " + relationship[6]);
-                    i = i+2;
+                    i++;
                 }
                 else if(dataArray[i]=="name2"){
                     i++;
                     relationship[7] = dataArray[i];
-                    i = i+2;
+                    i++;
                 }
                 else{
                     //Move forward past questions like "relationship type", "closeness" and a filler question
