@@ -115,6 +115,7 @@ function calculateScores(dataPassed){
     //sibling comp-auto-related then
     //close friend
     //Below are necessary variables
+    var calculationPassThrough = 0;
     var currentComp = 0;
     var currentAuto = 0;
     var currentRelated = 0;
@@ -128,7 +129,7 @@ function calculateScores(dataPassed){
     //round counter. Because every 4th time through the data, scores are calculated
     var round = 0;
     //Relevant data beings at position 8 in the array from the server
-    for (var i = 8; i < 95; i++){
+    for (var i = 8; i < dataArray.length; i++){
         currentComp = currentComp + Number(dataArray[i]);//take current score for this relationship, add to previous
         overallComp = overallComp + Number(dataArray[i]);//Do for an overall score as well
         if(Number(dataArray[i])==0){
@@ -166,8 +167,15 @@ function calculateScores(dataPassed){
             currentComp = 0;
             currentRelated = 0;
             round = 0;
-            //Move forward past questions like "relationship type", "closeness" and a filler question
-            i = i+3;
+
+            if(calculationPassThrough==8 || calculationPassThrough==9){
+                //Move forward past questions like "relationship type" and a filler question
+                i = i+2;
+            }else{
+                //Move forward past questions like "relationship type", "closeness" and a filler question
+                i = i+3;
+            }
+            calculationPassThrough++;
         }
     }
     //Once all relationship scores are calculated, an overall must be calculated
