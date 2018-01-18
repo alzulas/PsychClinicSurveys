@@ -10,15 +10,17 @@
 //Create CSV array and retreive cookie
 var outPutCSV = [];
 var myid = getCookie("userName");
+
 //Use cookie to request data from the server, so long as cookie exists.
 if (myid != ""){
     var dataPassed;
+    var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Negative", "Activity", "Overall"];
     $.ajax({
         type: "GET",
         url: "/RSSMresult/" + myid,
         async: false,
         success: function(dataPassed){
-            outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
+            outPutCSV = calculateScores(dataPassed, relationship); //collect data and put them into the CSV
             console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
             console.log("Get request complete");//verification that the data was retreieved.
         },
@@ -75,12 +77,11 @@ if (myid != ""){
 
 //begins the process of printing scores. 
 //Common was to write JS, because any variables not wrapped in a function is available in the entire namespace of the website.
-printScores();
+printScores(relationship);
 
-function printScores(){
+function printScores(relationship){
     //creat array of possible relationships
     //THIS IS ONE OF THE VARIABLES TO CHANGE IF YOU WANT TO ADD NEW RELATIONSHIPS.
-    var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Negative", "Activity", "Overall"];
     i = 0;//counter
     for (relation in relationship){ //Go through each relationship above and...
         standardResults(outPutCSV[i], outPutCSV[i+1], outPutCSV[i+2], relationship[relation]); //calculate info about it.
@@ -172,8 +173,21 @@ function calculateScores(dataPassed){
                 //Move forward past questions like "relationship type" and a filler question
                 i = i+2;
             }else{
-                //Move forward past questions like "relationship type", "closeness" and a filler question
-                i = i+3;
+                if(dataArray[i]=="name1")
+                { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
+                    i++;
+                    relationship[6] = dataArray[i];
+                    i = i+2
+                }
+                else if(dataArray[i]=="name2"){
+                    i++;
+                    relationship[7] = dataArray[i];
+                    i = i+2
+                }
+                else{
+                    //Move forward past questions like "relationship type", "closeness" and a filler question
+                    i = i+3;     
+                }
             }
             calculationPassThrough++;
         }
