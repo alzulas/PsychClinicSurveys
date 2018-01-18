@@ -386,6 +386,64 @@ function init(relationship) {
 
                 
             ]},
+            {
+            questions:[
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel8", html: "<p> Think of a person that you often interact with but who you think may sometimes view you negatively or critically. This person should be different from any persons you have already answered questions for on this survey. </p> <p> Now think about a typical experience with this person. Picture this person’s face, and try to form a good image of this person, getting an experience of You-with-this-person-who-sometimes-views-you-negatively. It might help to imagine what typically happens between the two of you, what the person does and says, how the person does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p>Once you have recreated this experience with this person who you think sometimes thinks negatively about you, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with this person. </p>"},
+                                
+                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                   { type: "matrix", name: "Qualityrel8", title: "When I interact with this person who I think sometimes views me negatively or critically, I feel ... ", isRequired: true,
+                        columns: [{ value: 1, text: "Not True At All" },
+                            { value: 2, text: " " },
+                            { value: 3, text: " " },
+                            { value: 4, text: " " },
+                            { value: 5, text: "Completely True" }],
+                        rows: [{ value: "competence1rel8", text: "confident I can do things well." },
+                            { value: "autonomy1rel8", text: "a sense of choice and freedom in the things I undertake." },
+                            { value: "relatedness1rel8", text: "caring towards this person and cared for by this person." },
+                            { value: "compentence2rel8", text: "capable at what I do." },
+                            { value: "autonomy2rel8", text: "my decisions reflect what I really want." },
+                            { value: "relatedness2rel8", text: "close to this person." },
+                            { value: "competentce3rel8", text: "competent to achieve my goals." },
+                            { value: "autonomy3rel8", text: "my choices express who I really am." },
+                            { value: "relatedness3rel8", text: "I experience a warm feeling with this person." },
+                            { value: "compentence4rel8", text: "I can successfully complete difficult tasks." },
+                            { value: "autonomy4rel8", text: "I have been doing what really interests me." },
+                            { value: "relatedness4rel8", text: "connected with this person." },
+                            { value: "valencerel8", text: "good about myself." } 
+                    ]},
+
+                
+            ]},
+            {
+            questions:[
+                //This html describes how to think about the next set of questions.
+                { type: "html", name: "inforel9", html: "<p> Now think of something you often do that is important to how you think about yourself. This could be a role, such as teacher, boss, employee, or an activity, such as singing, playing a sport, dancing, etc. The important thing is that it is an important part of your identity, how you think about yourself. </p> <p> Now think about a typical experience when in this role or doing this activity. Picture yourself engaged in the role or activity, and try to form a good image of yourself doing it, where you are, what you are feeling and sensing as you are performing the activity, and what you are trying to do. </p> <p>Once you have recreated this experience of you when in this role or engaged in this activity, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are in this role or engaged in this activity. </p>"},
+                                
+                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                   { type: "matrix", name: "Qualityrel9", title: "When I am in this role or engaged in this activity, I feel ...", isRequired: true,
+                        columns: [{ value: 1, text: "Not True At All" },
+                            { value: 2, text: " " },
+                            { value: 3, text: " " },
+                            { value: 4, text: " " },
+                            { value: 5, text: "Completely True" }],
+                        rows: [{ value: "competence1rel9", text: "confident I can do things well." },
+                            { value: "autonomy1rel9", text: "a sense of choice and freedom in the things I undertake." },
+                            { value: "relatedness1rel9", text: "caring towards this person and cared for by this person." },
+                            { value: "compentence2rel9", text: "capable at what I do." },
+                            { value: "autonomy2rel9", text: "my decisions reflect what I really want." },
+                            { value: "relatedness2rel9", text: "close to this person." },
+                            { value: "competentce3rel9", text: "competent to achieve my goals." },
+                            { value: "autonomy3rel9", text: "my choices express who I really am." },
+                            { value: "relatedness3rel9", text: "I experience a warm feeling with this person." },
+                            { value: "compentence4rel9", text: "I can successfully complete difficult tasks." },
+                            { value: "autonomy4rel9", text: "I have been doing what really interests me." },
+                            { value: "relatedness4rel9", text: "connected with this person." },
+                            { value: "valencerel9", text: "good about myself." } 
+                    ]},
+
+                
+            ]},
     ]};
     //Used for debugging
     console.log(jsonBegin);
