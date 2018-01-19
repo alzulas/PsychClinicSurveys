@@ -7,12 +7,60 @@
 //  alzulas@alzulas.com                                 ////
 ////////////////////////////////////////////////////////////
 
+function CreateAnID (ResultsString) {
+    
+    //Get rid of the piece of data about the ID true or false, it's not important.
+    var endOfString = ResultsString.length+1;
+//    console.log(endOfString);
+//    var startOfString = ResultsString.lastIndexOf("ID")-1;
+//    console.log(startOfString);
+    ResultsString = ResultsString.slice(18, endOfString);
+    ResultsString = "{" + ResultsString;
+    console.log(ResultsString);
+    
+    if (ResultsString.includes("IDName")){
+            //If the person didn't have an ID, take the three pieces of information they gave and create an ID out of it. Then put that in the ID place, and return the string.
+        var splitString = ResultsString.split("\",\"");
+        //console.log(ResultsString);
+        //console.log(splitString);
+        var firstName = splitString[0].slice(12, splitString[0].length);
+        //console.log(firstName);
+        
+        var lastName = splitString[1].slice(9, splitString[1].length);
+        //console.log(lastName);
+        
+        var DOB = splitString[2].slice(11, splitString[2].length);
+        //console.log(DOB);
+        
+        //calculate a special number
+        
+        
+
+    }else{
+        //take the information if the person already had an ID, delete the section asking if they did, then return.
+        return ResultsString;
+    }    
+}
 
 function init() {
     
     //This is the JSON with all the questions and format in it
     var jsonBegin = {
         //Sets a title bar for the whole survey and a progress bar.
+        triggers: [
+        {
+            type: "visible",
+            name: "IDCheck",
+            operator: "equal",
+            value: "True",
+            questions: ["ID"]
+        }, {
+            type: "visible",
+            name: "IDCheck",
+            value: "False",
+            questions: ["HowToID", "IDName", "IDLast", "IDNumber"]
+        }],
+        
         title: " The BIS-BAS.",
         showProgressBar: "top",
         pages: [
@@ -20,10 +68,35 @@ function init() {
             //html questions are just information. This is a good way to introduce topics. You can use HTML mark up in these sections.
                 { type: "html", name: "introAndDemographics", html: "<h2 class=\"post-title\"> Welcome to the behavioural inhibition system (BIS) and the behavioural activation system (BAS) survey.</h2> <p>General Demographic Questions.</p> <p> Remember: If at any time you feel that the text or options are too small you can hit Ctrl and the + sign in Windows or command and + in Mac on your keyboard to increase the fonts on the screen. This is an accessability feature available on all major browsers and most websites! (Note that ctrl - or command - will reduce the font sizes.) </p>"},
             
+                //Checking if participant has a unique ID
+                { type: "radiogroup",
+                name: "IDCheck",
+                title: "I was given a unique ID to take this survey", isRequired: true,
+                choices: ["True", "False"]
+                },
                 
                 //Text questions take text responses. Here, we want to know the participants ID number.
-                { type: "text", name: "ID", title: "Please enter your identifying code here.", size: 15, width: "4"},
+                { type: "text", name: "ID", title: "Please enter your identifying code here.", isRequired: true,
+                 //visibleIf: "{IDCheck} contains 'True'",
+                 visible: false, size: 15, width: "4"},
+                
+                { type: "html", name: "HowToID", 
+                 //visibleIf: "{IDCheck} contains 'False'",
+                 visible: false, html: "This section will ask you a series of questions to create a unique ID for you. None of this information will be saved by the system, but will only be used to create your number. If you give the same info each time, you will always get the same ID number, but it will be impossible for someone who has your ID number to identify you with that number."
+                },
+                
+                //Asking various questions that will be used to create an ID
+                { type: "text", name: "IDName", title: "Please enter your first name.", isRequired: true,
+                 //visibleIf: "{IDCheck} contains 'False'", 
+                 visible: false, size: 15, width: "4"},
+                
+                { type: "text", name: "IDLast", title: "Please enter your mothers maiden name.", isRequired: true,
+                 //visibleIf: "{IDCheck} contains 'False'", 
+                 visible: false, size: 15, width: "4"},
             
+                { type: "text", name: "IDNumber", title: "Create a large number by entering your date of birth without dashes or spaces. An example would be 07041984. The number can be in whichever order you normally display numbers.", isRequired: true,
+                 //visibleIf: "{IDCheck} contains 'False'", 
+                 visible: false, size: 15, width: "4"},
                 
                 //Radio groups are radio button questions. They accept a single answer. this is the gender question.
                 { type: "radiogroup", name: "gender", title: "My biological sex is...", colCount: 0, choices: ["Male", "Female", "Intersex"]}
@@ -137,6 +210,8 @@ function init() {
     survey.onComplete.add(function (result) {
         document.querySelector('#surveyResult').innerHTML = "result: " + JSON.stringify(result.data);
         var surveyResult;
+        var surveyString = JSON.stringify(result.data);
+        surveyString = CreateAnID(surveyString);
         //Send results to the server, type of content is json
         surveyResult = result.data;
         $.ajax({
@@ -151,7 +226,6 @@ function init() {
             },
             contentType: "application/json"
         });
-        var surveyString = JSON.stringify(surveyResult);
         if (surveyString.includes("ID")) {
             //Set a cookie with the user ID
             var pos = surveyString.indexOf("ID");
@@ -166,9 +240,7 @@ function init() {
             d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000)); //Cookie set to self destruct in a day
             var expires = "expires=" + d.toUTCString();
             document.cookie = "userName=" + tempString + ";" + expires;
-            //console.log(expires);
-            //console.log(tempString);
-            //console.log(document.cookie);
+            
         }
         window.location.href = "BISBASResults.html";
     });
