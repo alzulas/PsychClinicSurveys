@@ -7,33 +7,6 @@
 ////////////////////////////////////////////////////////////
 
 
-//Create CSV array and retreive cookie
-var outPutCSV = [];
-var myid = getCookie("userName");
-//Use cookie to request data from the server, so long as cookie exists.
-if (myid !== "") {
-    var dataPassed;
-    $.ajax({
-        type: "GET",
-        url: "/BISresult/" + myid,
-        async: false,
-        success: function (dataPassed) {
-            outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
-            console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
-            console.log("Get request complete"); //verification that the data was retreieved.
-        }
-    });
-}
-    
-d3.select("body").append("p")
-        .style("margin", "30px 50px 0px 50px")
-        .text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
-d3.select("body").append("p").text("");
-
-showBISResults(outPutCSV);
-showBASResults(outPutCSV);
-//console.log(outPutCSV);//empty set
-//createBargraph(outPutCSV);
 
 function createBargraph(dataset) { //This was a test of D3
     //It creates a little BISBAS graph
@@ -53,38 +26,6 @@ function createBargraph(dataset) { //This was a test of D3
             return barHeight + "px";
         });
 			
-		
-//    var w = 400;
-//    var h = 100;
-//    var barPadding = 1;
-//
-//    //Create SVG element
-//    var svg = d3.select("body")
-//                .append("svg")
-//                .attr("width", w)
-//                .attr("height", h);
-//
-//    svg.selectAll("rect")
-//        .data(dataset)
-//        .enter()
-//        .append("rect")
-//        .attr("x", function(d, i) {
-//            return i * (w / dataset.length);
-//        })
-//        .attr("y", function(d) {
-//            return h - (d * 4);
-//        })
-//        .attr("width", w / dataset.length - barPadding)
-//        .attr("height", function(d) {
-//            return d * 4;
-//        })
-//        .attr("fill", function(d) {
-//            return "rgb(0, 0, " + Math.round(d * 10) + ")";
-//        })
-//        .style("height", function(d) {
-//					var barHeight = d * 5;
-//					return barHeight + "px";
-//				});
 }
 
 function getCookie(cname) {//This function retreives the participant ID, stored as a cookie
@@ -298,3 +239,31 @@ function showBASResults(outPutCSV){
     }
 
 }
+
+//Create CSV array and retreive cookie
+var outPutCSV = [];
+var myid = getCookie("userName");
+//Use cookie to request data from the server, so long as cookie exists.
+if (myid !== "") {
+    var dataPassed;
+    $.ajax({
+        type: "GET",
+        url: "/BISresult/" + myid,
+        async: false,
+        success: function (dataPassed) {
+            outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
+            console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
+            console.log("Get request complete"); //verification that the data was retreieved.
+        }
+    });
+}
+    
+d3.select("body").append("p")
+        .style("margin", "30px 50px 0px 50px")
+        .text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
+d3.select("body").append("p").text("");
+
+showBISResults(outPutCSV);
+showBASResults(outPutCSV);
+//console.log(outPutCSV);//empty set
+//createBargraph(outPutCSV);
