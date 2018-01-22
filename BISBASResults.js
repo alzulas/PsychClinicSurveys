@@ -247,9 +247,14 @@ var el = document.getElementById("clickMe");
 
 el.onclick = function (event){
     var newID = document.getElementById('txtID').value;
-    myid = newID;
+    var d = new Date();
+    d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000)); //Cookie set to self destruct in a day
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = "userName=" + newID + ";" + expires;
+    //myid = newID;
+    
     //document.body.innerHTML = '';
-    document.location.reload();
+    //document.location.reload();
     runPage();
 //    console.log(newID);
 };
