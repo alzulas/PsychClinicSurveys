@@ -279,8 +279,8 @@ function init() {
         var surveyString = JSON.stringify(result.data);
         surveyString = CreateAnID(surveyString);
         //Send results to the server, type of content is json
-        surveyResult = result.data;
-        console.log(JSON.stringify({survey: surveyResult}));
+        //surveyResult = result.data;
+        //console.log(JSON.stringify({survey: surveyResult}));
         $.ajax({
             type: "POST",
             url: "/result",
@@ -309,7 +309,7 @@ function init() {
             document.cookie = "userName=" + tempString + ";" + expires;
             
         }
-        //window.location.href = "BISBASResults.html";
+        window.location.href = "BISBASResults.html";
     });
 
     $("#surveyElement").Survey({model: model});
