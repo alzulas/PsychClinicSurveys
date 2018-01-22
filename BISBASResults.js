@@ -243,30 +243,43 @@ function showBASResults(outPutCSV){
 
 }
 
+var el = document.getElementById("clickMe");
+
+el.onclick = function (event){
+    var newID = document.getElementById('txtID').value;
+    myid = newID;
+    runPage();
+//    console.log(newID);
+};
+
+function runPage(){
+    if (myid !== "") {
+        var dataPassed;
+        $.ajax({
+            type: "GET",
+            url: "/BISresult/" + myid,
+            async: false,
+            success: function (dataPassed) {
+                outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
+                console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
+                console.log("Get request complete"); //verification that the data was retreieved.
+            }
+        });
+    }
+
+    d3.select("body").append("p")
+            .style("margin", "30px 50px 0px 50px")
+            .text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
+    d3.select("body").append("p").text("");
+
+    showBISResults(outPutCSV);
+    showBASResults(outPutCSV);
+//console.log(outPutCSV);//empty set
+//createBargraph(outPutCSV);
+}
+
 //Create CSV array and retreive cookie
 var outPutCSV = [];
 var myid = getCookie("userName");
 //Use cookie to request data from the server, so long as cookie exists.
-if (myid !== "") {
-    var dataPassed;
-    $.ajax({
-        type: "GET",
-        url: "/BISresult/" + myid,
-        async: false,
-        success: function (dataPassed) {
-            outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
-            console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
-            console.log("Get request complete"); //verification that the data was retreieved.
-        }
-    });
-}
-    
-d3.select("body").append("p")
-        .style("margin", "30px 50px 0px 50px")
-        .text("This measure was designed to assess your temperament. You can think of temperament as your emotional style. There is evidence that we inherit our temperaments and that they are relatively stable from an early age. However, some people's temperaments do change over the course of life.");
-d3.select("body").append("p").text("");
-
-showBISResults(outPutCSV);
-showBASResults(outPutCSV);
-//console.log(outPutCSV);//empty set
-//createBargraph(outPutCSV);
+runPage();
