@@ -248,7 +248,8 @@ var el = document.getElementById("clickMe");
 el.onclick = function (event){
     var newID = document.getElementById('txtID').value;
     myid = newID;
-    document.body.innerHTML = '';
+    //document.body.innerHTML = '';
+    document.location.reload();
     runPage();
 //    console.log(newID);
 };
