@@ -10,13 +10,14 @@
 function CreateAnID (ResultsString) {
     
     //Get rid of the piece of data about the ID true or false, it's not important.
+    var ID = "";
     var endOfString = ResultsString.length+1;
 //    console.log(endOfString);
 //    var startOfString = ResultsString.lastIndexOf("ID")-1;
 //    console.log(startOfString);
     ResultsString = ResultsString.slice(18, endOfString);
     ResultsString = "{" + ResultsString;
-    console.log(ResultsString);
+    //console.log(ResultsString);
     
     if (ResultsString.includes("IDName")){
             //If the person didn't have an ID, take the three pieces of information they gave and create an ID out of it. Then put that in the ID place, and return the string.
@@ -30,20 +31,77 @@ function CreateAnID (ResultsString) {
         //console.log(lastName);
         
         var DOB = splitString[2].slice(11, splitString[2].length);
+        var mm = DOB.slice(0,2);
+        var dd = DOB.slice(2,4);
+        var yyyy = DOB.slice(4,8);
         //console.log(DOB);
         
         //calculate a special number
+        if (firstName.length < 4) {
+            ID = ID + firstName[1].toUpperCase();
+            ID = ID + firstName[0].toUpperCase();
+        }else{
+            ID = ID + firstName[3].toUpperCase();
+            ID = ID + firstName[1].toUpperCase();
+        }
+        ID = ID + lastName[lastName.length - 1].toUpperCase();
+        ID = ID + lastName[lastName.length - 2].toUpperCase();
         
+        moduloNumber = (mm * dd * yyyy)%10000;
+        //console.log("Mod: " + moduloNumber);
+        ID = ID + moduloNumber;
+        //console.log("ID: " + ID);
         
-
-    }else{
-        //take the information if the person already had an ID, delete the section asking if they did, then return.
-        return ResultsString;
-    }    
+        //location of the end of the DOB response. Slice to there. Add { ID: and the ID number
+        var position = ResultsString.indexOf("IDNumber");
+        position = position + 19;
+        ResultsString = ResultsString.slice(position, ResultsString.length);
+        ResultsString = "{\"ID\":\"" + ID + ResultsString;  
+        
+        //console.log(ResultsString);
+        
+    }   //take the information if the person already had an ID, delete the section asking if they did, then return.
+    return ResultsString;    
 }
 
 function init() {
+    var MyTextValidator = (function (_super) {
+    Survey.__extends(MyTextValidator, _super);
+    function MyTextValidator() {
+        _super.call(this);
+    }
+    MyTextValidator.prototype.getType = function () {
+        return "mytextvalidator";
+    };
+    MyTextValidator.prototype.validate = function (value, name) {
+        if (isNaN(value)) {
+            //report an error
+            return new Survey.ValidatorResult(null, new Survey.CustomError(this.getErrorText(name)));
+        }else if (value.length !== 8){
+            return new Survey.ValidatorResult(null, new Survey.CustomError(this.getErrorText(name)));
+        }
+        //return Survey.ValidatorResult object if you want to correct the entered value
+        // return new Survey.ValidatorResult(youCorrectedValue);
+        //return nothing if there is no any error.
+        return null;
+    };
+    //the default error text. It shows if user do not set the 'text' property
+    MyTextValidator.prototype.getDefaultErrorText = function (name) {
+        return "Your entry should contain only eight numbers.";
+    }
+        return MyTextValidator;
+    })(Survey.SurveyValidator);
+    Survey.MyTextValidator = MyTextValidator;
+    //add into survey Json metaData
+    //
     
+    Survey
+        .JsonObject
+        .metaData
+        .addClass("mytextvalidator", [], function () {
+            return new MyTextValidator();
+        }, "surveyvalidator");
+   
     //This is the JSON with all the questions and format in it
     var jsonBegin = {
         //Sets a title bar for the whole survey and a progress bar.
@@ -60,7 +118,7 @@ function init() {
             value: "False",
             questions: ["HowToID", "IDName", "IDLast", "IDNumber"]
         }],
-        
+           
         title: " The BIS-BAS.",
         showProgressBar: "top",
         pages: [
@@ -93,11 +151,16 @@ function init() {
                 { type: "text", name: "IDLast", title: "Please enter your mothers maiden name.", isRequired: true,
                  //visibleIf: "{IDCheck} contains 'False'", 
                  visible: false, size: 15, width: "4"},
-            
-                { type: "text", name: "IDNumber", title: "Create a large number by entering your date of birth without dashes or spaces. An example would be 07041984. The number can be in whichever order you normally display numbers.", isRequired: true,
-                 //visibleIf: "{IDCheck} contains 'False'", 
-                 visible: false, size: 15, width: "4"},
                 
+                { type: "text", name: "IDNumber", title: "Create a large number by entering your date of birth without dashes or spaces. An example would be 01041980. The number can be in whichever order you normally display numbers.", isRequired: true,
+                 //visibleIf: "{IDCheck} contains 'False'", 
+                 visible: false, size: 15, width: "4", validators: [
+                        {
+                            type: "mytextvalidator"
+                        }
+                    ]},
+                
+
                 //Radio groups are radio button questions. They accept a single answer. this is the gender question.
                 { type: "radiogroup", name: "gender", title: "My biological sex is...", colCount: 0, choices: ["Male", "Female", "Intersex"]}
             ]},
