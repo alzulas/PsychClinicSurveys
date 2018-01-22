@@ -285,7 +285,7 @@ function init() {
             type: "POST",
             url: "/result",
             async: false,
-            data: JSON.stringify({survey: surveyResult}),
+            data: surveyString,
             success: function (data) {
                 if (data === 'done') {
                     alert("Data send successful");
