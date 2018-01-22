@@ -56,12 +56,15 @@ function CreateAnID (ResultsString) {
         var position = ResultsString.indexOf("IDNumber");
         position = position + 19;
         ResultsString = ResultsString.slice(position, ResultsString.length);
-        ResultsString = "{\"ID\":\"" + ID + ResultsString;  
+        ResultsString = "{\"survey\":{\"ID\":\"" + ID + ResultsString + "}";  
         
         //console.log(ResultsString);
+        return ResultsString; 
         
-    }   //take the information if the person already had an ID, delete the section asking if they did, then return.
-    return ResultsString;    
+    }else {   //take the information if the person already had an ID, delete the section asking if they did, then return.
+        ResultsString = "{\"survey\":" + ResultsString + "}";
+        return ResultsString;  
+    }
 }
 
 function init() {
@@ -276,12 +279,13 @@ function init() {
         var surveyString = JSON.stringify(result.data);
         surveyString = CreateAnID(surveyString);
         //Send results to the server, type of content is json
-        //surveyResult = result.data;
+        surveyResult = result.data;
+        console.log(JSON.stringify({survey: surveyResult}));
         $.ajax({
             type: "POST",
             url: "/result",
             async: false,
-            data: surveyString,
+            data: JSON.stringify({survey: surveyResult}),
             success: function (data) {
                 if (data === 'done') {
                     alert("Data send successful");
@@ -305,7 +309,7 @@ function init() {
             document.cookie = "userName=" + tempString + ";" + expires;
             
         }
-        window.location.href = "BISBASResults.html";
+        //window.location.href = "BISBASResults.html";
     });
 
     $("#surveyElement").Survey({model: model});
