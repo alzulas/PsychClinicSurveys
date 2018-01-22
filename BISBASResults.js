@@ -37,11 +37,14 @@ function getCookie(cname) {//This function retreives the participant ID, stored 
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {//looking for ID in cookie called "cname"
+            document.getElementsByName('txtID').textContent = c.substring(name.length, c.length);
             return c.substring(name.length, c.length);//Return ID
         }
     }
     return "";//No ID found, return empty string
 }
+
+//var jobValue = document.getElementsByName('txtJob')[0].value
 
 function calculateScores(dataPassed){
     //Takes data from CSV off the server, calculates relavant scores, returns array
