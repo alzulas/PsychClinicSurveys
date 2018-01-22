@@ -276,12 +276,12 @@ function init() {
         var surveyString = JSON.stringify(result.data);
         surveyString = CreateAnID(surveyString);
         //Send results to the server, type of content is json
-        surveyResult = result.data;
+        //surveyResult = result.data;
         $.ajax({
             type: "POST",
             url: "/result",
             async: false,
-            data: JSON.stringify({survey: surveyResult}),
+            data: surveyString,
             success: function (data) {
                 if (data === 'done') {
                     alert("Data send successful");
