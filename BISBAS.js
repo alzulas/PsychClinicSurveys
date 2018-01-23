@@ -68,7 +68,7 @@ function CreateAnID (ResultsString) {
 }
 
 
-function postAndMoveOn(){
+function postAndMoveOn(surveyString){
     $.ajax({
         type: "POST",
         url: "/result",
@@ -326,16 +326,17 @@ function init() {
                 console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-        if(holdMyData !== undefined) {
+        console.log(holdMyData);
+        if(holdMyData === undefined) {
+            postAndMoveOn(surveyString);
+        } else {
             if (confirm("You have entered an ID that already exists. Clicking Okay will override existing data on the server. If you do not wish to do this, hit cancel, return to the first page, and change your ID number. You can also visit personassesment.com/BISBASResults.html and enter your ID number to retreive your previous data.")) {
-                postAndMoveOn();
+                postAndMoveOn(surveyString);
                 console.log("You pressed OK!");
             } else {
                 console.log("You pressed Cancel!");
             }
             document.getElementById("demo").innerHTML = txt;
-        } else {
-            postAndMoveOn();
         }
     });
 
