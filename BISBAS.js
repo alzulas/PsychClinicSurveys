@@ -322,11 +322,11 @@ function init() {
             async: false,
             success: function (dataPassed) {
                 console.log("data passed = " + dataPassed);
-                holdMyBeer = dataPassed;
+                holdMyData = dataPassed;
                 console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-        console.log(holdMyData);
+        console.log(holdMyData)
         if(holdMyData === undefined) {
             postAndMoveOn(surveyString);
         } else {
