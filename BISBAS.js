@@ -94,12 +94,12 @@ function fixSurveyString(surveyString){
             }
         });
     }
-    var endOfString = ResultsString.length+1;
-    var position = ResultsString.indexOf("ID");
+    var endOfString = surveyString.length+1;
+    var position = surveyString.indexOf("ID");
     position = position + 5;
-    ResultsString = ResultsString.slice(position, ResultsString.length);
-    ResultsString = "{\"survey\":{\"ID\":\"" + newIDAttempt + ResultsString;  
-    console.log("Result string in the fixer : " + ResultsString);
+    surveyString = surveyString.slice(position, surveyString.length);
+    surveyString = "{\"survey\":{\"ID\":\"" + newIDAttempt + surveyString;  
+    console.log("Result string in the fixer : " + surveyString);
     
     return surveyString;
 }
@@ -357,12 +357,12 @@ function init() {
             url: "/BISresult/" + tempString,
             async: false,
             success: function (dataPassed) {
-                console.log("data passed = " + dataPassed);
+                //console.log("data passed = " + dataPassed);
                 holdMyData = dataPassed;
-                console.log("Get request complete"); //verification that the data was retreieved.
+                //console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-        console.log(holdMyData)
+        console.log(surveyString);
         if(holdMyData === undefined) {
             postAndMoveOn(surveyString);
         } else {
