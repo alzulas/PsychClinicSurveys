@@ -81,8 +81,7 @@ function postAndMoveOn(surveyString){
         },
         contentType: "application/json"
     });
-    //window.location.href = "BISBASResults.html";
-    $("#surveyElement").Survey({model: model});
+    window.location.href = "BISBASResults.html";
 }
 
 function init() {
@@ -331,15 +330,18 @@ function init() {
         if(holdMyData === undefined) {
             postAndMoveOn(surveyString);
         } else {
-            if (confirm("You have entered an ID that already exists. Clicking Okay will override existing data on the server. If you do not wish to do this, hit cancel, return to the first page, and change your ID number. You can also visit personassesment.com/BISBASResults.html and enter your ID number to retreive your previous data.")) {
+            if (confirm("You have entered an ID that already exists. Clicking Okay will override existing data on the server. If you do not wish to do this, hit cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
                 postAndMoveOn(surveyString);
                 console.log("You pressed OK!");
             } else {
+                window.location.href = "BISBASResults.html";
                 console.log("You pressed Cancel!");
             }
             //document.getElementById("demo").innerHTML = txt;
         }
     });
+    $("#surveyElement").Survey({model: model});
+    
 }
 
 //This is just the way js works. There is a thing asking if the page came up properly, and if so then run the init above. 
