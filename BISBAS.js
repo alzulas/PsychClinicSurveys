@@ -336,7 +336,7 @@ function init() {
             } else {
                 console.log("You pressed Cancel!");
             }
-            document.getElementById("demo").innerHTML = txt;
+            //document.getElementById("demo").innerHTML = txt;
         }
     });
 
