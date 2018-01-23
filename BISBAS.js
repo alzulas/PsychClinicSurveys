@@ -378,7 +378,7 @@ function init() {
         } else {
             if (confirm("You have entered an ID that already exists. Clicking OK will modify your current ID so it can be saved uniquely. If you do not wish to do this, hit Cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
                 surveyString = fixSurveyString(surveyString);
-                console.log("Info before post " surveyString);
+                console.log("Info before post " + surveyString);
                 postAndMoveOn(surveyString);
                 console.log("You pressed OK!");
             } else {
