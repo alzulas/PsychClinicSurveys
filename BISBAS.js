@@ -297,6 +297,7 @@ function init() {
             document.cookie = "userName=" + tempString + ";" + expires;
             
         }
+        var holdMyBeer;
         var dataPassed;
         $.ajax({
             type: "GET",
@@ -304,10 +305,11 @@ function init() {
             async: false,
             success: function (dataPassed) {
                 console.log("data passed = " + dataPassed);
+                holdMyBeer = dataPassed;
                 console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-        console.log("data passed after parens = " + dataPassed);
+        console.log("data passed after parens = " + holdMyBeer);
         if(dataPassed.length > 0) {
             if (confirm("You have entered an ID that already exists. Clicking Okay will override existing data on the server. If you do not wish to do this, hit cancel, return to the first page, and change your ID number. You can also visit personassesment.com/BISBASResults.html and enter your ID number to retreive your previous data.")) {
                 $.ajax({
