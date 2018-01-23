@@ -82,6 +82,7 @@ function postAndMoveOn(surveyString){
         contentType: "application/json"
     });
     //window.location.href = "BISBASResults.html";
+    $("#surveyElement").Survey({model: model});
 }
 
 function init() {
@@ -339,8 +340,6 @@ function init() {
             //document.getElementById("demo").innerHTML = txt;
         }
     });
-
-    $("#surveyElement").Survey({model: model});
 }
 
 //This is just the way js works. There is a thing asking if the page came up properly, and if so then run the init above. 
