@@ -125,7 +125,7 @@ function postAndMoveOn(surveyString){
         },
         contentType: "application/json"
     });
-    window.location.href = "BISBASResults.html";
+    //window.location.href = "BISBASResults.html";
 }
 
 function init() {
@@ -370,12 +370,13 @@ function init() {
                 //console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-        console.log(surveyString);
+        //console.log(surveyString);
         if(holdMyData === undefined) {
             postAndMoveOn(surveyString);
         } else {
             if (confirm("You have entered an ID that already exists. Clicking OK will modify your current ID so it can be saved uniquely. If you do not wish to do this, hit Cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
                 surveyString = fixSurveyString(surveyString);
+                console.log(surveyString);
                 postAndMoveOn(surveyString);
                 console.log("You pressed OK!");
             } else {
