@@ -281,18 +281,6 @@ function init() {
         //Send results to the server, type of content is json
         //surveyResult = result.data;
         //console.log(JSON.stringify({survey: surveyResult}));
-        $.ajax({
-            type: "POST",
-            url: "/result",
-            async: false,
-            data: surveyString,
-            success: function (data) {
-                if (data === 'done') {
-                    alert("Data send successful");
-                }
-            },
-            contentType: "application/json"
-        });
         if (surveyString.includes("ID")) {
             //Set a cookie with the user ID
             var pos = surveyString.indexOf("ID");
@@ -309,7 +297,40 @@ function init() {
             document.cookie = "userName=" + tempString + ";" + expires;
             
         }
-        window.location.href = "BISBASResults.html";
+        var dataPassed;
+        $.ajax({
+            type: "GET",
+            url: "/BISresult/" + tempString,
+            async: false,
+            success: function (dataPassed) {
+                console.log(dataPassed);
+                console.log("Get request complete"); //verification that the data was retreieved.
+            }
+        });
+        
+        if(dataPassed){
+            if (confirm("You have entered an ID that already exists. Clicking Okay will override existing data on the server. If you do not wish to do this, hit cancel, return to the first page, and change your ID number. You can also visit personassesment.com/BISBASResults.html and enter your ID number to retreive your previous data.")) {
+                $.ajax({
+                    type: "POST",
+                    url: "/result",
+                    async: false,
+                    data: surveyString,
+                    success: function (data) {
+                        if (data === 'done') {
+                            alert("Data send successful");
+                        }
+                    },
+                    contentType: "application/json"
+                });
+                window.location.href = "BISBASResults.html";
+                console.log("You pressed OK!");
+            } else {
+                console.log("You pressed Cancel!");
+            }
+            //document.getElementById("demo").innerHTML = txt;
+        }
+        
+       // window.location.href = "BISBASResults.html";
     });
 
     $("#surveyElement").Survey({model: model});
