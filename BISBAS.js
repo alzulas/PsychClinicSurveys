@@ -82,6 +82,7 @@ function fixSurveyString(surveyString){
     }
     while(dataPassed !== undefined){
         newIDAttempt = tempString + (Math.floor((Math.random() * 100) + 1));
+        console.log("new attempt = " + newIDAttempt);
 
         var dataPassed = undefined;
         $.ajax({
@@ -96,10 +97,15 @@ function fixSurveyString(surveyString){
     }
     var endOfString = surveyString.length+1;
     var position = surveyString.indexOf("ID");
-    position = position + 5;
+    position = position + 4;
     surveyString = surveyString.slice(position, surveyString.length);
     surveyString = "{\"survey\":{\"ID\":\"" + newIDAttempt + surveyString;  
     console.log("Result string in the fixer : " + surveyString);
+    
+    var d = new Date();
+    d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000)); //Cookie set to self destruct in a day
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = "userName=" + newIDAttempt + ";" + expires;
     
     return surveyString;
 }
@@ -117,7 +123,7 @@ function postAndMoveOn(surveyString){
         },
         contentType: "application/json"
     });
-    window.location.href = "BISBASResults.html";
+    //window.location.href = "BISBASResults.html";
 }
 
 function init() {
