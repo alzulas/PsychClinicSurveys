@@ -67,6 +67,23 @@ function CreateAnID (ResultsString) {
     }
 }
 
+
+function postAndMoveOn(){
+    $.ajax({
+        type: "POST",
+        url: "/result",
+        async: false,
+        data: surveyString,
+        success: function (data) {
+            if (data === 'done') {
+                alert("Data send successful");
+            }
+        },
+        contentType: "application/json"
+    });
+    //window.location.href = "BISBASResults.html";
+}
+
 function init() {
     var MyTextValidator = (function (_super) {
     Survey.__extends(MyTextValidator, _super);
@@ -311,42 +328,15 @@ function init() {
         });
         if(holdMyData !== undefined) {
             if (confirm("You have entered an ID that already exists. Clicking Okay will override existing data on the server. If you do not wish to do this, hit cancel, return to the first page, and change your ID number. You can also visit personassesment.com/BISBASResults.html and enter your ID number to retreive your previous data.")) {
-                $.ajax({
-                    type: "POST",
-                    url: "/result",
-                    async: false,
-                    data: surveyString,
-                    success: function (data) {
-                        if (data === 'done') {
-                            alert("Data send successful");
-                        }
-                    },
-                    contentType: "application/json"
-                });
-                //window.location.href = "BISBASResults.html";
+                postAndMoveOn();
                 console.log("You pressed OK!");
             } else {
                 console.log("You pressed Cancel!");
             }
             document.getElementById("demo").innerHTML = txt;
         } else {
-            $.ajax({
-                type: "POST",
-                url: "/result",
-                async: false,
-                data: surveyString,
-                success: function (data) {
-                    if (data === 'done') {
-                        alert("Data send successful");
-                    }
-                },
-                contentType: "application/json"
-            });
-            //window.location.href = "BISBASResults.html";
-            console.log("You pressed OK!");
+            postAndMoveOn();
         }
-        
-       // window.location.href = "BISBASResults.html";
     });
 
     $("#surveyElement").Survey({model: model});
