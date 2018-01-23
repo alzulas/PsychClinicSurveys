@@ -221,7 +221,7 @@ function init(relationship) {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about. 
                     type: "radiogroup",
                     name: "thoughtsrel4",
-                    title: "How often are thoughts of your " + relationship[4] + " on your mind? (If you have more than one " + relationship[4] + ", answer this question for the one who you think about most frequently",
+                    title: "How often are thoughts of your " + relationship[4] + " on your mind? (If you have more than one " + relationship[4] + ", answer this question for the one who you think about most frequently)",
                     colCount: 0,
                     isRequired: true,
                     choices: ["I don't have a " + relationship[4], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
