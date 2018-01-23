@@ -180,6 +180,7 @@ function turnToCSV(dataString) {
             var tempLine = linesOfFile[currentLine];
             if (tempLine.includes(csv[0])) {
                 delete linesOfFile[currentLine];
+                console.log("deleted");
                 IDfound = true; //If ID is found, that's the line we want. Send it out.
             } else if (tempLine === "") {
                 IDfound = true;
