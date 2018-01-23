@@ -101,7 +101,9 @@ function fixSurveyString(surveyString){
     var position = surveyString.indexOf("ID");
     position = position + 4;
     surveyString = surveyString.slice(position, surveyString.length);
-    surveyString = "{\"survey\":{\"ID\":\"" + newIDAttempt + surveyString;  
+    position = surveyString.indexOf(",");
+    surveyString = surveyString.slice(position, surveyString.length);
+    surveyString = "{\"survey\":{\"ID\":\"" + newIDAttempt + "\"" + surveyString;  
     console.log("Result string in the fixer : " + surveyString);
     
     var d = new Date();
