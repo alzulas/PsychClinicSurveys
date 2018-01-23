@@ -80,22 +80,23 @@ function fixSurveyString(surveyString){
             pos++;
         }   
     }
-    var dataPassed = undefined
-    while(typeof dataPassed !== 'undefined'){
+    var holdMyData;
+    var dataPassed;
+    do {
         newIDAttempt = tempString + (Math.floor((Math.random() * 100) + 1));
         console.log("new attempt = " + newIDAttempt);
 
-        dataPassed = undefined;
         $.ajax({
             type: "GET",
             url: "/BISresult/" + newIDAttempt,
             async: false,
             success: function (dataPassed) {
                 console.log("data passed = " + dataPassed);
+                holdMyData = dataPassed;
                 console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-    }
+    } while(typeof dataPassed !== 'undefined');
     var endOfString = surveyString.length+1;
     var position = surveyString.indexOf("ID");
     position = position + 4;
