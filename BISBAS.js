@@ -67,6 +67,42 @@ function CreateAnID (ResultsString) {
     }
 }
 
+function fixSurveyString(surveyString){
+    var newIDAttempt
+    if (surveyString.includes("ID")) {
+        //Set a cookie with the user ID
+        var pos = surveyString.indexOf("ID");
+        pos = pos + "ID".length + 3;
+        var tempString = surveyString[pos];
+        pos++;
+        while (surveyString[pos] !== "\"") {
+            tempString += surveyString[pos];
+            pos++;
+        }   
+    }
+    while(dataPassed !== undefined){
+        newIDAttempt = tempString + (Math.floor((Math.random() * 100) + 1));
+
+        var dataPassed = undefined;
+        $.ajax({
+            type: "GET",
+            url: "/BISresult/" + newIDAttempt,
+            async: false,
+            success: function (dataPassed) {
+                console.log("data passed = " + dataPassed);
+                console.log("Get request complete"); //verification that the data was retreieved.
+            }
+        });
+    }
+    var endOfString = ResultsString.length+1;
+    var position = ResultsString.indexOf("ID");
+    position = position + 5;
+    ResultsString = ResultsString.slice(position, ResultsString.length);
+    ResultsString = "{\"survey\":{\"ID\":\"" + newIDAttempt + ResultsString;  
+    console.log("Result string in the fixer : " + ResultsString);
+    
+    return surveyString;
+}
 
 function postAndMoveOn(surveyString){
     $.ajax({
@@ -330,7 +366,8 @@ function init() {
         if(holdMyData === undefined) {
             postAndMoveOn(surveyString);
         } else {
-            if (confirm("You have entered an ID that already exists. Clicking OK will override existing data on the server. If you do not wish to do this, hit Cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
+            if (confirm("You have entered an ID that already exists. Clicking OK will modify your current ID so it can be saved uniquely. If you do not wish to do this, hit Cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
+                surveyString = fixSurveyString(surveyString);
                 postAndMoveOn(surveyString);
                 console.log("You pressed OK!");
             } else {
