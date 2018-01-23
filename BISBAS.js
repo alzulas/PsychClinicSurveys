@@ -80,7 +80,7 @@ function fixSurveyString(surveyString){
             pos++;
         }   
     }
-    while(dataPassed !== undefined){
+    while(dataPassed != undefined){
         newIDAttempt = tempString + (Math.floor((Math.random() * 100) + 1));
         console.log("new attempt = " + newIDAttempt);
 
