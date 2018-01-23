@@ -87,7 +87,8 @@ function turnToCSV(dataString) {
 
     //All data we are trying to track for BISBAS
     var BISBASHeadings = ["ID", "gender", "age", "race", "employment", "BIS1", "BIS2", "BIS3", "BIS4", "BIS5", "BIS6", "BIS7", "BASDrive1", "BASDrive2", "BASDrive3", "BASDrive4", "BASReward1", "BASReward2", "BASReward3", "BASReward4", "BASReward5", "BASFun1", "BASFun2", "BASFun3", "BASFun4"];
-
+    
+    var thisUsersIDNumber;
     //turn JSON into a string
     var allDataAsString = JSON.stringify(dataString);
     //Data string must be parsed correctly.
@@ -165,12 +166,46 @@ function turnToCSV(dataString) {
     
     if (allDataAsString.includes("BIS")){
         //If BIS BAS, put the array into the file BISBAS.csv
+         
         var fs = require('fs');
         
-        var lines = fn.split('\n');
-        for(var line = 0; line < lines.length; line ++){
-            console.log(lines[line]);
+        //var fs = require('fs');
+        var IDfound = false;
+        var currentLine = 0;
+        //read file
+        var linesOfFile = fs.readFileSync('BISBAS.csv').toString().split("\n");
+        while (!IDfound) { //find ID
+            var tempLine = linesOfFile[currentLine];
+            if (tempLine.includes(myid)) {
+                delete linesOfFile[currentLine];
+                IDfound = true; //If ID is found, that's the line we want. Send it out.
+            } else if (tempLine === "") {
+                IDfound = true;
+                console.log("ID NOT FOUND");
+            } else {
+                currentLine++; //If not, then next line
+            }
         }
+//        var lineReader = require('readline').createInterface({
+//            input: require('fs').createReadStream('file.in')
+//        });
+//
+//        lineReader.on('line', function (line) {
+//            console.log('Line from file:', line);
+//        });
+        
+//        fs.readFile('BISBAS.csv', function read(err, data) {
+//            if (err) {
+//                throw err;
+//            }
+//            lastIndex = function(){
+//                for (var i = data_array.length - 1; i > -1; i--)
+//                if (data_array[i].match('user1'))
+//                    delete data_array[i];
+//                    return true;
+//            }()
+//            //delete data_array[lastIndex];
+//        });
         
         fs.appendFile("BISBAS.csv", csv, function(err) {
             if(err) {
