@@ -89,7 +89,9 @@ function turnToCSV(dataString) {
     var BISBASHeadings = ["ID", "gender", "age", "race", "employment", "BIS1", "BIS2", "BIS3", "BIS4", "BIS5", "BIS6", "BIS7", "BASDrive1", "BASDrive2", "BASDrive3", "BASDrive4", "BASReward1", "BASReward2", "BASReward3", "BASReward4", "BASReward5", "BASFun1", "BASFun2", "BASFun3", "BASFun4"];
     
     //turn JSON into a string
+    console.log(dataString);
     var allDataAsString = JSON.stringify(dataString);
+    console.log(allDataAsString);
     //Data string must be parsed correctly.
     var dataHeadings;
     //if it's BISBAS, use those headings, if RSSM, use those, Else call failure

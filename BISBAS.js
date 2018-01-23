@@ -97,6 +97,7 @@ function fixSurveyString(surveyString){
             }
         });
     } while(typeof dataPassed !== 'undefined');
+    
     var endOfString = surveyString.length+1;
     var position = surveyString.indexOf("ID");
     position = position + 4;
