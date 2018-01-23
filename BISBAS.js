@@ -80,11 +80,12 @@ function fixSurveyString(surveyString){
             pos++;
         }   
     }
+    var dataPassed = undefined
     while(typeof dataPassed !== 'undefined'){
         newIDAttempt = tempString + (Math.floor((Math.random() * 100) + 1));
         console.log("new attempt = " + newIDAttempt);
 
-        var dataPassed = undefined;
+        dataPassed = undefined;
         $.ajax({
             type: "GET",
             url: "/BISresult/" + newIDAttempt,
