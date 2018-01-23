@@ -125,7 +125,7 @@ function postAndMoveOn(surveyString){
         },
         contentType: "application/json"
     });
-    //window.location.href = "BISBASResults.html";
+    window.location.href = "BISBASResults.html";
 }
 
 function init() {
