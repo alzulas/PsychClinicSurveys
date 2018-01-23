@@ -166,6 +166,12 @@ function turnToCSV(dataString) {
     if (allDataAsString.includes("BIS")){
         //If BIS BAS, put the array into the file BISBAS.csv
         var fs = require('fs');
+        
+        var lines = fn.result.split('\n');
+        for(var line = 0; line < lines.length; line ++){
+            console.log(lines[line]);
+        }
+        
         fs.appendFile("BISBAS.csv", csv, function(err) {
             if(err) {
                 //If failed, error

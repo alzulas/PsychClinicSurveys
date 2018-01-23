@@ -330,7 +330,7 @@ function init() {
         if(holdMyData === undefined) {
             postAndMoveOn(surveyString);
         } else {
-            if (confirm("You have entered an ID that already exists. Clicking Okay will override existing data on the server. If you do not wish to do this, hit cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
+            if (confirm("You have entered an ID that already exists. Clicking OK will override existing data on the server. If you do not wish to do this, hit Cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
                 postAndMoveOn(surveyString);
                 console.log("You pressed OK!");
             } else {
