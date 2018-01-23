@@ -323,7 +323,7 @@ function init() {
                     },
                     contentType: "application/json"
                 });
-                window.location.href = "BISBASResults.html";
+                //window.location.href = "BISBASResults.html";
                 console.log("You pressed OK!");
             } else {
                 console.log("You pressed Cancel!");
@@ -342,7 +342,7 @@ function init() {
                 },
                 contentType: "application/json"
             });
-            window.location.href = "BISBASResults.html";
+            //window.location.href = "BISBASResults.html";
             console.log("You pressed OK!");
         }
         
