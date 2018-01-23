@@ -166,7 +166,9 @@ function turnToCSV(dataString) {
     
     if (allDataAsString.includes("BIS")){
         //If BIS BAS, put the array into the file BISBAS.csv
-         
+        
+        
+        
         var fs = require('fs');
         
         //var fs = require('fs');
@@ -176,7 +178,7 @@ function turnToCSV(dataString) {
         var linesOfFile = fs.readFileSync('BISBAS.csv').toString().split("\n");
         while (!IDfound) { //find ID
             var tempLine = linesOfFile[currentLine];
-            if (tempLine.includes(myid)) {
+            if (tempLine.includes(csv[0])) {
                 delete linesOfFile[currentLine];
                 IDfound = true; //If ID is found, that's the line we want. Send it out.
             } else if (tempLine === "") {
