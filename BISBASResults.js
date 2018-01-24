@@ -263,7 +263,7 @@ el.onclick = function (event){//reset the cookie and reload the page
         function refresh_box() {
             $("#ResultsDisplayed").load('BISBASResults.js');
         }
-    }
+    };
     runPage();
 };
 
