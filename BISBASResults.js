@@ -255,7 +255,10 @@ el.onclick = function (event){//reset the cookie and reload the page
     document.cookie = "userName=" + newID + ";" + expires;
     
     //$('#thisdiv').load(document.URL +  ' #thisdiv');
-    document.getElementById("ResultDisplayed").innerHtml = runPage();
+    //document.getElementById("ResultDisplayed").innerHtml = 
+    parent.ResultsDisplayed.location.reload();
+        //.right_frame.location.reload();
+    runPage();
 };
 
 function runPage(){
