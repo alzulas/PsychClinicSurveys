@@ -256,8 +256,14 @@ el.onclick = function (event){//reset the cookie and reload the page
     
     //$('#thisdiv').load(document.URL +  ' #thisdiv');
     //document.getElementById("ResultDisplayed").innerHtml = 
-    parent.ResultsDisplayed.location.reload();
+    //parent.ResultsDisplayed.location.reload();
         //.right_frame.location.reload();
+    $("document").ready(function(){
+        var interval = setInterval(refresh_box(), 60000);
+        function refresh_box() {
+            $("#ResultsDisplayed").load('BISBASResults.js');
+        }
+    }
     runPage();
 };
 
