@@ -254,8 +254,8 @@ el.onclick = function (event){//reset the cookie and reload the page
     var expires = "expires=" + d.toUTCString();
     document.cookie = "userName=" + newID + ";" + expires;
     
-    $('#thisdiv').load(document.URL +  ' #thisdiv');
-    runPage();
+    //$('#thisdiv').load(document.URL +  ' #thisdiv');
+    document.getElementById("ResultDisplayed").innerHtml = runPage();
 };
 
 function runPage(){
