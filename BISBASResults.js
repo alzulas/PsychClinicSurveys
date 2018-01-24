@@ -37,6 +37,7 @@ function getCookie(cname) {//This function retreives the participant ID, stored 
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {//looking for ID in cookie called "cname"
+            //inserts cookie into text line
             document.getElementById('txtID').value = c.substring(name.length, c.length);
             return c.substring(name.length, c.length);//Return ID
         }
