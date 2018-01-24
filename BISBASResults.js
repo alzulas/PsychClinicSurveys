@@ -244,20 +244,18 @@ function showBASResults(outPutCSV){
 
 }
 
+//When the button on the page is clicked.
 var el = document.getElementById("clickMe");
 
-el.onclick = function (event){
+el.onclick = function (event){//reset the cookie and reload the page
     var newID = document.getElementById('txtID').value;
     var d = new Date();
     d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000)); //Cookie set to self destruct in a day
     var expires = "expires=" + d.toUTCString();
     document.cookie = "userName=" + newID + ";" + expires;
-    //myid = newID;
     
-    //document.body.innerHTML = '';
-    //document.location.reload();
+    $('#thisdiv').load(document.URL +  ' #thisdiv');
     runPage();
-//    console.log(newID);
 };
 
 function runPage(){
