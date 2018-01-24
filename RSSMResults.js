@@ -156,7 +156,7 @@ function standardResults(compScore, autoScore, relateScore, relation){
             .style("margin", "30px 50px 0px 50px")
             .text("Your relatedness score is " + relateScore.toFixed(2));
         standardDeviationPrint(compScore, 4.22, .69, "relatedness");
-        //createBargraph(outPutCSV);
+        createBargraph(outPutCSV);
     } else if(compScore !== 0 && autoScore !== 0 && relateScore !== 0) {//Print each relationship, so long as it exists
         d3.select("body").append("H1")
             .style("margin", "30px 50px 0px 50px")
@@ -172,6 +172,10 @@ function standardResults(compScore, autoScore, relateScore, relation){
             .text("Your relatedness score is " + relateScore);
     }
 }
+
+testingCSV = [NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,Negative,4,3,4,5,4,3,4,3,3,4,4,3,3,Activity,5,4,3,3,4,5,4,4,3,4,3,3,3,]
+
+
 
 function standardDeviationPrint(Score, Mean, SD, type) { //participants score, popMean, popSD, score type
     //Find how many deviations from the mean they are, and print the accompanying text with it.
