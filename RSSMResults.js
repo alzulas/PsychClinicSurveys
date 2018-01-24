@@ -319,6 +319,7 @@ el.onclick = function (event){//reset the cookie and reload the page
     var expires = "expires=" + d.toUTCString();
     document.cookie = "userName=" + newID + ";" + expires;
 
+    location.reload();
     runPage();
 };
 
