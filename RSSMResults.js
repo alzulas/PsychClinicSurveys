@@ -173,7 +173,7 @@ function standardResults(compScore, autoScore, relateScore, relation){
     }
 }
 
-testingCSV = [NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,Negative,4,3,4,5,4,3,4,3,3,4,4,3,3,Activity,5,4,3,3,4,5,4,4,3,4,3,3,3,]
+//testingCSV = [NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,Negative,4,3,4,5,4,3,4,3,3,4,4,3,3,Activity,5,4,3,3,4,5,4,4,3,4,3,3,3,]
 
 
 
