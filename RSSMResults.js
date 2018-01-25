@@ -62,8 +62,8 @@ function calculateScores(dataPassed){
     //console.log("data array = " + dataArray);
     var round = 0;
     //Relevant data beings at position 8 in the array from the server
+    console.log("Entire log = " + dataArray);
     for (var i = 8; i < dataArray.length; i++){
-        console.log("Entire log = " + dataArray[i]);
         currentComp = currentComp + Number(dataArray[i]);//take current score for this relationship, add to previous
         overallComp = overallComp + Number(dataArray[i]);//Do for an overall score as well
         if(Number(dataArray[i])==0){
