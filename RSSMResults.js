@@ -119,6 +119,7 @@ function calculateScores(dataPassed){
                 }else if(dataArray[i]=="name4"){
                     i++;
                     relationship[9] = dataArray[i];
+                    console.log(dataArray[i]);
                 }
                 else{
                     //Move forward past questions like "relationship type", "closeness" and a filler question
