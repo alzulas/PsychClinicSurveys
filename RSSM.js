@@ -576,11 +576,22 @@ function init(relationship) {
                         ]}
             ]},
             {questions: [
+                //Special question with fill-in-the-blank name. Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                {
+                    type: "text",
+                    name: "name3",
+                    title: "Think of a person that you often interact with but who you think may sometimes view you negatively or critically. This person should be different from any persons you have already answered questions for on this survey.  Please write the first name of this person who you think may view you negatively sometimes here: ",
+                    isRequired: true,
+                    size: 15,
+                    width: "4"
+                }
+            ]},
+            {questions: [
                 //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel8", html: "<p> Think of a person that you often interact with but who you think may sometimes view you negatively or critically. This person should be different from any persons you have already answered questions for on this survey. </p> <p> Now think about a typical experience with this person. Picture this person’s face, and try to form a good image of this person, getting an experience of You-with-this-person-who-sometimes-views-you-negatively. It might help to imagine what typically happens between the two of you, what the person does and says, how the person does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p>Once you have recreated this experience with this person who you think sometimes thinks negatively about you, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with this person. </p>"},
+                { type: "html", name: "inforel8", html: "</p> <p> Now think about a typical experience with {name3}. Picture {name3}’s face, and try to form a good image of {name3}, getting an experience of You-with-{name3}.  It might help to imagine what typically happens between the two of you: what {name3} does and says, how {name3} does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-{name3}, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with {name3} (now, at this point in your life)."},
                                 
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel8", title: "When I interact with this person who I think sometimes views me negatively or critically, I feel ... ", isRequired: true,
+                { type: "matrix", name: "Qualityrel8", title: "When I interact with this person who I think may view me negatively or critically, I feel ... ", isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -602,8 +613,19 @@ function init(relationship) {
                         ]}
             ]},
             {questions: [
+                //Special question with fill-in-the-blank name. Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                {
+                    type: "text",
+                    name: "name4",
+                    title: " Now think of a role or identity (e.g., teacher, boss, employee, poet, athlete, musician, mentor, etc.) that is important to how you think about yourself.  Please write the name of this role here: ",
+                    isRequired: true,
+                    size: 15,
+                    width: "4"
+                }
+            ]},
+            {questions: [
                 //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel9", html: "<p> Now think of something you often do that is important to how you think about yourself. This could be a role, such as teacher, boss, employee, or an activity, such as singing, playing a sport, dancing, etc. The important thing is that it is an important part of your identity, how you think about yourself. </p> <p> Now think about a typical experience when in this role or doing this activity. Picture yourself engaged in the role or activity, and try to form a good image of yourself doing it, where you are, what you are feeling and sensing as you are performing the activity, and what you are trying to do. </p> <p>Once you have recreated this experience of you when in this role or engaged in this activity, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are in this role or engaged in this activity. </p>"},
+                { type: "html", name: "inforel9", html: "</p> <p> Now think about a typical experience when in this role of {name4} or doing activities related to {name4}. Picture yourself engaged in the role or activity, and try to form a good image of yourself doing it, where you are, what you are feeling and sensing as you are performing the activity, and what you are trying to do </p> <p> Once you have recreated this experience of You-as-{name4}, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are  in this role or engaged in this activity."},
                                 
                    //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
                 { type: "matrix", name: "Qualityrel9", title: "When I am in this role or engaged in this activity, I feel ...", isRequired: true,
@@ -614,16 +636,16 @@ function init(relationship) {
                             { value: 5, text: "Completely True" }],
                         rows: [{ value: "competence1rel9", text: "confident I can do things well." },
                             { value: "autonomy1rel9", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel9", text: "caring towards this person and cared for by this person." },
+                            { value: "relatedness1rel9", text: "caring towards others and cared for by others." },
                             { value: "compentence2rel9", text: "capable at what I do." },
                             { value: "autonomy2rel9", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel9", text: "close to this person." },
+                            { value: "relatedness2rel9", text: "close to others." },
                             { value: "competentce3rel9", text: "competent to achieve my goals." },
                             { value: "autonomy3rel9", text: "my choices express who I really am." },
-                            { value: "relatedness3rel9", text: "I experience a warm feeling with this person." },
+                            { value: "relatedness3rel9", text: "I experience a warm feelings with others." },
                             { value: "compentence4rel9", text: "I can successfully complete difficult tasks." },
                             { value: "autonomy4rel9", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel9", text: "connected with this person." },
+                            { value: "relatedness4rel9", text: "connected with others." },
                             { value: "valencerel9", text: "good about myself." }
                         ]}
             ]}
