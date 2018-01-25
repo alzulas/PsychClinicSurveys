@@ -7,6 +7,8 @@
 ////////////////////////////////////////////////////////////
 
 
+var testingCSV = "NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,Ed,4,3,4,5,4,3,4,3,3,4,4,3,3,name4,Disco Dancer,5,4,3,3,4,5,4,4,3,4,3,3,3,]";
+
 
 function printScores() {
     //creat array of possible relationships
@@ -176,7 +178,6 @@ function standardResults(compScore, autoScore, relateScore, relation){
     }
 }
 
-//testingCSV = [NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,Negative,4,3,4,5,4,3,4,3,3,4,4,3,3,Activity,5,4,3,3,4,5,4,4,3,4,3,3,3,]
 
 
 
@@ -332,68 +333,25 @@ el.onclick = function (event){//reset the cookie and reload the page
 
 //Use cookie to request data from the server, so long as cookie exists.
 function runPage(){
-    if (myid !== "") {
-        var dataPassed;
-        $.ajax({
-            type: "GET",
-            url: "/RSSMresult/" + myid,
-            async: false,
-            success: function (dataPassed) {
-                outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
-                console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
-                console.log("Get request complete");//verification that the data was retreieved.
-            },
-        });
-    }
+//    if (myid !== "") {
+//        var dataPassed;
+//        $.ajax({
+//            type: "GET",
+//            url: "/RSSMresult/" + myid,
+//            async: false,
+//            success: function (dataPassed) {
+//                outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
+//                console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
+//                console.log("Get request complete");//verification that the data was retreieved.
+//            },
+//        });
+//    }
+    outPutCSV = calculateScores(testingCSV);
+    console.log("outPutCSV");
 
         //d3.getElementById("myDiv").style.margin = "50px 10px 20px 30px";
         //This html just explains what the participant just did.
-        d3.select("body").append("p")
-            .style("margin", "30px 50px 0px 50px")
-            .text("The measure you completed was designed to assess your self concepts. Research has shown that rather than a single self-concept we actually possess a “family of selves”, and that we experience somewhat different “selves” when with different others or when engaged in different roles or activities. Individuals vary in how similar or different these multiple self-representations are from one another.");
-        d3.select("body").append("p")
-            .style("margin", "30px 50px 0px 50px")
-            .text("For each self-representation, this measure assessed the extent to which basic psychological needs are being met. According to self-determination theory (Ryan & Deci, 2000), humans have three needs:");
-        d3.select("body").append("li")
-            .style("margin", "30px 50px 0px 50px")
-            .text("Competence-refers to the experience of feeling effective and capable of achieving desired outcomes.");
-        d3.select("body").append("li")
-            .style("margin", "10px 50px 0px 50px")
-            .text("Relatedness-refers to the experience of intimacy and genuine connection with others.");
-        d3.select("body").append("li")
-            .style("margin", "10px 50px 0px 50px")
-            .text("Autonomy-refers to the experience of self-determination, full willingness, and volition when carrying out an activity.");
-        d3.select("body").append("p")
-            .style("margin", "30px 50px 0px 50px")
-            .text("Research has shown that individuals who experience higher levels of their needs being satisfied are more likely to experience higher levels of psychological functioning and well-being.  In contrast, individuals who experience frustration of these needs are more likely to experience distress.");
-        d3.select("body").append("p")
-            .style("margin", "30px 50px 0px 50px")
-            .text("To the extent that each of you experience high need satisfaction when these different selves are active, you are likely to experience greater psychological well-being. In this sense, your self-concept is adaptive, strong.");
-        d3.select("body").append("p")
-            .style("margin", "30px 50px 0px 50px")
-            .text("For each need, use the following scale to interpret your scores:");
-        d3.select("body").append("li")
-            .style("margin", "10px 50px 0px 50px")
-            .text("4.5 and above = a very high level of need satisfaction");
-        d3.select("body").append("li") //BOLD???
-            .style("margin", "10px 50px 0px 50px")
-            .text("4.0 – 4.4  = high level of need satisfaction");
-        d3.select("body").append("li")
-            .style("margin", "10px 50px 0px 50px")
-            .text("3.5 - 3.9  = average need satisfaction");
-        d3.select("body").append("li")
-            .style("margin", "10px 50px 0px 50px")
-            .text("2.5 – 3.4 = moderate need frustration");
-        d3.select("body").append("li")
-            .style("margin", "10px 50px 0px 50px")
-            .text("2.0 – 2.4 = high need frustration");
-        d3.select("body").append("li")
-            .style("margin", "10px 50px 0px 50px")
-            .text("1.0 – 1.9 = very high need frustration");
-        d3.select("body").append("p")
-            .style("margin", "30px 50px 0px 50px")
-            .text("");
-
+        
     //begins the process of printing scores. 
     //Common was to write JS, because any variables not wrapped in a function is available in the entire namespace of the website.
     printScores();
