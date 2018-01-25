@@ -102,31 +102,26 @@ function calculateScores(dataPassed){
             currentRelated = 0;
             round = 0;
 
-            if(calculationPassThrough==8 || calculationPassThrough==9){
-                //Move forward past questions like "relationship type" and a filler question
-                i = i+2;
-            }else{
-                i= i+2;
-                console.log("name = " + dataArray[i]);
-                if(dataArray[i]=="name1")
-                { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
-                    i++;
-                    relationship[6] = dataArray[i];
-                }else if(dataArray[i]=="name2"){
-                    i++;
-                    relationship[7] = dataArray[i];
-                }else if(dataArray[i]=="name3"){
-                    i++;
-                    relationship[8] = dataArray[i];
-                }else if(dataArray[i]=="name4"){
-                    i++;
-                    relationship[9] = dataArray[i];
-                    console.log("What is data here?" + dataArray[i]);
-                }
-                else{
-                    //Move forward past questions like "relationship type", "closeness" and a filler question
-                    i++;     
-                }
+            i= i+2;
+            console.log("name = " + dataArray[i]);
+            if(dataArray[i]==="name1")
+            { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
+                i++;
+                relationship[6] = dataArray[i];
+            }else if(dataArray[i]==="name2"){
+                i++;
+                relationship[7] = dataArray[i];
+            }else if(dataArray[i]==="name3"){
+                i++;
+                relationship[8] = dataArray[i];
+            }else if(dataArray[i]==="name4"){
+                i++;
+                relationship[9] = dataArray[i];
+                console.log("What is data here?" + dataArray[i]);
+            }
+            else{
+                //Move forward past questions like "relationship type", "closeness" and a filler question
+                i++;     
             }
             calculationPassThrough++;
         }
