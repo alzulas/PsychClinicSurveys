@@ -110,10 +110,15 @@ function calculateScores(dataPassed){
                 { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
                     i++;
                     relationship[6] = dataArray[i];
-                }
-                else if(dataArray[i]=="name2"){
+                }else if(dataArray[i]=="name2"){
                     i++;
                     relationship[7] = dataArray[i];
+                }else if(dataArray[i]=="name3"){
+                    i++;
+                    relationship[8] = dataArray[i];
+                }else if(dataArray[i]=="name4"){
+                    i++;
+                    relationship[9] = dataArray[i];
                 }
                 else{
                     //Move forward past questions like "relationship type", "closeness" and a filler question
@@ -399,6 +404,6 @@ function runPage(){
 //Create CSV array and retreive cookie
 var outPutCSV = [];
 var myid = getCookie("userName");
-var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "Critical Relationship", "Important Activity", "Overall"];
+var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "name3", "name4", "Overall"];
 
 runPage();
