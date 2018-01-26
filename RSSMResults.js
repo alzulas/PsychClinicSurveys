@@ -152,15 +152,17 @@ function standardResults(compScore, autoScore, relateScore, relation){
             .text("Your competence score is " + compScore.toFixed(2));
         //These include the actal mean and SD for the population, 
         //they go to a function to calculate where the participants score lies
-        standardDeviationPrint(compScore, 3.97, .74, "competancy");
-        d3.select("body").append("li")
-            .style("margin", "30px 50px 0px 50px")
-            .text("Your autonomy score is " + autoScore.toFixed(2));
-        standardDeviationPrint(autoScore, 3.85, .73, "autonomy");
-        d3.select("body").append("li")
-            .style("margin", "30px 50px 0px 50px")
-            .text("Your relatedness score is " + relateScore.toFixed(2));
-        standardDeviationPrint(compScore, 4.22, .69, "relatedness");
+        if (compScore !== undefined){
+            standardDeviationPrint(compScore, 3.97, .74, "competancy");
+            d3.select("body").append("li")
+                .style("margin", "30px 50px 0px 50px")
+                .text("Your autonomy score is " + autoScore.toFixed(2));
+            standardDeviationPrint(autoScore, 3.85, .73, "autonomy");
+            d3.select("body").append("li")
+                .style("margin", "30px 50px 0px 50px")
+                .text("Your relatedness score is " + relateScore.toFixed(2));
+            standardDeviationPrint(compScore, 4.22, .69, "relatedness");
+        }
     } else if(compScore !== 0 && autoScore !== 0 && relateScore !== 0) {//Print each relationship, so long as it exists
         d3.select("body").append("H1")
             .style("margin", "30px 50px 0px 50px")
@@ -252,19 +254,24 @@ function creatingBargraphData(dataset){
     var z = d3.scaleOrdinal()
         .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"]);
 
-    d3.csv("data1.csv", function(d, i, columns) {
-      for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
-      return d;
-    }, function(error, data) {
-      if (error) throw error;
-      console.log(data);
+//    d3.csv("data1.csv", function(d, i, columns) {
+//      for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
+//      return d;
+//    }, function(error, data) {
+//      if (error) throw error;
+//      console.log(data);
       //var data = newCSV;
+     //console.log(newCSV);
+      //var keys = data.columns.slice(1);
+    //console.log(keys);
 
-      var keys = data.columns.slice(1);
-
+      var data = newCSV;
+      var keys = ["Competance", "Autonomy", "Relatedness"];  
+      
       x0.domain(data.map(function(d) { return d.Relationship; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
       y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
+        console.log(data);
 
       g.append("g")
         .selectAll("g")
@@ -317,7 +324,7 @@ function creatingBargraphData(dataset){
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
-    });
+   // });
 
 
 //    for (var j = 0; i < relationship.length; j++){
