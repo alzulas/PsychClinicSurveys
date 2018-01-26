@@ -114,6 +114,7 @@ function calculateScores(dataPassed){
                 i++;
                 relationship[7] = dataArray[i];
             }else if(dataArray[i]==="name3"){
+                console.log("In name 3: " + dataArray[i+1]);
                 i++;
                 relationship[8] = dataArray[i];
             }else if(dataArray[i]==="name4"){
