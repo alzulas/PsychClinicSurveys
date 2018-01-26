@@ -296,8 +296,8 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("fill", "#000")
           .attr("font-weight", "bold")
           .attr("text-anchor", "start")
-          .text("High");
-    //console.log(y(y.ticks().pop()) + 0.5);
+          .text("Population");
+    console.log(y(y.ticks().pop()) + 0.5);
 
       var legend = g.append("g")
           .attr("font-family", "sans-serif")
