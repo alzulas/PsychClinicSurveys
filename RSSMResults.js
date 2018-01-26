@@ -254,8 +254,7 @@ function createBargraph(dataset){ //This was a test of D3
         .padding(0.05);
 
     var y = d3.scaleLinear()
-        .rangeRound([height, 0])
-        .scale(5.0);
+        .rangeRound([height, 0]);
 
     var z = d3.scaleOrdinal()
         .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"]);
@@ -292,7 +291,7 @@ function createBargraph(dataset){ //This was a test of D3
           .call(d3.axisLeft(y).ticks(null, "s"))
         .append("text")
           .attr("x", 2)
-          .attr("y", y(y.ticks().pop()) + 0.5)
+          .attr("y", 5)
           .attr("dy", "0.32em")
           .attr("fill", "#000")
           .attr("font-weight", "bold")
