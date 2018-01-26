@@ -1,8 +1,8 @@
 Relationship,Competence,Autonomy,Relatedness  
-Mother,0,0,0
-Father,0,0,0
+Mother,2,2,1.5
+Father,1,.5,1
 Romantic Partner,0,0,0
-Ex-Romantic Partner,0,0,0
+Ex-Romantic Partner,1,1,1.5
 Sibling,2.25,2.25,2.75
 Close Friend,2.75,2.75,2.75
 Bob,2,2,1.5
