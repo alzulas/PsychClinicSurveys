@@ -221,9 +221,13 @@ function standardDeviationPrint(Score, Mean, SD, type) { //participants score, p
     }   
 }
 
-function creatingBargraphData(dataset){
-    //Relationship,Competance,autonomy,relatedness
-    
+
+function createBargraph(dataset){ //This was a test of D3
+    //It creates a little RSSM graph
+    //It's not super useful
+    //But I kept the code just in case.
+    //If you'd like to see it, uncomment out the call to this function above.
+     //console.log("graphing20");
     var newCSV=[];
     
     var i = 0;
@@ -254,17 +258,6 @@ function creatingBargraphData(dataset){
 
     var z = d3.scaleOrdinal()
         .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"]);
-
-//    d3.csv("data1.csv", function(d, i, columns) {
-//      for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
-//      return d;
-//    }, function(error, data) {
-//      if (error) throw error;
-//      console.log(data);
-      //var data = newCSV;
-     //console.log(newCSV);
-      //var keys = data.columns.slice(1);
-    //console.log(keys);
 
       var data = newCSV;
       var keys = ["Competance", "Autonomy", "Relatedness"];  
@@ -325,99 +318,7 @@ function creatingBargraphData(dataset){
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
-   // });
 
-
-//    for (var j = 0; i < relationship.length; j++){
-//            for (var i = 0; i < dataset.length; i++){
-//        var somestuff = [relationship[j],dataset[i],dataset[i+1],dataset[i+2]];
-//                newCSV.push(somestuff);
-//                i=i+2;
-//            }
-//    }
-    //console.log(newCSV);
-    
-}
-
-function createBargraph(dataset){ //This was a test of D3
-    //It creates a little BISBAS graph
-    //It's not super useful
-    //But I kept the code just in case.
-    //If you'd like to see it, uncomment out the call to this function above.
-     //console.log("graphing20");
-    creatingBargraphData(dataset);
-//    var margin = {top: 40, right: 20, bottom: 30, left: 40},
-//    width = 960 - margin.left - margin.right,
-//    height = 500 - margin.top - margin.bottom;
-//
-//    var formatPercent = d3.format(".0%");
-//
-//    var x = d3.scale.ordinal()
-//        .rangeRoundBands([0, width], .1);
-//
-//    var y = d3.scale.linear()
-//        .range([height, 0]);
-//
-//    var xAxis = d3.svg.axis()
-//        .scale(x)
-//        .orient("bottom");
-//
-//    var yAxis = d3.svg.axis()
-//        .scale(y)
-//        .orient("left")
-//        .tickFormat(formatPercent);
-//
-//    var tip = d3.tip()
-//      .attr('class', 'd3-tip')
-//      .offset([-10, 0])
-//      .html(function(d) {
-//        return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
-//      })
-//
-//    var svg = d3.select("body").append("svg")
-//        .attr("width", width + margin.left + margin.right)
-//        .attr("height", height + margin.top + margin.bottom)
-//        .append("g")
-//        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-//
-//    svg.call(tip);
-//
-//    d3.tsv("data.tsv", type, function(error, data) {
-//      x.domain(data.map(function(d) { return d.letter; }));
-//      y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-//
-//      svg.append("g")
-//          .attr("class", "x axis")
-//          .attr("transform", "translate(0," + height + ")")
-//          .call(xAxis);
-//
-//      svg.append("g")
-//          .attr("class", "y axis")
-//          .call(yAxis)
-//          .append("text")
-//          .attr("transform", "rotate(-90)")
-//          .attr("y", 6)
-//          .attr("dy", ".71em")
-//          .style("text-anchor", "end")
-//          .text("Score");
-//
-//      svg.selectAll(".bar")
-//          .data(data)
-//        .enter().append("rect")
-//          .attr("class", "bar")
-//          .attr("x", function(d) { return x(d.letter); })
-//          .attr("width", x.rangeBand())
-//          .attr("y", function(d) { return y(d.frequency); })
-//          .attr("height", function(d) { return height - y(d.frequency); })
-//          .on('mouseover', tip.show)
-//          .on('mouseout', tip.hide)
-//
-//    });
-//
-//    function type(d) {
-//      d.frequency = +d.frequency;
-//      return d;
-//    }
 }
 
 //When the button on the page is clicked.
@@ -449,11 +350,6 @@ function runPage(){
             },
         });
     }
-    //outPutCSV = calculateScores(testingCSV);
-    //console.log("outPutCSV: " + outPutCSV);
-
-        //d3.getElementById("myDiv").style.margin = "50px 10px 20px 30px";
-        //This html just explains what the participant just did.
         
     //begins the process of printing scores. 
     //Common was to write JS, because any variables not wrapped in a function is available in the entire namespace of the website.
