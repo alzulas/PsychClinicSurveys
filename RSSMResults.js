@@ -428,20 +428,20 @@ el.onclick = function (event){//reset the cookie and reload the page
 
 //Use cookie to request data from the server, so long as cookie exists.
 function runPage(){
-//    if (myid !== "") {
-//        var dataPassed;
-//        $.ajax({
-//            type: "GET",
-//            url: "/RSSMresult/" + myid,
-//            async: false,
-//            success: function (dataPassed) {
-//                outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
-//                console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
-//                console.log("Get request complete");//verification that the data was retreieved.
-//            },
-//        });
-//    }
-    outPutCSV = calculateScores(testingCSV);
+    if (myid !== "") {
+        var dataPassed;
+        $.ajax({
+            type: "GET",
+            url: "/RSSMresult/" + myid,
+            async: false,
+            success: function (dataPassed) {
+                outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
+                console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
+                console.log("Get request complete");//verification that the data was retreieved.
+            },
+        });
+    }
+    //outPutCSV = calculateScores(testingCSV);
     console.log("outPutCSV: " + outPutCSV);
 
         //d3.getElementById("myDiv").style.margin = "50px 10px 20px 30px";
