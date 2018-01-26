@@ -257,7 +257,8 @@ function createBargraph(dataset){ //This was a test of D3
         .rangeRound([height, 0]);
 
     var z = d3.scaleOrdinal()
-        .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"]);
+        .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"])
+        .height(5.0);
 
       var data = newCSV;
       var keys = ["Competance", "Autonomy", "Relatedness"];  
@@ -291,13 +292,13 @@ function createBargraph(dataset){ //This was a test of D3
           .call(d3.axisLeft(y).ticks(null, "s"))
         .append("text")
           .attr("x", 2)
-          .attr("y", 5)
+          .attr("y", y(y.ticks().pop()) + 0.5)
           .attr("dy", "0.32em")
           .attr("fill", "#000")
           .attr("font-weight", "bold")
           .attr("text-anchor", "start")
-          .text("Population");
-    console.log(y(y.ticks().pop()) + 0.5);
+          .text("High");
+    //console.log(y(y.ticks().pop()) + 0.5);
 
       var legend = g.append("g")
           .attr("font-family", "sans-serif")
