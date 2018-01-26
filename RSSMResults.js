@@ -64,7 +64,7 @@ function calculateScores(dataPassed){
     //console.log("data array = " + dataArray);
     var round = 0;
     //Relevant data beings at position 8 in the array from the server
-    console.log("Entire log = " + dataArray);
+    //console.log("Entire log = " + dataArray);
     for (var i = 8; i < dataArray.length; i++){
         currentComp = currentComp + Number(dataArray[i]);//take current score for this relationship, add to previous
         overallComp = overallComp + Number(dataArray[i]);//Do for an overall score as well
@@ -123,7 +123,7 @@ function calculateScores(dataPassed){
                 //console.log("What is data here?" + dataArray[i]);
             }
             else{
-                //Move forward past questions like "relationship type", "closeness" and a filler question
+                //Move forward past questions like "relationship type", "closeness" and a filler qestion
                 i++;     
             }
             calculationPassThrough++;
@@ -272,7 +272,7 @@ function creatingBargraphData(dataset){
       x0.domain(data.map(function(d) { return d.Relationship; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
       y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
-        console.log(data);
+        //console.log(data);
 
       g.append("g")
         .selectAll("g")
@@ -335,7 +335,7 @@ function creatingBargraphData(dataset){
 //                i=i+2;
 //            }
 //    }
-    console.log(newCSV);
+    //console.log(newCSV);
     
 }
 
@@ -344,7 +344,7 @@ function createBargraph(dataset){ //This was a test of D3
     //It's not super useful
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
-     console.log("graphing20");
+     //console.log("graphing20");
     creatingBargraphData(dataset);
 //    var margin = {top: 40, right: 20, bottom: 30, left: 40},
 //    width = 960 - margin.left - margin.right,
@@ -444,13 +444,13 @@ function runPage(){
             async: false,
             success: function (dataPassed) {
                 outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
-                console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
+                //console.log(outPutCSV); //Correctly calculated data print to console so we can see it worked
                 console.log("Get request complete");//verification that the data was retreieved.
             },
         });
     }
     //outPutCSV = calculateScores(testingCSV);
-    console.log("outPutCSV: " + outPutCSV);
+    //console.log("outPutCSV: " + outPutCSV);
 
         //d3.getElementById("myDiv").style.margin = "50px 10px 20px 30px";
         //This html just explains what the participant just did.
