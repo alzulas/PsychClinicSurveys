@@ -283,7 +283,7 @@ function createBargraph(dataset){ //This was a test of D3
 
       g.append("g")
           .attr("class", "axis")
-          .attr("transform", "translate(0," + 5 + ")")
+          .attr("transform", "translate(0," + height + ")")
           .call(d3.axisBottom(x0));
 
       g.append("g")
