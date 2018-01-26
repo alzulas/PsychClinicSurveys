@@ -254,7 +254,7 @@ function createBargraph(dataset){ //This was a test of D3
         .padding(0.05);
 
     var y = d3.scaleLinear()
-        .rangeRound([height, 0]);
+        .rangeRound([5, 0]);
 
     var z = d3.scaleOrdinal()
         .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"]);
