@@ -264,7 +264,7 @@ function createBargraph(dataset){ //This was a test of D3
       
       x0.domain(data.map(function(d) { return d.Relationship; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-      y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
+      y.domain([0, 5]).nice();
         //console.log(data);
 
       g.append("g")
@@ -296,7 +296,7 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("fill", "#000")
           .attr("font-weight", "bold")
           .attr("text-anchor", "start")
-          .text("Population");
+          .text("High");
     console.log(y(y.ticks().pop()) + 0.5);
 
       var legend = g.append("g")
