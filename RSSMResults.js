@@ -242,7 +242,7 @@ function createBargraph(dataset){ //This was a test of D3
 
     var svg = d3.select("svg"),
         margin = {top: 20, right: 30, bottom: 30, left: 100},
-        width = +svg.attr("width") - margin.left - margin.right,
+        width = +svg.attr("width") - margin.left - margin.right + 200,
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
