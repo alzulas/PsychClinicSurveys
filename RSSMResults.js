@@ -258,7 +258,7 @@ function createBargraph(dataset){ //This was a test of D3
 
     var z = d3.scaleOrdinal()
         .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"]);
-
+    
       var data = newCSV;
       var keys = ["Competance", "Autonomy", "Relatedness"];  
       
@@ -347,6 +347,22 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
+    
+    var text = g.selectAll(".text")
+    .data(data);
+
+      text.enter()
+        .append("text")
+        .attr("class","text")
+        .attr("text-anchor", "right")
+        .attr("x", function(d) { return x(d.concept); })
+        .attr("y", function(d) { return y(d.weight) + 22;})
+        .attr("font-family", "sans-serif") 
+        .attr("font-size", "11px")
+        .attr("fill", "white")
+        .text(function(d) {
+            return d.concept;
+        });
     
        
 }
