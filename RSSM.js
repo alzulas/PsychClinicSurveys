@@ -135,7 +135,7 @@ function postAndMoveOn(surveyString){
         contentType: "application/json"
     });
     //go to the results page
-    //window.location.href = "RSSMResults.html";
+    window.location.href = "RSSMResults.html";
 }
 
 //************************************************************
@@ -710,7 +710,7 @@ function init(relationship) {
                 console.log("You pressed OK!");
             } else {
                 //If they want to see the old data, then just move on. Post nothing. 
-                //window.location.href = "RSSMResults.html";
+                window.location.href = "RSSMResults.html";
                 console.log("You pressed Cancel!");
             }
         }
