@@ -290,18 +290,46 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("class", "axis")
           .call(d3.axisLeft(y).ticks(null, "s"))
         .append("text")
+          .attr("font-size", 12)
+          .attr("transform", "rotate(-90)")
+          .attr("x", 0 - (height / 2))
+          .attr("y", 0 - 30)
+          .attr("dy", "0.1em")
+          .attr("fill", "#000")
+          .attr("font-weight", "bold")
+          .attr("text-anchor", "middle")
+          .text("Level of Need");
+    //console.log(y(y.ticks().pop()) + 0.5);
+        
+        g.append("g")
+          .attr("class", "axis")
+          .call(d3.axisLeft(y).ticks(null, "s"))
+        .append("text")
+          .attr("font-size", 12)
           .attr("x", 2)
           .attr("y", y(y.ticks().pop()) + 0.5)
           .attr("dy", "0.32em")
           .attr("fill", "#000")
           .attr("font-weight", "bold")
           .attr("text-anchor", "start")
-          .text("High");
-    console.log(y(y.ticks().pop()) + 0.5);
-
+          .text("Satisfaction");
+    
+        g.append("g")
+          .attr("class", "axis")
+          .call(d3.axisLeft(y).ticks(null, "s"))
+        .append("text")
+          .attr("font-size", 12)
+          .attr("x", 2)
+          .attr("y", 450)
+          .attr("dy", "0.1em")
+          .attr("fill", "#000")
+          .attr("font-weight", "bold")
+          .attr("text-anchor", "start")
+          .text("Frustration");
+       
       var legend = g.append("g")
           .attr("font-family", "sans-serif")
-          .attr("font-size", 10)
+          .attr("font-size", 12)
           .attr("text-anchor", "end")
         .selectAll("g")
         .data(keys.slice().reverse())
@@ -319,7 +347,8 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
-
+    
+       
 }
 
 //When the button on the page is clicked.
