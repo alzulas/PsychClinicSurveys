@@ -34,6 +34,7 @@ app.get('/BISresult/:myid', function (req, res) {
             IDfound = true; //If ID is found, that's the line we want. Send it out.
         } else if (tempLine === "") {
             IDfound = true;
+            res.send('');
             console.log("ID NOT FOUND");
         } else {
             currentLine++; //If not, then next line
@@ -57,6 +58,7 @@ app.get('/RSSMresult/:myid', function (req, res) {
             console.log("ID found");
         } else if (tempLine === "") {
             IDfound = true;
+            res.send('');
             console.log("ID NOT FOUND");
         } else {
             currentLine++;
