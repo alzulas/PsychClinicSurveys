@@ -96,7 +96,7 @@ function fixSurveyString(surveyString){
                 console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-    } while(typeof holdMyData !== '');//continue to do this until "holdMyData" is empty. If it is empty, that means that the call returned nothing and the ID did not exist on the server
+    } while(holdMyData !== '');//continue to do this until "holdMyData" is empty. If it is empty, that means that the call returned nothing and the ID did not exist on the server
     
     //Find the location of the beginning of the important information.
     //Delete everything before that. Replace it with the new stuff. 
