@@ -96,7 +96,7 @@ function fixSurveyString(surveyString){
                 console.log("Get request complete"); //verification that the data was retreieved.
             }
         });
-    } while(typeof holdMyData !== 'undefined');//continue to do this until "holdMyData" is empty. If it is empty, that means that the call returned nothing and the ID did not exist on the server
+    } while(typeof holdMyData !== '');//continue to do this until "holdMyData" is empty. If it is empty, that means that the call returned nothing and the ID did not exist on the server
     
     //Find the location of the beginning of the important information.
     //Delete everything before that. Replace it with the new stuff. 
@@ -699,7 +699,7 @@ function init(relationship) {
                 //verification that the data was retreieved.
             }
         });
-        if(holdMyData === undefined) {//if it's not been used before. Post and move to the results
+        if(holdMyData === '') {//if it's not been used before. Post and move to the results
             postAndMoveOn(surveyString);
         } else {//If it's been used before, show a pop up asking whether the user wants to create a new Unique ID or just retreive the old user data. 
             if (confirm("You have entered an ID that already exists. Clicking OK will modify your current ID so it can be saved uniquely. If you do not wish to do this, hit Cancel and you will be forwarded to the results page and shown the perviously entered data.")) {
