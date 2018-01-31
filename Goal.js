@@ -271,26 +271,58 @@ function init(relationship) {
                 { type: "html", name: "info", html: "<p> Most of us have goals--situations, conditions, states we are trying to make happen in the future.  In this measure, you will identify and describe the most important goals that you have had, that you are typically or characteristically trying to make happen.</p><p>Do not write down new goals that you create just for the purpose of this measure.  Only write down goals that have been on your mind before now, that you have already been directing effort towards and acting upon.</p><p> To help you identify your most important goals, you will first complete a brainstorming exercise.</p><p><b>Brainstorming</b></p><p> To help you identify your most important goals, you will first reflect on what you typically do in different life areas or domains.  After you reflect on what you are typically doing, you will then be asked if you have a goal in that life area, and if so, to describe that goal.</p>"}
             ]},
             
+            {questions: [
+                { type: "html", name: "title", html: "<b>Work/Job/Career</b>"
+                },
+                {
+                type: "comment",
+                name: "work",
+                title: "First, describe what you typically do that is related to making money, work, job, or career.  What daily actions or characteristic behaviors of yours relate to work-job-career? What types of situations do you seek out related to work-job-career (e.g. drive to Walmarts to do my shift, go to school to get a degree, try to impress my boss, invest money in stocks, etc.)?"
+                }
+            ]},
             
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "workGoalBool",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to work/job/career?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "workGoal",
+                    title: "Write your most important goal you have related to money and/or a job/occupation/career."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool",
+                    title: "Is your goal a part of a broader, larger goal related to money/work/career? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal",
+                    title: "Write whatever is your broadest or largest goal related to money/job/career:"
+                }
+            ]}, 
             
             {questions: [
                 {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup",
                     name: "thoughtsrel0",
-                    title: "How often are thoughts of your " + relationship[0] + " on your mind?",
+                    title: "How often are thoughts of your goal on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["I don't have a " + relationship[0], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-    
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel0", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[0] + ". Picture your " + relationship[0] + "’s face, and try to form a good image of your " + relationship[0] + ", getting an experience of You-with-your-" + relationship[0] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[0] + " does and says, how your " + relationship[0] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[0] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[0] + " (now, at this point in your life)."},
-
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel0", title: "When I interact with my " + relationship[0] + ", I feel  ... ", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel0", title: "When I think about my goal or when I am doing activities related to my goal, I feel: ", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -318,7 +350,7 @@ function init(relationship) {
                     title: "How often are thoughts of your " + relationship[1] + " on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["I don't have a " + relationship[1], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -356,7 +388,7 @@ function init(relationship) {
                     title: "How often are thoughts of your " + relationship[2] + " on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["I don't have a " + relationship[2], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -394,10 +426,10 @@ function init(relationship) {
                     //Just some words added to the question
                     type: "radiogroup",
                     name: "thoughtsrel3",
-                    title: "How often are thoughts of your " + relationship[3] + " on your mind? (If you have more than one " + relationship[3] + ", answer this question for the one who you think about most frequently)",
+                    title: "How often are thoughts of your " + relationship[3] + " on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["I don't have a " + relationship[3], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -432,10 +464,10 @@ function init(relationship) {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about. 
                     type: "radiogroup",
                     name: "thoughtsrel4",
-                    title: "How often are thoughts of your " + relationship[4] + " on your mind? (If you have more than one " + relationship[4] + ", answer this question for the one who you think about most frequently)",
+                    title: "How often are thoughts of your " + relationship[4] + " on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["I don't have a " + relationship[4], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -470,10 +502,10 @@ function init(relationship) {
                     //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup",
                     name: "thoughtsrel5",
-                    title: "How often are thoughts of your " + relationship[5] + " on your mind? (If you have more than one " + relationship[5] + ", answer this question for the one who you think about most frequently)",
+                    title: "How often are thoughts of your " + relationship[5] + " on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["I don't have a " + relationship[5], "Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -504,14 +536,14 @@ function init(relationship) {
                         ]}
             ]},
             {questions: [
-                //Special question with fill-in-the-blank name. Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                 {
-                    type: "text",
-                    name: "name1",
-                    title: "Think about another friend, or even acquaintance, who you interact with or think about a fair amount.  Write this person’s first name here: ",
+                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughtsrel6",
+                    title: "How often are thoughts of your " + relationship[6] + " on your mind?",
+                    colCount: 0,
                     isRequired: true,
-                    size: 15,
-                    width: "4"
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -541,14 +573,14 @@ function init(relationship) {
                         ]}
             ]},
             {questions: [
-                //Special question with fill-in-the-blank name. Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                 {
-                    type: "text",
-                    name: "name2",
-                    title: "Think about another friend, or even acquaintance, who you interact with or think about a fair amount.  Write this person’s first name here: ",
+                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughtsrel7",
+                    title: "How often are thoughts of your " + relationship[7] + " on your mind?",
+                    colCount: 0,
                     isRequired: true,
-                    size: 15,
-                    width: "4"
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -578,14 +610,14 @@ function init(relationship) {
                         ]}
             ]},
             {questions: [
-                //Special question with fill-in-the-blank name. Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                 {
-                    type: "text",
-                    name: "name3",
-                    title: "Think of a person that you often interact with but who you think may sometimes view you negatively or critically. This person should be different from any persons you have already answered questions for on this survey.  Please write the first name of this person who you think may view you negatively sometimes here: ",
+                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughtsrel8",
+                    title: "How often are thoughts of your " + relationship[8] + " on your mind?",
+                    colCount: 0,
                     isRequired: true,
-                    size: 15,
-                    width: "4"
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -615,14 +647,14 @@ function init(relationship) {
                         ]}
             ]},
             {questions: [
-                //Special question with fill-in-the-blank name. Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                 {
-                    type: "text",
-                    name: "name4",
-                    title: " Now think of a role or identity (e.g., teacher, boss, employee, poet, athlete, musician, mentor, etc.) that is important to how you think about yourself.  Please write the name of this role here: ",
+                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughtsrel9",
+                    title: "How often are thoughts of your " + relationship[9] + " on your mind?",
+                    colCount: 0,
                     isRequired: true,
-                    size: 15,
-                    width: "4"
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
@@ -725,5 +757,5 @@ function init(relationship) {
 //This is just the way js works. There is a thing asking if the page came up properly, and if so then run the init above. 
 if (!window["%hammerhead%"]) {
     //console.log("begin"); //debugging code.
-    init(["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend"]);
+    init(["Goal", "Home and Household matters", "Intimate Relationships (with boyfriend/girlfriend, husband/wife, love, and intimacy)", "Non-Intimate Relationships (with family, relatives, friends, acquaintances)", "Self-Change/Self-Growth (e.g., want to be less depressed, happier, more honest, etc.)", "Learning/Education", "Health and Medical Matters (e.g., want to lose weight, manage my diabetes, be more fit, etc.)", "Leisure/Recreation (learn how to play tennis, the guitar, read )", "Other Life Area Not Previously Mentioned"]);
 }
