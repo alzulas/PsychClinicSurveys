@@ -177,6 +177,8 @@ function init(relationship) {
         .addClass("mytextvalidator", [], function () {
             return new MyTextValidator();
         }, "surveyvalidator");
+    
+    var subtext = ["(e.g. drive to Walmarts to do my shift, go to school to get a degree, try to impress my boss, invest money in stocks, etc.)", "", "(with boyfriend/girlfriend, husband/wife, love, and intimacy)", "(with family, relatives, friends, acquaintances)", "(e.g., want to be less depressed, happier, more honest, etc.)", "", "(e.g., want to lose weight, manage my diabetes, be more fit, etc.)", "(learn how to play tennis, the guitar, read )", ""];
 
     //This is the JSON with all the questions and format in it
     var jsonBegin = {
@@ -272,12 +274,12 @@ function init(relationship) {
             ]},
             
             {questions: [
-                { type: "html", name: "title", html: "<b>Work/Job/Career</b>"
+                { type: "html", name: "title", html: "<b>" + relationship[0] + "</b>"
                 },
                 {
                 type: "comment",
                 name: "work",
-                title: "First, describe what you typically do that is related to making money, work, job, or career.  What daily actions or characteristic behaviors of yours relate to work-job-career? What types of situations do you seek out related to work-job-career (e.g. drive to Walmarts to do my shift, go to school to get a degree, try to impress my boss, invest money in stocks, etc.)?"
+                title: "First, describe what you typically do that is related to making money, work, job, or career.  What daily actions or characteristic behaviors of yours relate to " + relationship[0] + "? What types of situations do you seek out related to " + relationship[0] + "? " + subtext[0]
                 }
             ]},
             
@@ -285,35 +287,39 @@ function init(relationship) {
                 {
                     type: "radiogroup",
                     name: "workGoalBool",
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to work/job/career?",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[0] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
                     type: "comment",
                     name: "workGoal",
-                    title: "Write your most important goal you have related to money and/or a job/occupation/career."
+                    visibleIf: "{workGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[0] + "."
                 }
             ]}, 
             
             {questions: [
                 {
                     type: "radiogroup",
-                    name: "largerGoalBool",
-                    title: "Is your goal a part of a broader, larger goal related to money/work/career? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    name: "largerGoalBool0",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[0] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
                 {
                     type: "comment",
-                    name: "largerGoal",
-                    title: "Write whatever is your broadest or largest goal related to money/job/career:"
+                    name: "largerGoal0",
+                    visibleIf: "{largerGoalBool0} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[0] + ":"
                 }
             ]}, 
             
             {questions: [
                 {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup",
-                    name: "thoughtsrel0",
-                    title: "How often are thoughts of your goal on your mind?",
+                    name: "thoughts0",
+                    title: "How often are thoughts of your " + relationship[0] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
                     choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
@@ -322,367 +328,636 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel0", title: "When I think about my goal or when I am doing activities related to my goal, I feel: ", visibleIf: "{thoughtsrel0} contains 'Always' or {thoughtsrel0}='Often' or {thoughtsrel0}='time' or {thoughtsrel0}='sometimes' or {thoughtsrel0}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel0", title: "When I think about my  goal or when I am doing activities related to my " + relationship[0] + " goal, I feel: ", visibleIf: "{thoughts0} contains 'Always' or {thoughts0}='Often' or {thoughts0}='time' or {thoughts0}='sometimes' or {thoughts0}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel0", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel0", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel0", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel0", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel0", text: "capable at what I do." },
+                            { value: "relatedness1rel0", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel0", text: "capable at what I am doing." },
                             { value: "autonomy2rel0", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel0", text: "close to this person." },
-                            { value: "competentce3rel0", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel0", text: "close to people who are important to me." },
+                            { value: "competentce3rel0", text: "competent to achieve my goal." },
                             { value: "autonomy3rel0", text: "my choices express who I really am." },
-                            { value: "relatedness3rel0", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel0", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel0", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel0", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel0", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel0", text: "connected with this person." },
+                            { value: "relatedness4rel0", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel0", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[1] + "</b>"
+                },
+                {
+                type: "comment",
+                name: "home",
+                title: "First, describe what you typically do that is related to " + relationship[1] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[1] + "? What types of situations do you seek out related to " + relationship[1] + "? " + subtext[1]
+                }
+            ]},
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "homeGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[1] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "homeGoal",
+                    visibleIf: "{homeGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[1] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool1",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[1] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal1",
+                    visibleIf: "{largerGoalBool1} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[1] + ":"
+                }
+            ]}, 
+            
+            {questions: [
                 {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
                     type: "radiogroup",
-                    name: "thoughtsrel1",
-                    title: "How often are thoughts of your " + relationship[1] + " on your mind?",
+                    name: "thoughts1",
+                    title: "How often are thoughts of your " + relationship[1] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
                     choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel1", visibleIf: "{thoughtsrel1} contains 'Always' or {thoughtsrel1}='Often' or {thoughtsrel1}='time' or {thoughtsrel1}='sometimes' or {thoughtsrel1}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[1] + ". Picture your " + relationship[1] + "’s face, and try to form a good image of your " + relationship[1] + ", getting an experience of You-with-your-" + relationship[1] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[1] + " does and says, how your " + relationship[1] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[1] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[1] + " (now, at this point in your life)."},
-
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel1", title: "When I interact with my " + relationship[1] + ", I feel  ... ", visibleIf: "{thoughtsrel1} contains 'Always' or {thoughtsrel1}='Often' or {thoughtsrel1}='time' or {thoughtsrel1}='sometimes' or {thoughtsrel1}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel1", title: "When I think about my  goal or when I am doing activities related to my " + relationship[1] + " goal, I feel: ", visibleIf: "{thoughts1} contains 'Always' or {thoughts1}='Often' or {thoughts1}='time' or {thoughts1}='sometimes' or {thoughts1}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel1", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel1", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel1", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel1", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel1", text: "capable at what I do." },
+                            { value: "relatedness1rel1", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel1", text: "capable at what I am doing." },
                             { value: "autonomy2rel1", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel1", text: "close to this person." },
-                            { value: "competentce3rel1", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel1", text: "close to people who are important to me." },
+                            { value: "competentce3rel1", text: "competent to achieve my goal." },
                             { value: "autonomy3rel1", text: "my choices express who I really am." },
-                            { value: "relatedness3rel1", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel1", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel1", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel1", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel1", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel1", text: "connected with this person." },
+                            { value: "relatedness4rel1", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel1", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[2] + "</b>"
+                },
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                type: "comment",
+                name: "Intimate",
+                title: "First, describe what you typically do that is related to " + relationship[2] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[2] + "? What types of situations do you seek out related to " + relationship[2] + "? " + subtext[2]
+                }
+            ]},
+            
+            {questions: [
+                {
                     type: "radiogroup",
-                    name: "thoughtsrel2",
-                    title: "How often are thoughts of your " + relationship[2] + " on your mind?",
+                    name: "IntimateGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[2] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "IntimateGoal",
+                    visibleIf: "{IntimateGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[2] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool2",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[2] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal2",
+                    visibleIf: "{largerGoalBool2} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[2] + ":"
+                }
+            ]}, 
+            
+            {questions: [
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughts2",
+                    title: "How often are thoughts of your " + relationship[2] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
                     choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel2", visibleIf: "{thoughtsrel2} contains 'Always' or {thoughtsrel2}='Often' or {thoughtsrel2}='time' or {thoughtsrel2}='sometimes' or {thoughtsrel2}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[2] + ". Picture your " + relationship[2] + "’s face, and try to form a good image of your " + relationship[2] + ", getting an experience of You-with-your-" + relationship[2] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[2] + " does and says, how your " + relationship[2] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[2] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[2] + " (now, at this point in your life)."},
-
                 
-
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel2", title: "When I interact with my " + relationship[2] + ", I feel  ... ", visibleIf: "{thoughtsrel2} contains 'Always' or {thoughtsrel2}='Often' or {thoughtsrel2}='time' or {thoughtsrel2}='sometimes' or {thoughtsrel2}='Rarely'", visible: false, isRequired: true,
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel2", title: "When I think about my  goal or when I am doing activities related to my " + relationship[2] + " goal, I feel: ", visibleIf: "{thoughts2} contains 'Always' or {thoughts2}='Often' or {thoughts2}='time' or {thoughts2}='sometimes' or {thoughts2}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel2", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel2", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel2", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel2", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel2", text: "capable at what I do." },
+                            { value: "relatedness1rel2", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel2", text: "capable at what I am doing." },
                             { value: "autonomy2rel2", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel2", text: "close to this person." },
-                            { value: "competentce3rel2", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel2", text: "close to people who are important to me." },
+                            { value: "competentce3rel2", text: "competent to achieve my goal." },
                             { value: "autonomy3rel2", text: "my choices express who I really am." },
-                            { value: "relatedness3rel2", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel2", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel2", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel2", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel2", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel2", text: "connected with this person." },
+                            { value: "relatedness4rel2", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel2", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[3] + "</b>"
+                },
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about. 
-                    //BE CAREFUL HERE. THIS ONE IS DIFFERENT THAN THE ONES ABOVE, BUT THE SAME AS THE NEXT TWO
-                    //Just some words added to the question
+                type: "comment",
+                name: "NonIntimate",
+                title: "First, describe what you typically do that is related to " + relationship[3] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[3] + "? What types of situations do you seek out related to " + relationship[3] + "? " + subtext[3]
+                }
+            ]},
+            
+            {questions: [
+                {
                     type: "radiogroup",
-                    name: "thoughtsrel3",
-                    title: "How often are thoughts of your " + relationship[3] + " on your mind?",
+                    name: "NonIntimateGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[3] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "NonIntimateGoal",
+                    visibleIf: "{NonIntimateGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[3] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool3",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[3] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal3",
+                    visibleIf: "{largerGoalBool3} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[3] + ":"
+                }
+            ]}, 
+            
+            {questions: [
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughts3",
+                    title: "How often are thoughts of your " + relationship[3] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
                     choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel3", visibleIf: "{thoughtsrel3} contains 'Always' or {thoughtsrel3}='Often' or {thoughtsrel3}='time' or {thoughtsrel3}='sometimes' or {thoughtsrel3}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[3] + ". Picture your " + relationship[3] + "’s face, and try to form a good image of your " + relationship[3] + ", getting an experience of You-with-your-" + relationship[3] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[3] + " does and says, how your " + relationship[3] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[3] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[3] + " (now, at this point in your life)."},
-
                 
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel3", title: "When I interact with my " + relationship[3] + ", I feel  ... ", visibleIf: "{thoughtsrel3} contains 'Always' or {thoughtsrel3}='Often' or {thoughtsrel3}='time' or {thoughtsrel3}='sometimes' or {thoughtsrel3}='Rarely'", visible: false, isRequired: true,
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel3", title: "When I think about my  goal or when I am doing activities related to my " + relationship[3] + " goal, I feel: ", visibleIf: "{thoughts3} contains 'Always' or {thoughts3}='Often' or {thoughts3}='time' or {thoughts3}='sometimes' or {thoughts3}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel3", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel3", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel3", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel3", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel3", text: "capable at what I do." },
+                            { value: "relatedness1rel3", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel3", text: "capable at what I am doing." },
                             { value: "autonomy2rel3", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel3", text: "close to this person." },
-                            { value: "competentce3rel3", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel3", text: "close to people who are important to me." },
+                            { value: "competentce3rel3", text: "competent to achieve my goal." },
                             { value: "autonomy3rel3", text: "my choices express who I really am." },
-                            { value: "relatedness3rel3", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel3", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel3", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel3", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel3", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel3", text: "connected with this person." },
+                            { value: "relatedness4rel3", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel3", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[4] + "</b>"
+                },
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about. 
+                type: "comment",
+                name: "Self",
+                title: "First, describe what you typically do that is related to " + relationship[4] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[4] + "? What types of situations do you seek out related to " + relationship[4] + "? "  + subtext[4]
+                }
+            ]},
+            
+            {questions: [
+                {
                     type: "radiogroup",
-                    name: "thoughtsrel4",
-                    title: "How often are thoughts of your " + relationship[4] + " on your mind?",
+                    name: "SelfGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[4] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "SelfGoal",
+                    visibleIf: "{SelfGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[4] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool4",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[4] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal4",
+                    visibleIf: "{largerGoalBool4} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[4] + ":"
+                }
+            ]}, 
+            
+            {questions: [
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughts4",
+                    title: "How often are thoughts of your " + relationship[4] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
                     choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel4", visibleIf: "{thoughtsrel4} contains 'Always' or {thoughtsrel4}='Often' or {thoughtsrel4}='time' or {thoughtsrel4}='sometimes' or {thoughtsrel4}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[4] + ". Picture your " + relationship[4] + "’s face, and try to form a good image of your " + relationship[4] + ", getting an experience of You-with-your-" + relationship[4] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[4] + " does and says, how your " + relationship[4] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[4] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[4] + " (now, at this point in your life)."},
-
                 
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel4", title: "When I interact with my " + relationship[4] + ", I feel  ... ", visibleIf: "{thoughtsrel4} contains 'Always' or {thoughtsrel4}='Often' or {thoughtsrel4}='time' or {thoughtsrel4}='sometimes' or {thoughtsrel4}='Rarely'", visible: false, isRequired: true,
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel4", title: "When I think about my  goal or when I am doing activities related to my " + relationship[4] + " goal, I feel: ", visibleIf: "{thoughts4} contains 'Always' or {thoughts4}='Often' or {thoughts4}='time' or {thoughts4}='sometimes' or {thoughts4}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel4", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel4", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel4", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel4", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel4", text: "capable at what I do." },
+                            { value: "relatedness1rel4", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel4", text: "capable at what I am doing." },
                             { value: "autonomy2rel4", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel4", text: "close to this person." },
-                            { value: "competentce3rel4", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel4", text: "close to people who are important to me." },
+                            { value: "competentce3rel4", text: "competent to achieve my goal." },
                             { value: "autonomy3rel4", text: "my choices express who I really am." },
-                            { value: "relatedness3rel4", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel4", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel4", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel4", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel4", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel4", text: "connected with this person." },
+                            { value: "relatedness4rel4", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel4", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[5] + "</b>"
+                },
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                type: "comment",
+                name: "learning",
+                title: "First, describe what you typically do that is related to " + relationship[5] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[5] + "? What types of situations do you seek out related to " + relationship[5] + "? "  + subtext[5]
+                }
+            ]},
+            
+            {questions: [
+                {
                     type: "radiogroup",
-                    name: "thoughtsrel5",
-                    title: "How often are thoughts of your " + relationship[5] + " on your mind?",
+                    name: "learningGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[5] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "learningGoal",
+                    visibleIf: "{learningGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[5] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool5",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[5] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal5",
+                    visibleIf: "{largerGoalBool5} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[5] + ":"
+                }
+            ]}, 
+            
+            {questions: [
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughts5",
+                    title: "How often are thoughts of your " + relationship[5] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel5", visibleIf: "{thoughtsrel5} contains 'Always' or {thoughtsrel5}='Often' or {thoughtsrel5}='MostOfTheTime' or {thoughtsrel5}='sometimes' or {thoughtsrel5}='Rarely'", visible: false, html: "</p> <p> Think about a typical experience with your " + relationship[5] + ". Picture your " + relationship[5] + "’s face, and try to form a good image of your " + relationship[5] + ", getting an experience of You-with-your-" + relationship[5] + ".  It might help to imagine what typically happens between the two of you: what your " + relationship[5] + " does and says, how your " + relationship[5] + " does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-your-" + relationship[5] + ", please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with your " + relationship[5] + " (now, at this point in your life)."},
-
                 
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel5", title: "When I interact with my " + relationship[5] + ", I feel  ... ", visibleIf: "{thoughtsrel5} contains 'Always' or {thoughtsrel5}='Often' or {thoughtsrel5}='MostOfTheTime' or {thoughtsrel5}='sometimes' or {thoughtsrel5}='Rarely'", visible: false, isRequired: true,
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel5", title: "When I think about my  goal or when I am doing activities related to my " + relationship[5] + " goal, I feel: ", visibleIf: "{thoughts5} contains 'Always' or {thoughts5}='Often' or {thoughts5}='time' or {thoughts5}='sometimes' or {thoughts5}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel5", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel5", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel5", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel5", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel5", text: "capable at what I do." },
+                            { value: "relatedness1rel5", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel5", text: "capable at what I am doing." },
                             { value: "autonomy2rel5", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel5", text: "close to this person." },
-                            { value: "competentce3rel5", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel5", text: "close to people who are important to me." },
+                            { value: "competentce3rel5", text: "competent to achieve my goal." },
                             { value: "autonomy3rel5", text: "my choices express who I really am." },
-                            { value: "relatedness3rel5", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel5", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel5", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel5", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel5", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel5", text: "connected with this person." },
+                            { value: "relatedness4rel5", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel5", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[6] + "</b>"
+                },
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                type: "comment",
+                name: "health",
+                title: "First, describe what you typically do that is related to " + relationship[6] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[6] + "? What types of situations do you seek out related to " + relationship[6] + "? "  + subtext[6]
+                }
+            ]},
+            
+            {questions: [
+                {
                     type: "radiogroup",
-                    name: "thoughtsrel6",
-                    title: "How often are thoughts of your " + relationship[6] + " on your mind?",
+                    name: "healthGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[6] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "healthGoal",
+                    visibleIf: "{healthGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[6] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool6",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[6] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal6",
+                    visibleIf: "{largerGoalBool6} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[6] + ":"
+                }
+            ]}, 
+            
+            {questions: [
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughts6",
+                    title: "How often are thoughts of your " + relationship[6] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel6", html: "</p> <p> Picture {name1}’s face, and try to form a good image of {name1}, getting an experience of You-with-{name1}.  It might help to imagine what typically happens between the two of you: what {name1} does and says, how {name1} does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-{name1}, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with {name1} (now, at this point in your life)."},
-                                
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel6", title: "When I interact with {name1}, I feel  ... ", isRequired: true,
+                
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel6", title: "When I think about my  goal or when I am doing activities related to my " + relationship[6] + " goal, I feel: ", visibleIf: "{thoughts6} contains 'Always' or {thoughts6}='Often' or {thoughts6}='time' or {thoughts6}='sometimes' or {thoughts6}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel6", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel6", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel6", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel6", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel6", text: "capable at what I do." },
+                            { value: "relatedness1rel6", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel6", text: "capable at what I am doing." },
                             { value: "autonomy2rel6", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel6", text: "close to this person." },
-                            { value: "competentce3rel6", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel6", text: "close to people who are important to me." },
+                            { value: "competentce3rel6", text: "competent to achieve my goal." },
                             { value: "autonomy3rel6", text: "my choices express who I really am." },
-                            { value: "relatedness3rel6", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel6", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel6", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel6", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel6", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel6", text: "connected with this person." },
+                            { value: "relatedness4rel6", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel6", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[7] + "</b>"
+                },
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                type: "comment",
+                name: "leisure",
+                title: "First, describe what you typically do that is related to " + relationship[7] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[7] + "? What types of situations do you seek out related to " + relationship[7] + "? "  + subtext[7]
+                }
+            ]},
+            
+            {questions: [
+                {
                     type: "radiogroup",
-                    name: "thoughtsrel7",
-                    title: "How often are thoughts of your " + relationship[7] + " on your mind?",
+                    name: "leisureGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[7] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "leisureGoal",
+                    visibleIf: "{leisureGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[7] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool7",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[7] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal7",
+                    visibleIf: "{largerGoalBool7} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[7] + ":"
+                }
+            ]}, 
+            
+            {questions: [
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughts7",
+                    title: "How often are thoughts of your " + relationship[7] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel7", html: "</p> <p> Picture {name2}’s face, and try to form a good image of {name2}, getting an experience of You-with-{name2}.  It might help to imagine what typically happens between the two of you: what {name2} does and says, how {name2} does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-{name2}, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with {name2} (now, at this point in your life)."},
-                                
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel7", title: "When I interact with {name2}, I feel  ... ", isRequired: true,
+                
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel7", title: "When I think about my  goal or when I am doing activities related to my " + relationship[7] + " goal, I feel: ", visibleIf: "{thoughts7} contains 'Always' or {thoughts7}='Often' or {thoughts7}='time' or {thoughts7}='sometimes' or {thoughts7}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel7", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel7", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel7", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel7", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel7", text: "capable at what I do." },
+                            { value: "relatedness1rel7", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel7", text: "capable at what I am doing." },
                             { value: "autonomy2rel7", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel7", text: "close to this person." },
-                            { value: "competentce3rel7", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel7", text: "close to people who are important to me." },
+                            { value: "competentce3rel7", text: "competent to achieve my goal." },
                             { value: "autonomy3rel7", text: "my choices express who I really am." },
-                            { value: "relatedness3rel7", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel7", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel7", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel7", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel7", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel7", text: "connected with this person." },
+                            { value: "relatedness4rel7", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel7", text: "good about myself." }
                         ]}
             ]},
             {questions: [
+                { type: "html", name: "title", html: "<b>" + relationship[8] + "</b>"
+                },
                 {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                type: "comment",
+                name: "other",
+                title: "First, describe what you typically do that is related to " + relationship[8] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[8] + "? What types of situations do you seek out related to " + relationship[8] + "? " + subtext[8]
+                }
+            ]},
+            
+            {questions: [
+                {
                     type: "radiogroup",
-                    name: "thoughtsrel8",
-                    title: "How often are thoughts of your " + relationship[8] + " on your mind?",
+                    name: "otherGoalBool",
+                    isRequired: true,
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[8] + "?",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "otherGoal",
+                    visibleIf: "{otherGoalBool} contains 'Yes'", visible: false, 
+                    title: "Write your most important goal you have related to " + relationship[8] + "."
+                }
+            ]}, 
+            
+            {questions: [
+                {
+                    type: "radiogroup",
+                    name: "largerGoalBool8",
+                    isRequired: true,
+                    title: "Is your goal a part of a broader, larger goal related to " + relationship[8] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
+                    choices: ["Yes", "No"]
+                },
+                {
+                    type: "comment",
+                    name: "largerGoal8",
+                    visibleIf: "{largerGoalBool8} contains 'Yes'", visible: false,
+                    title: "Write whatever is your broadest or largest goal related to " + relationship[8] + ":"
+                }
+            ]}, 
+            
+            {questions: [
+                {//Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
+                    type: "radiogroup",
+                    name: "thoughts8",
+                    title: "How often are thoughts of your " + relationship[8] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel8", html: "</p> <p> Now think about a typical experience with {name3}. Picture {name3}’s face, and try to form a good image of {name3}, getting an experience of You-with-{name3}.  It might help to imagine what typically happens between the two of you: what {name3} does and says, how {name3} does it, and what you do and say, how you do it, as well as what you are trying to do. </p> <p> Once you have recreated this experience of You-with-{name3}, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are interacting with {name3} (now, at this point in your life)."},
-                                
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel8", title: "When I interact with this person who I think may view me negatively or critically, I feel ... ", isRequired: true,
+                
+                //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
+                { type: "matrix", name: "Qualityrel8", title: "When I think about my  goal or when I am doing activities related to my " + relationship[8] + " goal, I feel: ", visibleIf: "{thoughts8} contains 'Always' or {thoughts8}='Often' or {thoughts8}='time' or {thoughts8}='sometimes' or {thoughts8}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
                             { value: 4, text: " " },
                             { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel8", text: "confident I can do things well." },
+                        rows: [{ value: "competence1rel8", text: "confident I can actually do what is required." },
                             { value: "autonomy1rel8", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel8", text: "caring towards this person and cared for by this person." },
-                            { value: "compentence2rel8", text: "capable at what I do." },
+                            { value: "relatedness1rel8", text: "caring towards others and cared for by others." },
+                            { value: "compentence2rel8", text: "capable at what I am doing." },
                             { value: "autonomy2rel8", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel8", text: "close to this person." },
-                            { value: "competentce3rel8", text: "competent to achieve my goals." },
+                            { value: "relatedness2rel8", text: "close to people who are important to me." },
+                            { value: "competentce3rel8", text: "competent to achieve my goal." },
                             { value: "autonomy3rel8", text: "my choices express who I really am." },
-                            { value: "relatedness3rel8", text: "I experience a warm feeling with this person." },
-                            { value: "compentence4rel8", text: "I can successfully complete difficult tasks." },
+                            { value: "relatedness3rel8", text: "a warm feeling with the people I am spending time with." },
+                            { value: "compentence4rel8", text: "I can successfully complete difficult goal-related tasks." },
                             { value: "autonomy4rel8", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel8", text: "connected with this person." },
+                            { value: "relatedness4rel8", text: "connected with people who care for me, and for whom I care." },
                             { value: "valencerel8", text: "good about myself." }
                         ]}
             ]},
-            {questions: [
-                {
-                    //Radio group asking about how freuqnetly the person thinks about the relationship they are answering about.
-                    type: "radiogroup",
-                    name: "thoughtsrel9",
-                    title: "How often are thoughts of your " + relationship[9] + " on your mind?",
-                    colCount: 0,
-                    isRequired: true,
-                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "MostOfTheTime|Most of the Time", "Always"]
-                }
-            ]},
-            {questions: [
-                //This html describes how to think about the next set of questions.
-                { type: "html", name: "inforel9", html: "</p> <p> Now think about a typical experience when in this role of {name4} or doing activities related to {name4}. Picture yourself engaged in the role or activity, and try to form a good image of yourself doing it, where you are, what you are feeling and sensing as you are performing the activity, and what you are trying to do </p> <p> Once you have recreated this experience of You-as-{name4}, please read each of the following items carefully, and rate the extent to which each statement is generally true for how you feel and think about yourself when you are  in this role or engaged in this activity."},
-                                
-                   //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel9", title: "When I am in this role or engaged in this activity, I feel ...", isRequired: true,
-                        columns: [{ value: 1, text: "Not True At All" },
-                            { value: 2, text: " " },
-                            { value: 3, text: " " },
-                            { value: 4, text: " " },
-                            { value: 5, text: "Completely True" }],
-                        rows: [{ value: "competence1rel9", text: "confident I can do things well." },
-                            { value: "autonomy1rel9", text: "a sense of choice and freedom in the things I undertake." },
-                            { value: "relatedness1rel9", text: "caring towards others and cared for by others." },
-                            { value: "compentence2rel9", text: "capable at what I do." },
-                            { value: "autonomy2rel9", text: "my decisions reflect what I really want." },
-                            { value: "relatedness2rel9", text: "close to others." },
-                            { value: "competentce3rel9", text: "competent to achieve my goals." },
-                            { value: "autonomy3rel9", text: "my choices express who I really am." },
-                            { value: "relatedness3rel9", text: "I experience a warm feelings with others." },
-                            { value: "compentence4rel9", text: "I can successfully complete difficult tasks." },
-                            { value: "autonomy4rel9", text: "I have been doing what really interests me." },
-                            { value: "relatedness4rel9", text: "connected with others." },
-                            { value: "valencerel9", text: "good about myself." }
-                        ]}
-            ]}
+            
         ]
     };
     //Used for debugging
@@ -757,5 +1032,6 @@ function init(relationship) {
 //This is just the way js works. There is a thing asking if the page came up properly, and if so then run the init above. 
 if (!window["%hammerhead%"]) {
     //console.log("begin"); //debugging code.
-    init(["Goal", "Home and Household matters", "Intimate Relationships (with boyfriend/girlfriend, husband/wife, love, and intimacy)", "Non-Intimate Relationships (with family, relatives, friends, acquaintances)", "Self-Change/Self-Growth (e.g., want to be less depressed, happier, more honest, etc.)", "Learning/Education", "Health and Medical Matters (e.g., want to lose weight, manage my diabetes, be more fit, etc.)", "Leisure/Recreation (learn how to play tennis, the guitar, read )", "Other Life Area Not Previously Mentioned"]);
+    init(["Work/Job/Career", "Home and Household matters", "Intimate Relationships", "Non-Intimate Relationships", "Self-Change/Self-Growth", "Learning/Education", "Health and Medical Matters", "Leisure/Recreation", "Other Life Area Not Previously Mentioned"]);
+    
 }
