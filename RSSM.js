@@ -43,7 +43,7 @@ function CreateAnID (ResultsString) {
         ID = ID + lastName[lastName.length - 2].toUpperCase();
         
         //Then multiply the day, month, and year of DOB together, mod by 10,000. This gives a pretty random 3 digit number.  Add that onto the ID. 
-        moduloNumber = (mm * dd * yyyy)%10000;
+        var moduloNumber = (mm * dd * yyyy)%10000;
         ID = ID + moduloNumber;
         
         //location of the end of the DOB response. Slice to there. Add { ID: and the ID number

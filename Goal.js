@@ -270,25 +270,26 @@ function init(relationship) {
             
             {questions: [
               //This HTML introduces the next section. 
-                { type: "html", name: "info", html: "<p> Most of us have goals--situations, conditions, states we are trying to make happen in the future.  In this measure, you will identify and describe the most important goals that you have had, that you are typically or characteristically trying to make happen.</p><p>Do not write down new goals that you create just for the purpose of this measure.  Only write down goals that have been on your mind before now, that you have already been directing effort towards and acting upon.</p><p> To help you identify your most important goals, you will first complete a brainstorming exercise.</p><p><b>Brainstorming</b></p><p> To help you identify your most important goals, you will first reflect on what you typically do in different life areas or domains.  After you reflect on what you are typically doing, you will then be asked if you have a goal in that life area, and if so, to describe that goal.</p>"}
+                { type: "html", name: "info", html: "<p> Most of us have goals--situations, conditions, states we are trying to make happen in the future.  In this measure, you will identify and describe the most important goals that you have had, that you are typically or characteristically trying to make happen.</p><p>Do not write down new goals that you create just for the purpose of this measure.  Only write down goals that have been on your mind before now, that you have already been directing effort towards and acting upon.</p><p> To help you identify your most important goals, you will first complete a brainstorming exercise.</p><p>"}
             ]},
             
             {questions: [
+                { type: "html", name: "info", html: "<b>Brainstorming</b></p><p> To help you identify your most important goals, you will first reflect on what you typically do in different life areas or domains.  After you reflect on what you are typically doing, you will then be asked if you have a goal in that life area, and if so, to describe that goal.</p>"},
                 { type: "html", name: "title", html: "<b>" + relationship[0] + "</b>"
                 },
                 {
                 type: "comment",
                 name: "work",
-                title: "First, describe what you typically do that is related to making money, work, job, or career.  What daily actions or characteristic behaviors of yours relate to " + relationship[0] + "? What types of situations do you seek out related to " + relationship[0] + "? " + subtext[0]
+                title: "First, describe what you typically do that is related to making money, work, job, or career.  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[0] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[0] + "? " + subtext[0]
                 }
             ]},
-            
+                        
             {questions: [
                 {
                     type: "radiogroup",
                     name: "workGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[0] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[0] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -328,7 +329,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel0", title: "When I think about my  goal or when I am doing activities related to my " + relationship[0] + " goal, I feel: ", visibleIf: "{thoughts0} contains 'Always' or {thoughts0}='Often' or {thoughts0}='time' or {thoughts0}='sometimes' or {thoughts0}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel0", title: "When I think about my " + relationship[0] + " goal or when I am doing activities related to my " + relationship[0] + " goal, I feel: ", visibleIf: "{thoughts0} contains 'Always' or {thoughts0}='Often' or {thoughts0}='time' or {thoughts0}='sometimes' or {thoughts0}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -355,7 +356,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "home",
-                title: "First, describe what you typically do that is related to " + relationship[1] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[1] + "? What types of situations do you seek out related to " + relationship[1] + "? " + subtext[1]
+                title: "First, describe what you typically do that is related to " + relationship[1] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[1] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[1] + "? " + subtext[1]
                 }
             ]},
             
@@ -364,7 +365,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "homeGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[1] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[1] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -404,7 +405,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel1", title: "When I think about my  goal or when I am doing activities related to my " + relationship[1] + " goal, I feel: ", visibleIf: "{thoughts1} contains 'Always' or {thoughts1}='Often' or {thoughts1}='time' or {thoughts1}='sometimes' or {thoughts1}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel1", title: "When I think about my " + relationship[1] + " goal or when I am doing activities related to my " + relationship[1] + " goal, I feel: ", visibleIf: "{thoughts1} contains 'Always' or {thoughts1}='Often' or {thoughts1}='time' or {thoughts1}='sometimes' or {thoughts1}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -431,7 +432,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "Intimate",
-                title: "First, describe what you typically do that is related to " + relationship[2] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[2] + "? What types of situations do you seek out related to " + relationship[2] + "? " + subtext[2]
+                title: "First, describe what you typically do that is related to " + relationship[2] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[2] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[2] + "? " + subtext[2]
                 }
             ]},
             
@@ -440,7 +441,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "IntimateGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[2] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[2] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -480,7 +481,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel2", title: "When I think about my  goal or when I am doing activities related to my " + relationship[2] + " goal, I feel: ", visibleIf: "{thoughts2} contains 'Always' or {thoughts2}='Often' or {thoughts2}='time' or {thoughts2}='sometimes' or {thoughts2}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel2", title: "When I think about my " + relationship[2] + " goal or when I am doing activities related to my " + relationship[2] + " goal, I feel: ", visibleIf: "{thoughts2} contains 'Always' or {thoughts2}='Often' or {thoughts2}='time' or {thoughts2}='sometimes' or {thoughts2}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -507,7 +508,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "NonIntimate",
-                title: "First, describe what you typically do that is related to " + relationship[3] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[3] + "? What types of situations do you seek out related to " + relationship[3] + "? " + subtext[3]
+                title: "First, describe what you typically do that is related to " + relationship[3] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[3] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[3] + "? " + subtext[3]
                 }
             ]},
             
@@ -516,7 +517,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "NonIntimateGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[3] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[3] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -556,7 +557,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel3", title: "When I think about my  goal or when I am doing activities related to my " + relationship[3] + " goal, I feel: ", visibleIf: "{thoughts3} contains 'Always' or {thoughts3}='Often' or {thoughts3}='time' or {thoughts3}='sometimes' or {thoughts3}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel3", title: "When I think about my " + relationship[3] + " goal or when I am doing activities related to my " + relationship[3] + " goal, I feel: ", visibleIf: "{thoughts3} contains 'Always' or {thoughts3}='Often' or {thoughts3}='time' or {thoughts3}='sometimes' or {thoughts3}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -583,7 +584,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "Self",
-                title: "First, describe what you typically do that is related to " + relationship[4] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[4] + "? What types of situations do you seek out related to " + relationship[4] + "? "  + subtext[4]
+                title: "First, describe what you typically do that is related to " + relationship[4] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[4] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[4] + "? "  + subtext[4]
                 }
             ]},
             
@@ -592,7 +593,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "SelfGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[4] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[4] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -632,7 +633,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel4", title: "When I think about my  goal or when I am doing activities related to my " + relationship[4] + " goal, I feel: ", visibleIf: "{thoughts4} contains 'Always' or {thoughts4}='Often' or {thoughts4}='time' or {thoughts4}='sometimes' or {thoughts4}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel4", title: "When I think about my " + relationship[4] + " goal or when I am doing activities related to my " + relationship[4] + " goal, I feel: ", visibleIf: "{thoughts4} contains 'Always' or {thoughts4}='Often' or {thoughts4}='time' or {thoughts4}='sometimes' or {thoughts4}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -659,7 +660,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "learning",
-                title: "First, describe what you typically do that is related to " + relationship[5] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[5] + "? What types of situations do you seek out related to " + relationship[5] + "? "  + subtext[5]
+                title: "First, describe what you typically do that is related to " + relationship[5] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[5] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[5] + "? "  + subtext[5]
                 }
             ]},
             
@@ -668,7 +669,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "learningGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[5] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[5] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -708,7 +709,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel5", title: "When I think about my  goal or when I am doing activities related to my " + relationship[5] + " goal, I feel: ", visibleIf: "{thoughts5} contains 'Always' or {thoughts5}='Often' or {thoughts5}='time' or {thoughts5}='sometimes' or {thoughts5}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel5", title: "When I think about my " + relationship[5] + " goal or when I am doing activities related to my " + relationship[5] + " goal, I feel: ", visibleIf: "{thoughts5} contains 'Always' or {thoughts5}='Often' or {thoughts5}='time' or {thoughts5}='sometimes' or {thoughts5}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -735,7 +736,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "health",
-                title: "First, describe what you typically do that is related to " + relationship[6] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[6] + "? What types of situations do you seek out related to " + relationship[6] + "? "  + subtext[6]
+                title: "First, describe what you typically do that is related to " + relationship[6] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[6] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[6] + "? "  + subtext[6]
                 }
             ]},
             
@@ -744,7 +745,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "healthGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[6] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[6] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -784,7 +785,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel6", title: "When I think about my  goal or when I am doing activities related to my " + relationship[6] + " goal, I feel: ", visibleIf: "{thoughts6} contains 'Always' or {thoughts6}='Often' or {thoughts6}='time' or {thoughts6}='sometimes' or {thoughts6}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel6", title: "When I think about my " + relationship[6] + " goal or when I am doing activities related to my " + relationship[6] + " goal, I feel: ", visibleIf: "{thoughts6} contains 'Always' or {thoughts6}='Often' or {thoughts6}='time' or {thoughts6}='sometimes' or {thoughts6}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -811,7 +812,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "leisure",
-                title: "First, describe what you typically do that is related to " + relationship[7] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[7] + "? What types of situations do you seek out related to " + relationship[7] + "? "  + subtext[7]
+                title: "First, describe what you typically do that is related to " + relationship[7] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[7] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[7] + "? "  + subtext[7]
                 }
             ]},
             
@@ -820,7 +821,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "leisureGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[7] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[7] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -860,7 +861,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel7", title: "When I think about my  goal or when I am doing activities related to my " + relationship[7] + " goal, I feel: ", visibleIf: "{thoughts7} contains 'Always' or {thoughts7}='Often' or {thoughts7}='time' or {thoughts7}='sometimes' or {thoughts7}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel7", title: "When I think about my " + relationship[7] + " goal or when I am doing activities related to my " + relationship[7] + " goal, I feel: ", visibleIf: "{thoughts7} contains 'Always' or {thoughts7}='Often' or {thoughts7}='time' or {thoughts7}='sometimes' or {thoughts7}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
@@ -887,7 +888,7 @@ function init(relationship) {
                 {
                 type: "comment",
                 name: "other",
-                title: "First, describe what you typically do that is related to " + relationship[8] + ".  What daily actions or characteristic behaviors of yours relate to " + relationship[8] + "? What types of situations do you seek out related to " + relationship[8] + "? " + subtext[8]
+                title: "First, describe what you typically do that is related to " + relationship[8] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + relationship[8] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + relationship[8] + "? " + subtext[8]
                 }
             ]},
             
@@ -896,7 +897,7 @@ function init(relationship) {
                     type: "radiogroup",
                     name: "otherGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, do you think that you have had a goal-before now--related to " + relationship[8] + "?",
+                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind—before you were asked to complete this measure--related to " + relationship[8] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -936,7 +937,7 @@ function init(relationship) {
             {questions: [
                 
                 //A matrix question is a set of questions using a likert or likert-like scale. So the scale goes across the top (columns), and the questions allong the side(rows). Values will be useful in the final data set. Text is what is visible to the participant.   
-                { type: "matrix", name: "Qualityrel8", title: "When I think about my  goal or when I am doing activities related to my " + relationship[8] + " goal, I feel: ", visibleIf: "{thoughts8} contains 'Always' or {thoughts8}='Often' or {thoughts8}='time' or {thoughts8}='sometimes' or {thoughts8}='Rarely'", visible: false, isRequired: true,
+                { type: "matrix", name: "Qualityrel8", title: "When I think about my " + relationship[8] + " goal or when I am doing activities related to my " + relationship[8] + " goal, I feel: ", visibleIf: "{thoughts8} contains 'Always' or {thoughts8}='Often' or {thoughts8}='time' or {thoughts8}='sometimes' or {thoughts8}='Rarely'", visible: false, isRequired: true,
                         columns: [{ value: 1, text: "Not True At All" },
                             { value: 2, text: " " },
                             { value: 3, text: " " },
