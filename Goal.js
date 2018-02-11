@@ -399,7 +399,7 @@ function init(goals) {
                     title: "How often are thoughts of your " + goals[1] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
-                    choices: ["Never", "Ragoaly", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
+                    choices: ["Never", "Rarely", "sometimes|Occasionally/sometimes", "Often", "time|Most of the Time", "Always"]
                 }
             ]},
             {questions: [

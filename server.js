@@ -129,9 +129,9 @@ function turnToCSV(dataString) {
     //if it's BISBAS, use those headings, if RSSM, use those, Else call failure
     if (allDataAsString.includes("BIS")) {
         dataHeadings = BISBASHeadings;
-    } else if (allDataAsString.includes("Qualityrel")) {
+    } else if (allDataAsString.includes("thoughtsrel")) {
         dataHeadings = RSSMHeadings;
-    } else if (allDataAsString.includes("Qualitygoal")){
+    } else if (allDataAsString.includes("Goal")){
         dataHeadings = GoalsHeadings;
     } else {
         console.log("FAILED TO LOAD DATA TYPES!");
@@ -217,7 +217,7 @@ function turnToCSV(dataString) {
         console.log("The file was saved!");
         });
     }
-    else if (allDataAsString.includes("Qualityrel")){
+    else if (allDataAsString.includes("thoughtsrel")){
         //If RSSM, put the array into the file RSSM.csv
         var fs = require('fs');
         fs.appendFile("RSSM.csv", csv, function(err) {
@@ -229,7 +229,7 @@ function turnToCSV(dataString) {
         console.log("The file was saved!");
         });
     }
-        else if (allDataAsString.includes("Qualitygoal")){
+        else if (allDataAsString.includes("Goal")){
         //If RSSM, put the array into the file RSSM.csv
         var fs = require('fs');
         fs.appendFile("Goal.csv", csv, function(err) {
