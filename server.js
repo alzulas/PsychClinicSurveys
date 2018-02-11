@@ -31,7 +31,9 @@ app.get('/BISresult/:myid', function (req, res) {
         var tempLine = linesOfFile[currentLine];
         console.log("myid = " + myid);
         console.log("templine = " + tempLine);
-        if (tempLine === myid) {
+        var tempArray = tempLine.split(",");
+        console.log("temp array element = " + tempArray[0]);
+        if (tempArray[0] === myid) {
             res.send(tempLine);
             IDfound = true; //If ID is found, that's the line we want. Send it out.
         } else if (tempLine === "") {
