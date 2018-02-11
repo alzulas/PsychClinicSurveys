@@ -166,28 +166,29 @@ function turnToCSV(dataString) {
                         }
                     beginPosition++;    
                     }
-                //add the final bracket and push onto the CSV array
-                tempString += "]";
-                csv.push(tempString);
-            } else if (allDataAsString[beginPosition]=="\"") {
+                    //add the final bracket and push onto the CSV array
+                    tempString += "]";
+                    csv.push(tempString);
+                } else if (allDataAsString[beginPosition]=="\"") {
                 //if the first character is a " save the string until the next "
-                var tempString = allDataAsString[++beginPosition];
-                beginPosition++;
-                while (allDataAsString[beginPosition] != "\""){
-                    tempString += allDataAsString[beginPosition];
+                    var tempString = allDataAsString[++beginPosition];
                     beginPosition++;
-                }
-                //if the data is the ID, set that as the fileName
-                if (dataHeadings=="ID"){
-                    fileName = tempString;
-                }
-                //Push onto CSV array
-                csv.push(tempString);
-            } else {
-                //If the addition failed for any reason. 
-                console.log("ERROR IN DATA LOGGING");
-                console.log(dataHeadings[i]);
-            }
+                    while (allDataAsString[beginPosition] != "\""){
+                        tempString += allDataAsString[beginPosition];
+                        beginPosition++;
+                    }
+                    //if the data is the ID, set that as the fileName
+                    if (dataHeadings=="ID"){
+                        fileName = tempString;
+                    }
+                    //Push onto CSV array
+                    csv.push(tempString);
+                    } else {
+                    //If the addition failed for any reason. 
+                        console.log("ERROR IN DATA LOGGING");
+                        csv.push("");
+                        //console.log(dataHeadings[i]);
+                    }
         } else if(dataHeadings[i].includes("relativeType")) {
             //if the string is a relative type, then push onto the array the relationship from the above list, and go next
             csv.push(relationship[placeInHeadings]);

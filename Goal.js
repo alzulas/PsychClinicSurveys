@@ -88,7 +88,7 @@ function fixSurveyString(surveyString){
         //ajax call to the surver to see if the new ID exists somewhere in the list. This is a long call. The .csv is not a hashed database, so it's difficult to search. It's literally checking in O(n) time. The larger this csv becomes, the longer this check will take. 
         $.ajax({
             type: "GET",
-            url: "/RSSMresult/" + newIDAttempt,
+            url: "/GOALresult/" + newIDAttempt,
             async: false,
             success: function (dataPassed) {
                 //dataPassed saved in a variable that will continue outside of the call.
@@ -1002,7 +1002,7 @@ function init(goals) {
         //Check to see if this ID has been used before.
         $.ajax({
             type: "GET",
-            url: "/RSSMresult/" + tempString,
+            url: "/GOALresult/" + tempString,
             async: false,
             success: function (dataPassed) {
                 holdMyData = dataPassed;
