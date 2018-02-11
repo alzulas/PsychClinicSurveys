@@ -29,6 +29,8 @@ app.get('/BISresult/:myid', function (req, res) {
     var linesOfFile = fs.readFileSync('BISBAS.csv').toString().split("\n");
     while (!IDfound) { //find ID
         var tempLine = linesOfFile[currentLine];
+        console.log("myid = " + myid);
+        console.log("templine = " + tempLine);
         if (tempLine === myid) {
             res.send(tempLine);
             IDfound = true; //If ID is found, that's the line we want. Send it out.
