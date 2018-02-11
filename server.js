@@ -186,6 +186,7 @@ function turnToCSV(dataString) {
             } else {
                 //If the addition failed for any reason. 
                 console.log("ERROR IN DATA LOGGING");
+                console.log(dataHeadings[i]);
             }
         } else if(dataHeadings[i].includes("relativeType")) {
             //if the string is a relative type, then push onto the array the relationship from the above list, and go next
