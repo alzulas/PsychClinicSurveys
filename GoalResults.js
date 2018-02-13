@@ -65,7 +65,7 @@ function calculateScores(dataPassed){
     var round = 0;
     //Relevant data beings at position 12 in the array from the server
     //console.log("Entire log = " + dataArray);
-    for (var i = 12; i < dataArray.length; i++){
+    for (var i = 13; i < dataArray.length; i++){
         currentComp = currentComp + Number(dataArray[i]);//take current score for this goal, add to previous
         overallComp = overallComp + Number(dataArray[i]);//Do for an overall score as well
         if(Number(dataArray[i])==0){
