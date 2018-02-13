@@ -11,14 +11,14 @@
 
 
 function printScores() {
-    //creat array of possible relationships
-    //THIS IS ONE OF THE VARIABLES TO CHANGE IF YOU WANT TO ADD NEW RELATIONSHIPS.
+    //creat array of possible goals
+    //THIS IS ONE OF THE VARIABLES TO CHANGE IF YOU WANT TO ADD NEW GOALS.
     var i = 0;//counter
-    for (var relation in relationship){ //Go through each relationship above and...
-        standardResults(outPutCSV[i], outPutCSV[i+1], outPutCSV[i+2], relationship[relation]); //calculate info about it.
-        //The above hands the next part of this the comp score, auto score, relation score, and the relationship name
+    for (var relation in goal){ //Go through each goal above and...
+        standardResults(outPutCSV[i], outPutCSV[i+1], outPutCSV[i+2], goal[relation]); //calculate info about it.
+        //The above hands the next part of this the comp score, auto score, relation score, and the goal name
         i = i+3;
-        //it then progresses the counter to the next relationship in the CSV
+        //it then progresses the counter to the next goal in the CSV
     }
 }
 
@@ -63,13 +63,13 @@ function calculateScores(dataPassed){
     //round counter. Because every 4th time through the data, scores are calculated
     //console.log("data array = " + dataArray);
     var round = 0;
-    //Relevant data beings at position 8 in the array from the server
+    //Relevant data beings at position 12 in the array from the server
     //console.log("Entire log = " + dataArray);
-    for (var i = 8; i < dataArray.length; i++){
-        currentComp = currentComp + Number(dataArray[i]);//take current score for this relationship, add to previous
+    for (var i = 12; i < dataArray.length; i++){
+        currentComp = currentComp + Number(dataArray[i]);//take current score for this goal, add to previous
         overallComp = overallComp + Number(dataArray[i]);//Do for an overall score as well
         if(Number(dataArray[i])==0){
-            //If there is nothing in this relationship, because they don't have one or never think of that person,
+            //If there is nothing in this goal, because they don't have one or never think of that person,
             //Then the overall score must have a different number to divide from
             compDenominator--;
         }
@@ -90,7 +90,7 @@ function calculateScores(dataPassed){
         //Move forward round
         round++;
         if (round > 3){
-            //If we have all relevant scores for this relationship, then calculate averages
+            //If we have all relevant scores for this goal, then calculate averages
             currentComp = currentComp/4;
             currentAuto = currentAuto/4;
             currentRelated = currentRelated/4;
@@ -98,38 +98,17 @@ function calculateScores(dataPassed){
             results.push(currentComp);
             results.push(currentAuto);
             results.push(currentRelated);
-            //Reset variables for next relationship
+            //Reset variables for next goal
             currentAuto = 0;
             currentComp = 0;
             currentRelated = 0;
             round = 0;
 
-            i= i+2;
-            console.log("name = " + dataArray[i]);
-            if(dataArray[i]==="name1")
-            { //make sure the name they gave us is in the list of printed relationships. Also skipping some stuff. 
-                i++;
-                relationship[6] = dataArray[i];
-            }else if(dataArray[i]==="name2"){
-                i++;
-                relationship[7] = dataArray[i];
-            }else if(dataArray[i]==="name3"){
-                console.log("In name 3: " + dataArray[i+1]);
-                i++;
-                relationship[8] = dataArray[i];
-            }else if(dataArray[i]==="name4"){
-                i++;
-                relationship[9] = dataArray[i];
-                //console.log("What is data here?" + dataArray[i]);
-            }
-            else{
-                //Move forward past questions like "relationship type", "closeness" and a filler qestion
-                i++;     
-            }
+            i= i+8;
             calculationPassThrough++;
         }
     }
-    //Once all relationship scores are calculated, an overall must be calculated
+    //Once all goal scores are calculated, an overall must be calculated
     overallComp = overallComp/compDenominator;
     overallAuto = overallAuto/autoDenominator;
     overallRelated = overallRelated/relatedDenominator;
@@ -147,7 +126,7 @@ function standardResults(compScore, autoScore, relateScore, relation){
     if(relation == "Overall"){//Print overall scores last
         d3.select("body").append("H1")
             .style("margin", "30px 50px 0px 50px")
-            .text("Your Overall RSSM Scores are: ");
+            .text("Your Overall Goal Scores are: ");
         d3.select("body").append("li")
             .style("margin", "30px 50px 0px 50px")
             .text("Your competence score is " + compScore.toFixed(2));
@@ -164,10 +143,10 @@ function standardResults(compScore, autoScore, relateScore, relation){
                 .text("Your relatedness score is " + relateScore.toFixed(2));
             standardDeviationPrint(compScore, 4.22, .69, "relatedness");
         }
-    } else if(compScore !== 0 && autoScore !== 0 && relateScore !== 0) {//Print each relationship, so long as it exists
+    } else if(compScore !== 0 && autoScore !== 0 && relateScore !== 0) {//Print each goal, so long as it exists
         d3.select("body").append("H1")
             .style("margin", "30px 50px 0px 50px")
-            .text("RSSM Score for you with your " + relation);
+            .text("Goal Score for you with your " + relation);
         d3.select("body").append("li")
             .style("margin", "15px 50px 0px 50px")
             .text("Your competence score is " + compScore);
@@ -214,7 +193,7 @@ function standardDeviationPrint(Score, Mean, SD, type) { //participants score, p
             .style("margin", "15px 50px 0px 50px")
             .text("Your " + type + " score is very high");
     } else {
-        //Something in the code failed most likely. But also, they could have not answered for any relationship.
+        //Something in the code failed most likely. But also, they could have not answered for any goal.
         d3.select("body").append("p")
             .style("margin", "15px 50px 0px 50px")
             .text("Test was inconclusive or there is an error in the survey. Please contact the web developer.");
@@ -223,7 +202,7 @@ function standardDeviationPrint(Score, Mean, SD, type) { //participants score, p
 
 
 function createBargraph(dataset){ //This was a test of D3
-    //It creates a little RSSM graph
+    //It creates a little Goals graph
     //It's not super useful
     //But I kept the code just in case.
     //If you'd like to see it, uncomment out the call to this function above.
@@ -231,8 +210,8 @@ function createBargraph(dataset){ //This was a test of D3
     var newCSV=[];
     
     var i = 0;
-    for(j = 0; j < relationship.length; j++){
-            var line = {Relationship: relationship[j],Competance: dataset[i],Autonomy: dataset[i+1],Relatedness: dataset[i+2]};
+    for(j = 0; j < goal.length; j++){
+            var line = {Goal: goal[j],Competance: dataset[i],Autonomy: dataset[i+1],Relatedness: dataset[i+2]};
             i = i+3;
             newCSV.push(line);
             //console.log(line);
@@ -262,7 +241,7 @@ function createBargraph(dataset){ //This was a test of D3
       var data = newCSV;
       var keys = ["Competance", "Autonomy", "Relatedness"];  
       
-      x0.domain(data.map(function(d) { return d.Relationship; }));
+      x0.domain(data.map(function(d) { return d.Goal; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
       y.domain([0, 5]).nice();
         //console.log(data);
@@ -271,7 +250,7 @@ function createBargraph(dataset){ //This was a test of D3
         .selectAll("g")
         .data(data)
         .enter().append("g")
-          .attr("transform", function(d) { return "translate(" + x0(d.Relationship) + ",0)"; })
+          .attr("transform", function(d) { return "translate(" + x0(d.Goal) + ",0)"; })
         .selectAll("rect")
         .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
         .enter().append("rect")
@@ -370,7 +349,7 @@ function runPage(){
         var dataPassed;
         $.ajax({
             type: "GET",
-            url: "/RSSMresult/" + myid,
+            url: "/GOALresult/" + myid,
             async: false,
             success: function (dataPassed) {
                 outPutCSV = calculateScores(dataPassed); //collect data and put them into the CSV
@@ -389,6 +368,6 @@ function runPage(){
 //Create CSV array and retreive cookie
 var outPutCSV = [];
 var myid = getCookie("userName");
-var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "name3", "name4", "Overall"];
+var goal = ["Work/Job/Career", "Home and Household matters", "Intimate Relationships", "Non-Intimate Relationships", "Self-Change/Self-Growth", "Learning/Education", "Health and Medical Matters", "Leisure/Recreation", "Other Life Area Not Previously Mentioned"];
 
 runPage();

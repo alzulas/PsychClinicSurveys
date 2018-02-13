@@ -1,0 +1,13 @@
+/*.sv_qcbc input[type="radio"] {
+  
+  width:24em !important;
+  height:24em !important;
+  margin: 4px !important;
+}*/
+
+.sv_qcbc input[type="radio"] {
+    -ms-transform: scale(1.5) !important; /* IE 9 */
+    -webkit-transform: scale(1.5) !important; /* Chrome, Safari, Opera */
+    transform: scale(1.5) !important;
+    margin: 4px !important;
+}
