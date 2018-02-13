@@ -368,6 +368,6 @@ function runPage(){
 //Create CSV array and retreive cookie
 var outPutCSV = [];
 var myid = getCookie("userName");
-var goal = ["Work/Job/Career", "Home and Household matters", "Intimate Relationships", "Non-Intimate Relationships", "Self-Change/Self-Growth", "Learning/Education", "Health and Medical Matters", "Leisure/Recreation", "Other Life Area Not Previously Mentioned"];
+var goal = ["Work/Job/Career", "Home and Household matters", "Intimate Relationships", "Non-Intimate Relationships", "Self-Change/Self-Growth", "Learning/Education", "Health and Medical Matters", "Leisure/Recreation", "Other Life Area Not Previously Mentioned", "Overall"];
 
 runPage();
