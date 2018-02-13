@@ -9,7 +9,7 @@
     -ms-transform: scale(1.5) !important; /* IE 9 */
     -webkit-transform: scale(1.5) !important; /* Chrome, Safari, Opera */
     transform: scale(1.5) !important;
-    margin: 4px !important;
+    margin: 5px !important;
 }
 .sv_qcbc input[type="checkbox"]{
     -ms-transform: scale(1.5) !important; /* IE 9 */
