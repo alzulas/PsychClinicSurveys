@@ -264,7 +264,7 @@ function createBargraph(dataset){ //This was a test of D3
       
       x0.domain(data.map(function(d) { return d.Relationship; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-      y.domain([0, 5]).nice();
+      y.domain([-2.5, 2.5]).nice();
         //console.log(data);
 
       g.append("g")
