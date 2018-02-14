@@ -232,7 +232,7 @@ function createBargraph(dataset){ //This was a test of D3
     
     var i = 0;
     for(j = 0; j < relationship.length; j++){
-            var line = {Relationship: relationship[j],Competance: dataset[i],Autonomy: dataset[i+1],Relatedness: dataset[i+2]};
+            var line = {Relationship: relationship[j],Competance: (dataset[i]-2.5),Autonomy: (dataset[i+1]-2.5),Relatedness: (dataset[i+2]-2.5)};
             i = i+3;
             newCSV.push(line);
             //console.log(line);
