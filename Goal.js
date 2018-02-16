@@ -305,6 +305,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool0",
                     isRequired: true,
+                    visibleIf: "{workGoalBool} contains 'Yes'", visible: false, 
                     title: "Is your goal a part of a broader, larger goal related to " + goals[0] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -320,6 +321,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts0",
+                    visibleIf: "{workGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[0] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -381,6 +383,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool1",
                     isRequired: true,
+                    visibleIf: "{homeGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[1] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -396,6 +399,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts1",
+                    visibleIf: "{homeGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[1] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -457,6 +461,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool2",
                     isRequired: true,
+                    visibleIf: "{IntimateGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[2] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -472,6 +477,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts2",
+                    visibleIf: "{IntimateGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[2] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -533,6 +539,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool3",
                     isRequired: true,
+                    visibleIf: "{NonIntimateGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[3] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -548,6 +555,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts3",
+                    visibleIf: "{NonIntimateGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[3] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -609,6 +617,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool4",
                     isRequired: true,
+                    visibleIf: "{SelfGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[4] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -624,6 +633,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts4",
+                    visibleIf: "{SelfGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[4] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -685,6 +695,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool5",
                     isRequired: true,
+                    visibleIf: "{learningGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[5] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -700,6 +711,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts5",
+                    visibleIf: "{learningGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[5] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -761,6 +773,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool6",
                     isRequired: true,
+                    visibleIf: "{healthGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[6] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -776,6 +789,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts6",
+                    visibleIf: "{healthGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[6] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -837,6 +851,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool7",
                     isRequired: true,
+                    visibleIf: "{leisureGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[7] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -852,6 +867,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts7",
+                    visibleIf: "{leisureGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[7] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
@@ -913,6 +929,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "largerGoalBool8",
                     isRequired: true,
+                    visibleIf: "{otherGoalBool} contains 'Yes'", visible: false,
                     title: "Is your goal a part of a broader, larger goal related to " + goals[8] + "? For instance, a goal to pass a class may relate to a larger goal of attaining a meaningful and rewarding career.",
                     choices: ["Yes", "No"]
                 },
@@ -928,6 +945,7 @@ function init(goals) {
                 {//Radio group asking about how freuqnetly the person thinks about the goals they are answering about.
                     type: "radiogroup",
                     name: "thoughts8",
+                    visibleIf: "{otherGoalBool} contains 'Yes'", visible: false,
                     title: "How often are thoughts of your " + goals[8] + " goal on your mind?",
                     colCount: 0,
                     isRequired: true,
