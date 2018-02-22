@@ -2,14 +2,12 @@ Current work list:
 -https
 -Creating PDF
 -Graph changes
--Goal measure invisible if statements
--The instructions after the demographic questions should have a big, bold heading above them.
-aybe the prompts should be on separate pages from the questions as well, to emphasize that they need to be read every time before the measures can be responded to.
-- Competency, relatedness, and autonomy could be good choices to be bolded. (Also total side-note, a colon might be better than a dash to lead into the definitions of the construct terms on the results page, just my stylistic preference)
+-Maybe the prompts should be on separate pages from the questions as well, to emphasize that they need to be read every time before the measures can be responded to.
 - The words “Frustration” and Satisfaction” currently overlap onto the bar graphs in a confusing way, putting them on the other side of the x-axis would solve that.
 - The key for the bar graph constructs is currently listing the constructs in the opposite order they’re presented in the graph itself. The key should probably be flipped to avoid confusion.
 - I still like the idea of making the mid-point for the bar graphs sit on the x-axis, so scores lower than the average would be lower than the x-axis and could be colored shades of red. Who knows how hard that would be to implement, but I think it would take the graphs to the next level. This could have some consequences for the color key though, so a different way to identify the bars on the graph may be needed. Maybe headers over the bars: A for autonomy, C for competency, etc.
 -For gender, “other” with a text response option is probably preferable to intersex
+-Finalizing comments
 
 
 
@@ -17,4 +15,7 @@ aybe the prompts should be on separate pages from the questions as well, to emph
 Recent work completed 
 - index page goals link
 - front page image size reduction
-- 
+- Goals page links
+- Goal measure invisible if statements
+- The instructions after the demographic questions should have a big, bold heading above them.
+- Competency, relatedness, and autonomy could be good choices to be bolded. (Also total side-note, a colon might be better than a dash to lead into the definitions of the construct terms on the results page, just my stylistic preference)

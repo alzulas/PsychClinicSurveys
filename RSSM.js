@@ -268,7 +268,7 @@ function init(relationship) {
 
             {questions: [
               //This HTML introduces the next section. 
-                { type: "html", name: "info", html: "<p> Most people think differently about themselves depending on who they are with and what they are doing.  This questionnaire is trying to get at how you think about yourself when you are with different people and when you are in different roles in your life.</p>"}
+                { type: "html", name: "info", html: "<p><b>The Relational Self Schema Measure</b></p><p> Most people think differently about themselves depending on who they are with and what they are doing.  This questionnaire is trying to get at how you think about yourself when you are with different people and when you are in different roles in your life.</p>"}
             ]},
             
             {questions: [
