@@ -8,11 +8,17 @@ Current work list:
     - The words “Frustration” and Satisfaction” currently overlap onto the bar graphs in a confusing way, putting them on the other side of the x-axis would solve that.
     - The key for the bar graph constructs is currently listing the constructs in the opposite order they’re presented in the graph itself. The key should probably be flipped to avoid confusion.
     - I still like the idea of making the mid-point for the bar graphs sit on the x-axis, so scores lower than the average would be lower than the x-axis and could be colored shades of red. Who knows how hard that would be to implement, but I think it would take the graphs to the next level. This could have some consequences for the color key though, so a different way to identify the bars on the graph may be needed. Maybe headers over the bars: A for autonomy, C for competency, etc.
--Maybe the prompts should be on separate pages from the questions as well, to emphasize that they need to be read every time before the measures can be responded to.
 -Finalizing comments
 
 
-Recent work completed 
+GOALS MEASURE change request:
+-Let’s Keep this: First, describe what you typically do that is related to Intimate/Love Relationships (e.g., with boyfriend/girlfriend, husband/wife, etc.).  What daily actions or typical behaviors do you exhibit that relate to intimate/love relationships?
+    -And delete this:  “What type of situations do you typically seek out, put yourself in, that are situations related to intimate relationships?”
+-in going through it again, on the page that follows the one above for each goal item,  let’s also delete:
+ “and the situations you put yourself in,’´ where it says After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to Work/Job/Career?
+
+
+Recent work completed: 
 - https
 - index page goals link
 - front page image size reduction
@@ -21,5 +27,6 @@ Recent work completed
 - The instructions after the demographic questions should have a big, bold heading above them.
 - Competency, relatedness, and autonomy could be good choices to be bolded. (Also total side-note, a colon might be better than a dash to lead into the definitions of the construct terms on the results page, just my stylistic preference)
 
-Conversation ongoing:
--For gender, “other” with a text response option is probably preferable to intersex: Most recent conversation about this is that we don't necessarily want to gather how people identify, but just at birth data. 
+Decided not to make these changes:
+-For gender, “other” with a text response option is probably preferable to intersex: Most recent conversation about this is that we don't necessarily want to gather how people identify, but just at birth data.
+-Maybe the prompts should be on separate pages from the questions as well, to emphasize that they need to be read every time before the measures can be responded to.
