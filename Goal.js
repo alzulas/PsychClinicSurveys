@@ -7,6 +7,26 @@
 //  alzulas@alzulas.com                                 ////
 ////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////
+//  Note for Psychologist in charge (Walter Scott)      ////
+//  To modify an existing goal, scroll to the very bottom///
+//      and edit the list of goals. You will also need to///
+//      edit the "subtext" for that goal on ~line 187   ////
+//  To modify an existing subtext, go to ~line 187      ////
+//  To add an entirely new goal, three things must happen///
+//      1. Add the goal to the list at the very bottom of///
+//          this file                                   ////
+//      2. Add the subtext for the goal in the list on  ////
+//          line ~187                                   ////
+//      3. Copy questions from goal #8 starting on ~line////
+//          914 and ending on ~line 993. Then paste     ////
+//          directly below questions for goal #8. There ////
+//          There are comments indicating where to copy ////
+//          from and where to post to. Then change all  ////
+//          of the 8's for 9's in this newly posted content/
+////////////////////////////////////////////////////////////
+
+
 //************************************************************
 //This function creates a unique ID for users who were not given an ID to begin with. 
 //************************************************************
@@ -18,10 +38,10 @@ function CreateAnID (ResultsString) {
     ResultsString = ResultsString.slice(18, ResultsString.length+1);
     ResultsString = "{" + ResultsString;
     
-    //This checks to see if the user needs an idea
+    //This checks to see if the user needs an ID
     if (ResultsString.includes("IDName")){
         //If the person didn't have an ID, take the three pieces of information they gave and create an ID out of it. Then put that in the ID place, and return the string.
-        //Split out the parts you need
+        //Split out the parts of data you need from the string JSON
         var splitString = ResultsString.split("\",\"");
         var firstName = splitString[0].slice(12, splitString[0].length);
         var lastName = splitString[1].slice(9, splitString[1].length);
@@ -47,6 +67,7 @@ function CreateAnID (ResultsString) {
         ID = ID + moduloNumber;
         
         //location of the end of the DOB response. Slice to there. Add { ID: and the ID number
+        //This will make the JSON string look like it would if the user already had an ID. It's the way the server handles the data when it comes in.
         var position = ResultsString.indexOf("IDNumber");
         position = position + 19;
         ResultsString = ResultsString.slice(position, ResultsString.length);
@@ -62,13 +83,13 @@ function CreateAnID (ResultsString) {
 }
 
 //************************************************************
-//This function will fix an ID number if there is a collision (i.e., the ID already exists) and the use would like to not override the current data.
+//This function will fix an ID number if there is a collision (i.e., the ID already exists) and the user would like to not override the current data.
 //************************************************************
 function fixSurveyString(surveyString){
     var newIDAttempt
     
     //Find the ID number
-    if (surveyString.includes("ID")) {
+    if (surveyString.includes("ID")) { //This is mostly a safety check. There should be no way that IS doesn't exist in the data.
         //Find it's location and pull out the current ID
         var pos = surveyString.indexOf("ID");
         pos = pos + "ID".length + 3;
@@ -85,7 +106,7 @@ function fixSurveyString(surveyString){
         //Take the current ID and add on random number somewhere between 1 and 100. Math.random in JS returns a number between 0 and 1, but *100 and flooring the number allows it to be a whole number between 1 and 100. 
         newIDAttempt = tempString + (Math.floor((Math.random() * 100) + 1));
         
-        //ajax call to the surver to see if the new ID exists somewhere in the list. This is a long call. The .csv is not a hashed database, so it's difficult to search. It's literally checking in O(n) time. The larger this csv becomes, the longer this check will take. 
+        //ajax call to the surver to see if the new ID exists somewhere in the list. This is a long call. The .csv is not a hashed database, so it's difficult to search. It's literally checking in O(n) time. The larger this csv becomes, the longer this check will take.
         $.ajax({
             type: "GET",
             url: "/GOALresult/" + newIDAttempt,
@@ -118,7 +139,7 @@ function fixSurveyString(surveyString){
 }
 
 //************************************************************
-//This section posts the data to the server. 
+//This function posts the data to the server. 
 //************************************************************
 function postAndMoveOn(surveyString){
     //post data
@@ -139,11 +160,11 @@ function postAndMoveOn(surveyString){
 }
 
 //************************************************************
-//Everything else json ext
+//Everything else json etc. Sets up the bulk of the survey.
 //************************************************************
 
 function init(goals) {
-    //Validator looks to make sure that when you enter in the ID it's 8 characters long and only numbers. It has very specific text to set it up. Just don't touch it. 
+    //Validator looks to make sure that when you enter in your DOB it's 8 characters long and only numbers. It has very specific text to set it up. Just don't touch it. 
     var MyTextValidator = (function (_super) {
     Survey.__extends(MyTextValidator, _super);
     function MyTextValidator() {
@@ -162,7 +183,7 @@ function init(goals) {
         //return nothing if there is no any error.
         return null;
     };
-    //the default error text. It shows if user do not set the ID text property
+    //the default error text. It shows if user do not set the DOB text property
     MyTextValidator.prototype.getDefaultErrorText = function (name) {
         return "Your entry should contain only eight numbers.";
     }
@@ -178,6 +199,10 @@ function init(goals) {
             return new MyTextValidator();
         }, "surveyvalidator");
     
+    
+    //Specific subtext for each goal
+    //WALT!!!!!
+    //If you need to change any subtexts, they are right here.
     var subtext = ["(e.g. drive to Walmarts to do my shift, go to school to get a degree, try to impress my boss, invest money in stocks, etc.)", "", "(with boyfriend/girlfriend, husband/wife, love, and intimacy)", "(with family, relatives, friends, acquaintances)", "(e.g., want to be less depressed, happier, more honest, etc.)", "", "(e.g., want to lose weight, manage my diabetes, be more fit, etc.)", "(learn how to play tennis, the guitar, read )", ""];
 
     //This is the JSON with all the questions and format in it
@@ -277,10 +302,10 @@ function init(goals) {
                 { type: "html", name: "info", html: "<b>Brainstorming</b></p><p> To help you identify your most important goals, you will first reflect on what you typically do in different life areas or domains.  After you reflect on what you are typically doing, you will then be asked if you have a goal in that life area, and if so, to describe that goal.</p>"},
                 { type: "html", name: "title", html: "<b>" + goals[0] + "</b>"
                 },
-                {
+                {//comment questions are just big text boxes where people can enter whatever they want.
                 type: "comment",
                 name: "work",
-                title: "First, describe what you typically do that is related to making money, work, job, or career.  What daily actions or typical behaviors do you exhibit that  relate to " + goals[0] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[0] + "? " + subtext[0]
+                title: "First, describe what you typically do that is related to making money, work, job, or career.  What daily actions or typical behaviors do you exhibit that  relate to " + goals[0] + subtext[0] + "?"
                 }
             ]},
                         
@@ -289,7 +314,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "workGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[0] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[0] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -358,7 +383,7 @@ function init(goals) {
                 {
                 type: "comment",
                 name: "home",
-                title: "First, describe what you typically do that is related to " + goals[1] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[1] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[1] + "? " + subtext[1]
+                title: "First, describe what you typically do that is related to " + goals[1] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[1] + subtext [1] + "?"
                 }
             ]},
             
@@ -367,7 +392,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "homeGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[1] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[1] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -436,7 +461,7 @@ function init(goals) {
                 {
                 type: "comment",
                 name: "Intimate",
-                title: "First, describe what you typically do that is related to " + goals[2] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[2] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[2] + "? " + subtext[2]
+                title: "First, describe what you typically do that is related to " + goals[2] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[2] + subtext[2] + "?"
                 }
             ]},
             
@@ -445,7 +470,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "IntimateGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[2] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[2] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -514,7 +539,7 @@ function init(goals) {
                 {
                 type: "comment",
                 name: "NonIntimate",
-                title: "First, describe what you typically do that is related to " + goals[3] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[3] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[3] + "? " + subtext[3]
+                title: "First, describe what you typically do that is related to " + goals[3] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[3] + subtext[3] + "?"
                 }
             ]},
             
@@ -523,7 +548,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "NonIntimateGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[3] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[3] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -592,7 +617,7 @@ function init(goals) {
                 {
                 type: "comment",
                 name: "Self",
-                title: "First, describe what you typically do that is related to " + goals[4] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[4] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[4] + "? "  + subtext[4]
+                title: "First, describe what you typically do that is related to " + goals[4] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[4] + subtext[4] + "?"
                 }
             ]},
             
@@ -601,7 +626,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "SelfGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[4] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[4] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -670,7 +695,7 @@ function init(goals) {
                 {
                 type: "comment",
                 name: "learning",
-                title: "First, describe what you typically do that is related to " + goals[5] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[5] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[5] + "? "  + subtext[5]
+                title: "First, describe what you typically do that is related to " + goals[5] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[5] + subtext[5] + "?"
                 }
             ]},
             
@@ -679,7 +704,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "learningGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[5] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[5] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -748,7 +773,7 @@ function init(goals) {
                 {
                 type: "comment",
                 name: "health",
-                title: "First, describe what you typically do that is related to " + goals[6] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[6] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[6] + "? "  + subtext[6]
+                title: "First, describe what you typically do that is related to " + goals[6] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[6] + subtext[6] + "?"
                 }
             ]},
             
@@ -757,7 +782,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "healthGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[6] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[6] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -826,7 +851,7 @@ function init(goals) {
                 {
                 type: "comment",
                 name: "leisure",
-                title: "First, describe what you typically do that is related to " + goals[7] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[7] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[7] + "? "  + subtext[7]
+                title: "First, describe what you typically do that is related to " + goals[7] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[7] + subtext[7] + "?"
                 }
             ]},
             
@@ -835,7 +860,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "leisureGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[7] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[7] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -898,13 +923,14 @@ function init(goals) {
                             { value: "valencegoal7", text: "good about myself." }
                         ]}
             ]},
+            //FOR A NEW QUESTION! BEGIN COPY HERE
             {questions: [
                 { type: "html", name: "title", html: "<b>" + goals[8] + "</b>"
                 },
                 {
                 type: "comment",
                 name: "other",
-                title: "First, describe what you typically do that is related to " + goals[8] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[8] + "? What type of situations do you typically seek out, put yourself in, that are situations related to " + goals[8] + "? " + subtext[8]
+                title: "First, describe what you typically do that is related to " + goals[8] + subtext[8] + ".  What daily actions or typical behaviors do you exhibit that  relate to " + goals[8] + "?"
                 }
             ]},
             
@@ -913,7 +939,7 @@ function init(goals) {
                     type: "radiogroup",
                     name: "otherGoalBool",
                     isRequired: true,
-                    title: "After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[8] + "?",
+                    title: "After reflecting on your actions in this area, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to " + goals[8] + "?",
                     choices: ["Yes", "No"]
                 },
                 {
@@ -976,6 +1002,8 @@ function init(goals) {
                             { value: "valencegoal8", text: "good about myself." }
                         ]}
             ]},
+            //FOR NEW QUESTION STOP COPY HERE
+            //FOR NEW QUESTION, PASTE CONTENT BELOW THIS LINE BUT BEFORE BRACKET
             
         ]
     };

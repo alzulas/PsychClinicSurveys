@@ -1,8 +1,12 @@
+Notes for Walt:
+-If you collect a large number of samples (5,000+) you may wish to have someone create a database system for you instead of the CSV system we have. Requests to the server will get prohbitively long if the csv gets really big. 
+
 Current work list:
 -Http to https redirect
 -Clean up apache modules
 -Maybe clean up supported https ciphers
 -enable HSTS
+-What happens if the server is hit with a ddos attack? 
 -Creating PDF
 -Graph changes
     - The words “Frustration” and Satisfaction” currently overlap onto the bar graphs in a confusing way, putting them on the other side of the x-axis would solve that.
@@ -10,15 +14,11 @@ Current work list:
     - I still like the idea of making the mid-point for the bar graphs sit on the x-axis, so scores lower than the average would be lower than the x-axis and could be colored shades of red. Who knows how hard that would be to implement, but I think it would take the graphs to the next level. This could have some consequences for the color key though, so a different way to identify the bars on the graph may be needed. Maybe headers over the bars: A for autonomy, C for competency, etc.
 -Finalizing comments
 
-
-GOALS MEASURE change request:
--Let’s Keep this: First, describe what you typically do that is related to Intimate/Love Relationships (e.g., with boyfriend/girlfriend, husband/wife, etc.).  What daily actions or typical behaviors do you exhibit that relate to intimate/love relationships?
-    -And delete this:  “What type of situations do you typically seek out, put yourself in, that are situations related to intimate relationships?”
+Recent work completed: 
 -in going through it again, on the page that follows the one above for each goal item,  let’s also delete:
  “and the situations you put yourself in,’´ where it says After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to Work/Job/Career?
-
-
-Recent work completed: 
+-Let’s Keep this: First, describe what you typically do that is related to Intimate/Love Relationships (e.g., with boyfriend/girlfriend, husband/wife, etc.).  What daily actions or typical behaviors do you exhibit that relate to intimate/love relationships?
+    -And delete this:  “What type of situations do you typically seek out, put yourself in, that are situations related to intimate relationships?”
 - https
 - index page goals link
 - front page image size reduction
