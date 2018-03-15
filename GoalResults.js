@@ -210,10 +210,14 @@ function createBargraph(dataset){ //This was a test of D3
     
     var i = 0;
     for(j = 0; j < goal.length; j++){
-            var line = {Goal: goal[j],Competance: dataset[i],Autonomy: dataset[i+1],Relatedness: dataset[i+2]};
+        if (dataset[i]===0&&dataset[i+1]===0&&dataset[i+2]===0){
+            i=i+3;
+        }else{
+            var line = {Goal: goal[j],Competance: (dataset[i]-2.5),Autonomy: (dataset[i+1]-2.5),Relatedness: (dataset[i+2]-2.5)};
             i = i+3;
             newCSV.push(line);
             //console.log(line);
+        }
     }
     //console.log(newCSV);
              
@@ -242,7 +246,7 @@ function createBargraph(dataset){ //This was a test of D3
       
       x0.domain(data.map(function(d) { return d.Goal; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-      y.domain([0, 5]).nice();
+      y.domain([-2.5, 2.5]).nice();
         //console.log(data);
 
       g.append("g")
@@ -254,9 +258,9 @@ function createBargraph(dataset){ //This was a test of D3
         .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
         .enter().append("rect")
           .attr("x", function(d) { return x1(d.key); })
-          .attr("y", function(d) { return y(d.value); })
+          .attr("y", function(d) { return y(Math.max(0, d.value)); })
           .attr("width", x1.bandwidth())
-          .attr("height", function(d) { return height - y(d.value); })
+          .attr("height", function(d) { return Math.abs(y(d.value)-y(0)); })
           .attr("fill", function(d) { return z(d.key); });
 
       g.append("g")
@@ -283,9 +287,9 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("class", "axis")
           .call(d3.axisLeft(y).ticks(null, "s"))
         .append("text")
-          .attr("font-size", 12)
-          .attr("x", 2)
-          .attr("y", y(y.ticks().pop()) + 0.5)
+          .attr("font-size", 15)
+          .attr("x", 5)
+          .attr("y", y(y.ticks().pop()) + 5)
           .attr("dy", "0.32em")
           .attr("fill", "#000")
           .attr("font-weight", "bold")
@@ -296,9 +300,9 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("class", "axis")
           .call(d3.axisLeft(y).ticks(null, "s"))
         .append("text")
-          .attr("font-size", 12)
-          .attr("x", 2)
-          .attr("y", 450)
+          .attr("font-size", 15)
+          .attr("x", 5)
+          .attr("y", 435)
           .attr("dy", "0.1em")
           .attr("fill", "#000")
           .attr("font-weight", "bold")
