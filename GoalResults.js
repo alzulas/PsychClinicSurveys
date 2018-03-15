@@ -219,7 +219,7 @@ function createBargraph(dataset){ //This was a test of D3
             //console.log(line);
         }
     }
-    //console.log(newCSV);
+    console.log(newCSV);
              
 
     var svg = d3.select("svg"),
