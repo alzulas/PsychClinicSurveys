@@ -207,7 +207,7 @@ function createBargraph(dataset){ //This was a test of D3
     //If you'd like to see it, uncomment out the call to this function above.
      //console.log("graphing20");
     var newCSV=[];
-    
+    console.log(dataset);
     var i = 0;
     for(j = 0; j < goal.length; j++){
         if (dataset[i]===0&&dataset[i+1]===0&&dataset[i+2]===0){
