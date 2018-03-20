@@ -331,6 +331,13 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
+    var circle = g.append("line")
+            .attr("x1", 0)
+            .attr("y1", height/2)
+            .attr("x2", width-100)
+            .attr("y2", height/2)
+            .attr("stroke-width", 2)
+            .attr("stroke", "black");
        
 }
 

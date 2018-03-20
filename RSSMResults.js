@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////
 
 //Test data set, in case you need it. 
-var testingCSV = "NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,name3,Ed,4,3,4,5,4,3,4,3,3,4,4,3,3,name4,Disco Dancer,5,4,3,3,4,5,4,4,3,4,3,3,3,]";
+//var testingCSV = "NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,name3,Ed,4,3,4,5,4,3,4,3,3,4,4,3,3,name4,Disco Dancer,5,4,3,3,4,5,4,4,3,4,3,3,3,]";
 
 
 function printScores() {
@@ -270,7 +270,7 @@ function createBargraph(dataset){
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
       y.domain([-2.5, 2.5]).nice();
         //console.log(data);
-
+    
     //*****************************************************************
       g.append("g")
         .selectAll("g")
@@ -354,7 +354,14 @@ function createBargraph(dataset){
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
-       
+       //Draw the line
+    var circle = g.append("line")
+            .attr("x1", 0)
+            .attr("y1", height/2)
+            .attr("x2", width-100)
+            .attr("y2", height/2)
+            .attr("stroke-width", 2)
+            .attr("stroke", "black");
 }
 
 //When the button on the page is clicked.
@@ -397,5 +404,5 @@ function runPage(){
 var outPutCSV = [];
 var myid = getCookie("userName");
 var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "name3", "name4", "Overall"];
-outPutCSV = calculateScores(testingCSV);
+//outPutCSV = calculateScores(testingCSV);
 runPage();
