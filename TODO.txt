@@ -1,8 +1,9 @@
 Notes for Walt:
 -If you collect a large number of samples (5,000+) you may wish to have someone create a database system for you instead of the CSV system we have. Requests to the server will get prohbitively long if the csv gets really big. 
+-New About page info
+-Make choices about data range. 1 to 5? Or -2.5 to +2.5
 
 Current work list:
--New About page info
 -Http to https redirect
 -Clean up apache modules
 -What happens if the server is hit with a ddos attack? 
