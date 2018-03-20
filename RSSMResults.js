@@ -264,7 +264,7 @@ function createBargraph(dataset){
         .range(["#ccebff", "#66c2ff", "#007acc", "#005c99"]);
     
       var data = newCSV;
-      var keys = ["Competance", "Autonomy", "Relatedness"];  
+      var keys = ["Competence", "Autonomy", "Relatedness"];  
       
       x0.domain(data.map(function(d) { return d.Relationship; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);

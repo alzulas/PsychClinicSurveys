@@ -2,15 +2,20 @@ Notes for Walt:
 -If you collect a large number of samples (5,000+) you may wish to have someone create a database system for you instead of the CSV system we have. Requests to the server will get prohbitively long if the csv gets really big. 
 
 Current work list:
+-New About page info
 -Http to https redirect
 -Clean up apache modules
--Maybe clean up supported https ciphers
--enable HSTS
 -What happens if the server is hit with a ddos attack? 
 -Creating PDF
 -Finalizing comments
+-Move y axis “satisfaction” and “frustration” labels to left of y axis line; don’t want labels inside of graph
+-Insert a straight line across graph on x axis to mark zero, like this: 
+-Move legend outside of graph; as it stands, if last target scores are 2 or above, bar graph would run into legend (needlessly difficult)
+-Correct spelling for “competence” in legend; should be “competence”.
 
 Recent work completed: 
+-Maybe clean up supported https ciphers
+-enable HSTS
 -in going through it again, on the page that follows the one above for each goal item,  let’s also delete:
  “and the situations you put yourself in,’´ where it says After reflecting on your actions in this area, and the situations you put yourself in, do you think that you have had a goal in your mind--before you were asked to complete this measure--related to Work/Job/Career?
 -Let’s Keep this: First, describe what you typically do that is related to Intimate/Love Relationships (e.g., with boyfriend/girlfriend, husband/wife, etc.).  What daily actions or typical behaviors do you exhibit that relate to intimate/love relationships?
@@ -26,6 +31,7 @@ Recent work completed:
     - The words “Frustration” and Satisfaction” currently overlap onto the bar graphs in a confusing way, putting them on the other side of the x-axis would solve that.
     - The key for the bar graph constructs is currently listing the constructs in the opposite order they’re presented in the graph itself. The key should probably be flipped to avoid confusion.
     - I still like the idea of making the mid-point for the bar graphs sit on the x-axis, so scores lower than the average would be lower than the x-axis and could be colored shades of red. Who knows how hard that would be to implement, but I think it would take the graphs to the next level. This could have some consequences for the color key though, so a different way to identify the bars on the graph may be needed. Maybe headers over the bars: A for autonomy, C for competency, etc.
+
 
 
 Decided not to make these changes:
