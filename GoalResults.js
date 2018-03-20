@@ -229,7 +229,7 @@ function createBargraph(dataset){ //This was a test of D3
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var x0 = d3.scaleBand()
-        .rangeRound([0, width])
+        .rangeRound([0, width - 100])
         .paddingInner(0.1);
 
     var x1 = d3.scaleBand()
