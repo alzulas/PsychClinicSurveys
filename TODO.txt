@@ -8,10 +8,10 @@ Current work list:
 -What happens if the server is hit with a ddos attack? 
 -Creating PDF
 -Finalizing comments
--Move y axis “satisfaction” and “frustration” labels to left of y axis line; don’t want labels inside of graph
 -Insert a straight line across graph on x axis to mark zero, like this: 
 
 Recent work completed: 
+-Move y axis “satisfaction” and “frustration” labels to left of y axis line; don’t want labels inside of graph
 -Move legend outside of graph; as it stands, if last target scores are 2 or above, bar graph would run into legend (needlessly difficult)
 -Correct spelling for “competence” in legend; should be “competence”.
 -Maybe clean up supported https ciphers
