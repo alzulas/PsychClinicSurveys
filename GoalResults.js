@@ -316,7 +316,7 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("font-size", 12)
           .attr("text-anchor", "end")
         .selectAll("g")
-        .data(keys.slice().reverse())
+        .data(keys.slice())
         .enter().append("g")
           .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
@@ -331,6 +331,7 @@ function createBargraph(dataset){ //This was a test of D3
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
+    
     var circle = g.append("line")
             .attr("x1", 0)
             .attr("y1", height/2)

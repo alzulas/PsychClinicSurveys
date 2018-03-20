@@ -339,7 +339,7 @@ function createBargraph(dataset){
           .attr("font-size", 12)
           .attr("text-anchor", "end")
         .selectAll("g")
-        .data(keys.slice().reverse())
+        .data(keys.slice())
         .enter().append("g")
           .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
