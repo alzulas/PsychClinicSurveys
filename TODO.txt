@@ -9,6 +9,7 @@ Current work list:
 -What happens if the server is hit with a ddos attack? 
 -Creating PDF
 -Finalizing comments
+-One click start up script
 
 
 Recent work completed: 
