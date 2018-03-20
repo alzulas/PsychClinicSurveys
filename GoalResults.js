@@ -213,7 +213,7 @@ function createBargraph(dataset){ //This was a test of D3
         if (dataset[i]===0&&dataset[i+1]===0&&dataset[i+2]===0){
             i=i+3;
         }else{
-            var line = {Goal: goal[j],Competance: (dataset[i]-2.5),Autonomy: (dataset[i+1]-2.5),Relatedness: (dataset[i+2]-2.5)};
+            var line = {Goal: goal[j],Competence: (dataset[i]-2.5),Autonomy: (dataset[i+1]-2.5),Relatedness: (dataset[i+2]-2.5)};
             i = i+3;
             newCSV.push(line);
             //console.log(line);
