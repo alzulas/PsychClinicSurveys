@@ -1,18 +1,24 @@
 Notes for Walt:
 -If you collect a large number of samples (5,000+) you may wish to have someone create a database system for you instead of the CSV system we have. Requests to the server will get prohbitively long if the csv gets really big. 
--New About page info
--Make choices about data range. 1 to 5? Or -2.5 to +2.5
+
+FOR IRB!!!-
+https://www.ssllabs.com/ssltest/analyze.html?d=personassessment.com&hideResults=on
 
 Current work list:
--Http to https redirect
--Clean up apache modules
--What happens if the server is hit with a ddos attack? 
--Creating PDF
 -Finalizing comments
--One click start up script
+-Sanatize inputs (partly done)
+-typo edit
+-delete about
+-Make choices about data range. 1 to 5
+-file folder for CSVs
+-READ ME
 
+-For clinic version, call python script to refresh CSVs
 
 Recent work completed:
+-etc/init - node on start up
+-Http to https redirect
+-Clean up apache modules
 -Various visual cleaningup and typo fixes
 -Insert a straight line across graph on x axis to mark zero.
 -Move y axis “satisfaction” and “frustration” labels to left of y axis line; don’t want labels inside of graph

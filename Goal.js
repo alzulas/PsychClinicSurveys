@@ -203,7 +203,7 @@ function init(goals) {
     //Specific subtext for each goal
     //WALT!!!!!
     //If you need to change any subtexts, they are right here.
-    var subtext = ["(e.g. drive to Walmarts to do my shift, go to school to get a degree, try to impress my boss, invest money in stocks, etc.)", "", "(with boyfriend/girlfriend, husband/wife, love, and intimacy)", "(with family, relatives, friends, acquaintances)", "(e.g., want to be less depressed, happier, more honest, etc.)", "", "(e.g., want to lose weight, manage my diabetes, be more fit, etc.)", "(learn how to play tennis, the guitar, read )", ""];
+    var subtext = ["(e.g. drive to Walmart to do my shift, go to school to get a degree, try to impress my boss, invest money in stocks, etc.)", "", "(with boyfriend/girlfriend, husband/wife, love, and intimacy)", "(with family, relatives, friends, acquaintances)", "(e.g., want to be less depressed, happier, more honest, etc.)", "", "(e.g., want to lose weight, manage my diabetes, be more fit, etc.)", "(learn how to play tennis, the guitar, read )", ""];
 
     //This is the JSON with all the questions and format in it
     var jsonBegin = {
