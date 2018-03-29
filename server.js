@@ -26,7 +26,7 @@ app.get('/BISresult/:myid', function (req, res) {
     var IDfound = false;
     var currentLine = 0;
     //read file
-    var linesOfFile = fs.readFileSync('/Data/BISBAS.csv').toString().split("\n");
+    var linesOfFile = fs.readFileSync('/var/www/html/Data/BISBAS.csv').toString().split("\n");
     while (!IDfound) { //find ID
         var tempLine = linesOfFile[currentLine];
         var tempArray = tempLine.split(",");
@@ -50,7 +50,7 @@ app.get('/RSSMresult/:myid', function (req, res) {
     var fs = require('fs');
     var IDfound = false;
     var currentLine = 0;
-    var linesOfFile = fs.readFileSync('/Data/RSSM.csv').toString().split("\n");
+    var linesOfFile = fs.readFileSync('/var/www/html/Data/RSSM.csv').toString().split("\n");
     while (!IDfound) {
         var tempLine = linesOfFile[currentLine];
         var tempArray = tempLine.split(",");
@@ -74,7 +74,7 @@ app.get('/GOALresult/:myid', function (req, res) {
     var fs = require('fs');
     var IDfound = false;
     var currentLine = 0;
-    var linesOfFile = fs.readFileSync('/Data/Goal.csv').toString().split("\n");
+    var linesOfFile = fs.readFileSync('/var/www/html/Data/Goal.csv').toString().split("\n");
     while (!IDfound) {
         var tempLine = linesOfFile[currentLine];
         var tempArray = tempLine.split(",");
@@ -213,7 +213,7 @@ function turnToCSV(dataString) {
         
         var fs = require('fs');
         
-        fs.appendFile("/Data/BISBAS.csv", csv, function(err) {
+        fs.appendFile("/var/www/html/Data/BISBAS.csv", csv, function(err) {
             if(err) {
                 //If failed, error
                 return console.log(err);
@@ -225,7 +225,7 @@ function turnToCSV(dataString) {
     else if (allDataAsString.includes("thoughtsrel")){
         //If RSSM, put the array into the file RSSM.csv
         var fs = require('fs');
-        fs.appendFile("/Data/RSSM.csv", csv, function(err) {
+        fs.appendFile("/var/www/html/Data/RSSM.csv", csv, function(err) {
             if(err) {
                 //If failed, error
                 return console.log(err);
@@ -237,7 +237,7 @@ function turnToCSV(dataString) {
         else if (allDataAsString.includes("Goal")){
         //If RSSM, put the array into the file RSSM.csv
         var fs = require('fs');
-        fs.appendFile("/Data/Goal.csv", csv, function(err) {
+        fs.appendFile("/var/www/html/Data/Goal.csv", csv, function(err) {
             if(err) {
                 //If failed, error
                 return console.log(err);
