@@ -8,14 +8,14 @@ Current work list:
 -Finalizing comments
 -Sanatize inputs (partly done)
 -typo edit
--delete about
 -Make choices about data range. 1 to 5
--file folder for CSVs
 -READ ME
 
 -For clinic version, call python script to refresh CSVs
 
 Recent work completed:
+-delete about
+-file folder for CSVs
 -etc/init - node on start up
 -Http to https redirect
 -Clean up apache modules
