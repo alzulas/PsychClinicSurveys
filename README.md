@@ -29,6 +29,7 @@ There are two files here that are not in use. In the event that you should decid
 
 For the page to run properly, the NODE js server must be running. 
 * server.js
+
 It can be run in any terminal using the command node server.js
 On the server, it runs automatically using rc.local.
 
@@ -38,6 +39,7 @@ All data files exist in the file called Data. The files are:
 * BISBAS.csv
 * RSSM.csv
 * Goal.csv
+
 Also in that files is a python script that can delete ALL information from the csv's and replace the headers at the top of the file.
 * csvStart.py
 
