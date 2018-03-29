@@ -1,3 +1,48 @@
+# Website General Information
+
+This website was designed by A. Leah Zulas
+
+The website's purpose is to allow participants to take various measures and recieve feedback on those surveys. 
+
+The website is organized with html files and associated javascript scripts.
+* index.html
+* BISBAS.html
+    * BISBAS.js
+    * BISBASResults.html
+    * BISBASResults.js
+* RSSM.html
+    - RSSM.js
+    - RSSMResults.html
+    - RSSMResults.js
+* Goal.html
+    - Goal.js
+    - GoalResults.html
+    - GoalResults.js
+
+# Unused Files
+
+There are two files here that are not in use. In the event that you should decide you need a contacts page or an about page, they already exist.
+* about.html
+* contact.html
+
+# Server
+
+For the page to run properly, the NODE js server must be running. 
+* server.js
+It can be run in any terminal using the command node server.js
+On the server, it runs automatically using rc.local.
+
+# Data
+
+All data files exist in the file called Data. The files are:
+* BISBAS.csv
+* RSSM.csv
+* Goal.csv
+Also in that files is a python script that can delete ALL information from the csv's and replace the headers at the top of the file.
+* csvStart.py
+
+# This page created using:
+
 # Bootstrap Clean Blog was used as the base for this website.
 
 # [Start Bootstrap - Clean Blog](https://startbootstrap.com/template-overviews/clean-blog/)
