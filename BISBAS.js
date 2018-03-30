@@ -387,6 +387,7 @@ function init() {
                 console.log("You pressed OK!");
             } else {
                 //If they want to see the old data, then just move on. Post nothing. 
+                //For the IRB, you may need to change the below to "BISBAS.html" instead of "BISBASResults.html"
                 window.location.href = "BISBASResults.html";
                 console.log("You pressed Cancel!");
             }

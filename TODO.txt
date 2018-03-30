@@ -1,13 +1,15 @@
 Notes for Walt:
 -If you collect a large number of samples (5,000+) you may wish to have someone create a database system for you instead of the CSV system we have. Requests to the server will get prohbitively long if the csv gets really big. 
 
+
 FOR IRB!!!-
 https://www.ssllabs.com/ssltest/analyze.html?d=personassessment.com&hideResults=on
 
-Current work list:
--Finalizing comments
--Sanatize inputs (partly done)
+ALSO FOR IRB!!-
+There are comments about changes the IRB might want. Just do a ctr f and search IRB in the .js files for RSSM/BISBAS/Goal or html files for RSSMResults/BISBASResults/GoalResults
 
+Current work list:
+-Sanatize inputs (partly done)
 -For clinic version, call python script to refresh CSVs
 
 Recent work completed:

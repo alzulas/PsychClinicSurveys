@@ -710,6 +710,7 @@ function init(relationship) {
                 console.log("You pressed OK!");
             } else {
                 //If they want to see the old data, then just move on. Post nothing. 
+                //For the IRB, you may need to change the below to "RSSM.html" instead of "RSSMResults.html"
                 window.location.href = "RSSMResults.html";
                 console.log("You pressed Cancel!");
             }

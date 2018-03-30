@@ -1066,6 +1066,7 @@ function init(goals) {
                 console.log("You pressed OK!");
             } else {
                 //If they want to see the old data, then just move on. Post nothing. 
+                //For the IRB, you may need to change the below to "Goal.html" instead of "GoalResults.html"
                 window.location.href = "GoalResults.html";
                 console.log("You pressed Cancel!");
             }
