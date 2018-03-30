@@ -246,7 +246,7 @@ function createBargraph(dataset){ //This was a test of D3
       
       x0.domain(data.map(function(d) { return d.Goal; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-      y.domain([-2.5, 2.5]).nice();
+      y.domain([0, 5]).nice();
         //console.log(data);
 
       g.append("g")
@@ -258,9 +258,9 @@ function createBargraph(dataset){ //This was a test of D3
         .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
         .enter().append("rect")
           .attr("x", function(d) { return x1(d.key); })
-          .attr("y", function(d) { return y(Math.max(0, d.value)); })
+          .attr("y", function(d) { return y(Math.max(2.5, d.value)); })
           .attr("width", x1.bandwidth())
-          .attr("height", function(d) { return Math.abs(y(d.value)-y(0)); })
+          .attr("height", function(d) { return Math.abs(y(d.value)-y(2.5)); })
           .attr("fill", function(d) { return z(d.key); });
 
       g.append("g")

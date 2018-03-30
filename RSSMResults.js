@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////
 
 //Test data set, in case you need it. 
-//var testingCSV = "NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,name3,Ed,4,3,4,5,4,3,4,3,3,4,4,3,3,name4,Disco Dancer,5,4,3,3,4,5,4,4,3,4,3,3,3,]";
+var testingCSV = "NOEO6624,Female,31-45,[American Indian or Alaska Native],[Out of work but not currently looking for work],Married,Mother,Never,,,,,,,,,,,,,,Father,Never,,,,,,,,,,,,,,Romantic Partner,I dont have a Romantic Partner,,,,,,,,,,,,,,Ex-Romantic Partner,Never,,,,,,,,,,,,,,Sibling,sometimes,1,2,3,3,2,3,4,3,2,1,2,3,3,Close Friend,Often,1,2,3,4,3,2,2,3,4,4,3,2,2,name1,Bob,1,2,1,2,1,2,3,2,1,2,3,2,1,name2,Alice,4,3,4,3,4,5,4,4,3,3,2,2,1,name3,Ed,4,3,4,5,4,3,4,3,3,4,4,3,3,name4,Disco Dancer,5,4,3,3,4,5,4,4,3,4,3,3,3,]";
 
 
 function printScores() {
@@ -235,7 +235,7 @@ function createBargraph(dataset){
         if (dataset[i]===0&&dataset[i+1]===0&&dataset[i+2]===0){
             i=i+3;
         }else{
-            var line = {Relationship: relationship[j],Competence: (dataset[i]-2.5),Autonomy: (dataset[i+1]-2.5),Relatedness: (dataset[i+2]-2.5)};
+            var line = {Relationship: relationship[j],Competence: (dataset[i]),Autonomy: (dataset[i+1]),Relatedness: (dataset[i+2])};
             i = i+3;
             newCSV.push(line);
         }
@@ -268,7 +268,7 @@ function createBargraph(dataset){
       
       x0.domain(data.map(function(d) { return d.Relationship; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-      y.domain([-2.5, 2.5]).nice();
+      y.domain([0, 5]).nice();
         //console.log(data);
     
     //*****************************************************************
@@ -281,9 +281,9 @@ function createBargraph(dataset){
         .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
         .enter().append("rect")
           .attr("x", function(d) { return x1(d.key); })
-          .attr("y", function(d) { return y(Math.max(0, d.value)); })
+          .attr("y", function(d) { return y(Math.max(2.5, d.value)); })
           .attr("width", x1.bandwidth())
-          .attr("height", function(d) { return Math.abs(y(d.value) - y(0));})//height - y(d.value); })
+          .attr("height", function(d) { return Math.abs(y(d.value) - y(2.5));})//height - y(d.value); })
           .attr("fill", function(d) { return z(d.key); });
 
       g.append("g")
@@ -404,5 +404,5 @@ function runPage(){
 var outPutCSV = [];
 var myid = getCookie("userName");
 var relationship = ["Mother", "Father", "Romantic Partner", "Ex-Romantic Partner", "Sibling", "Close Friend", "name1", "name2", "name3", "name4", "Overall"];
-//outPutCSV = calculateScores(testingCSV);
+outPutCSV = calculateScores(testingCSV);
 runPage();

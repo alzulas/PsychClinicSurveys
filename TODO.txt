@@ -7,12 +7,12 @@ https://www.ssllabs.com/ssltest/analyze.html?d=personassessment.com&hideResults=
 Current work list:
 -Finalizing comments
 -Sanatize inputs (partly done)
--Make choices about data range. 1 to 5
--READ ME
 
 -For clinic version, call python script to refresh CSVs
 
 Recent work completed:
+-Make choices about data range. 1 to 5
+-READ ME
 -typo edit
 -delete about
 -file folder for CSVs
