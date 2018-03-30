@@ -123,6 +123,12 @@ function turnToCSV(dataString) {
     //All data we are trying to track for BISBAS
     var BISBASHeadings = ["ID", "gender", "age", "race", "employment", "BIS1", "BIS2", "BIS3", "BIS4", "BIS5", "BIS6", "BIS7", "BASDrive1", "BASDrive2", "BASDrive3", "BASDrive4", "BASReward1", "BASReward2", "BASReward3", "BASReward4", "BASReward5", "BASFun1", "BASFun2", "BASFun3", "BASFun4"];
     
+    if(dataString === "DELETE"){
+        var spawn = require("child_process").spawn;
+        var pythonProcess = spawn('python',["var/www/html/Data/csvStart.py"]);
+        return;
+    }
+    
     //turn JSON into a string
     //console.log(dataString);
     var allDataAsString = JSON.stringify(dataString);
