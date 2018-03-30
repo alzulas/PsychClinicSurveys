@@ -104,11 +104,12 @@ d3
 
         <script>
             function buttonFunction() {
+                thisData = "DELETE";
                 $.ajax({
                     type: "POST",
                     url: "/result",
                     async: false,
-                    data: "DELETE",
+                    data: thisData,
                     success: function (data) {
                         if (data === 'done') {
                             alert("Delete successful");
