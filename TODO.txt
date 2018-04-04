@@ -8,9 +8,9 @@ https://www.ssllabs.com/ssltest/analyze.html?d=personassessment.com&hideResults=
 ALSO FOR IRB!!-
 There are comments about changes the IRB might want. Just do a ctr f and search IRB in the .js files for RSSM/BISBAS/Goal or html files for RSSMResults/BISBASResults/GoalResults
 
-Current work list:
--Sanatize inputs (partly done)
+Future work list:
 -For clinic version, call python script to refresh CSVs
+-Results page for all three metrics?
 
 Recent work completed:
 -Make choices about data range. 1 to 5
